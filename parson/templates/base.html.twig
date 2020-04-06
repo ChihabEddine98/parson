@@ -8,6 +8,7 @@
         {% block stylesheets %}
             <script src="https://kit.fontawesome.com/00eef3ac9c.js" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="/css/main.css">
         {% endblock %}
 
     </head>
@@ -25,10 +26,10 @@
                     <a class="nav-link" href="#"> <i class="fas fa-users-cog"></i> Utilisateurs</a>
                 </li>
                 <li class="nav-item dropdown mx-auto">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="formation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-chalkboard-teacher"></i> Formations
                     </a>
-                    <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" role="menu" aria-labelledby="formation">
                         <a class="dropdown-item" href="#"><i class="far fa-plus-square"></i> Un cours</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-stream"></i> Tous les cours</a>
                         <div class="dropdown-divider"></div>
@@ -36,12 +37,27 @@
                     </div>
                 </li>
             </ul>
+            {#<ul class="navbar-nav my-2 my-lg-0">#}
+                {#<li class="nav-item">#}
+                    {#<a href="" class="btn btn-outline-warning  mr-lg-2 col-sm-12"> Inscription </a>#}
+                {#</li>#}
+                {#<li class="nav-item">#}
+                    {#<a href="" class="btn btn-outline-success ml-lg-2 my-2 my-sm-0 col-sm-12"> Connexion</a>#}
+                {#</li>#}
+            {#</ul>#}
+
             <ul class="navbar-nav my-2 my-lg-0">
-                <li class="nav-item">
-                    <a href="" class="btn btn-outline-warning  mr-lg-2 col-sm-12"> Inscription </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="btn btn-outline-success ml-lg-2 my-2 my-sm-0 col-sm-12"> Connexion</a>
+                <li class="nav-item dropdown mx-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="compte" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="navbar-userImg rounded-circle mr-2" src="/img/profil_default_male.png" alt=""> Chihab Eddine
+                    </a>
+                    <div class="dropdown-menu col-lg-12 px-3" role="menu" aria-labelledby="compte">
+                        <a class="dropdown-item" href="#"><i class="fas fa-address-card"></i>  Mon profil</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-award"></i> Mes cours</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-poll"></i> Mes notes</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="btn btn-outline-danger w-100" href="#"><i class="fas fa-power-off"></i> Déconnexion</a>
+                    </div>
                 </li>
             </ul>
 
