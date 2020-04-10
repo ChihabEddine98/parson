@@ -13,7 +13,7 @@ class CourseFixtures extends BaseFixture
         $this->createMany(Course::class,10,function (Course $course,$i){
             $course->setTitle('Cours numéro '.$i)
                    ->setCategory('categorie')
-                   ->setTimeNeeded(rand(10,50))
+                   ->setTimeNeeded($this->faker->numberBetween(8,50))
                    ->setDescription('contenu provisoire '.$i);
 
         });
