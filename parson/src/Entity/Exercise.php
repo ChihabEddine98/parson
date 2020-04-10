@@ -41,6 +41,12 @@ class Exercise
      */
     private $solution = [];
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="exercises")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $course;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +108,18 @@ class Exercise
     public function setSolution(array $solution): self
     {
         $this->solution = $solution;
+
+        return $this;
+    }
+
+    public function getCourse(): ?Course
+    {
+        return $this->course;
+    }
+
+    public function setCourse(?Course $course): self
+    {
+        $this->course = $course;
 
         return $this;
     }

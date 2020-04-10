@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,6 +42,16 @@ class Course
      * @ORM\Column(type="float")
      */
     private $timeNeeded;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Exercise", mappedBy="course")
+     */
+    private $exercises;
+
+    public function __construct()
+    {
+        $this->exercises = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -102,6 +114,37 @@ class Course
     public function setTimeNeeded(float $timeNeeded): self
     {
         $this->timeNeeded = $timeNeeded;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exercise[]
+     */
+    public function getExercises(): Collection
+    {
+        return $this->exercises;
+    }
+
+    public function addExercise(Exercise $exercise): self
+    {
+        if (!$this->exercises->contains($exercise)) {
+            $this->exercises[] = $exercise;
+            $exercise->setCourse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExercise(Exercise $exercise): self
+    {
+        if ($this->exercises->contains($exercise)) {
+            $this->exercises->removeElement($exercise);
+            // set the owning side to null (unless already changed)
+            if ($exercise->getCourse() === $this) {
+                $exercise->setCourse(null);
+            }
+        }
 
         return $this;
     }
