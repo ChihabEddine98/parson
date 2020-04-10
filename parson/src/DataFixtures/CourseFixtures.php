@@ -2,15 +2,21 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Course;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class CourseFixtures extends Fixture
+class CourseFixtures extends BaseFixture
 {
-    public function load(ObjectManager $manager)
+    protected function loadData(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
+
+        $this->createMany(Course::class,10,function (Course $course,$i){
+            $course->setTitle('Cours numéro '.$i)
+                   ->setCategory('categorie')
+                   ->setTimeNeeded(rand(10,50))
+                   ->setDescription('contenu provisoire !'.$i);
+
+        });
 
         $manager->flush();
     }
