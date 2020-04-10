@@ -14,7 +14,7 @@ class CourseFixtures extends BaseFixture
             $course->setTitle('Cours numéro '.$i)
                    ->setCategory('categorie')
                    ->setTimeNeeded(rand(10,50))
-                   ->setDescription('contenu provisoire !'.$i);
+                   ->setDescription('contenu provisoire '.$i);
 
         });
 

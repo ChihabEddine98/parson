@@ -32,7 +32,7 @@ abstract  class BaseFixture extends Fixture
     protected function createMany(string $className,int $count,callable $cb)
     {
 
-        for ($i=0;$i<$count;$i++)
+        for ($i=1;$i<=$count;$i++)
         {
             $entity=new $className();
             // içi on peut remplir les champs de notre objet !
