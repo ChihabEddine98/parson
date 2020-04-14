@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Course;
 use App\Entity\Exercise;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class ExerciseFixtures extends BaseFixture
+class ExerciseFixtures extends BaseFixture implements DependentFixtureInterface
 {
     protected function loadData(ObjectManager $manager)
     {
@@ -24,5 +25,19 @@ class ExerciseFixtures extends BaseFixture
         });
 
         $manager->flush();
+    }
+
+
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
+     *
+     * @return class-string[]
+     */
+    public function getDependencies()
+    {
+       return [
+         CourseFixtures::class,
+       ];
     }
 }

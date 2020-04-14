@@ -28,7 +28,7 @@ abstract  class BaseFixture extends Fixture
      */
     protected $faker;
 
-    private $refIndex=[];
+    private $referencesIndex=[];
 
     abstract protected function loadData(ObjectManager $manager);
 
@@ -64,28 +64,19 @@ abstract  class BaseFixture extends Fixture
 
     protected function getRandomRef(string $className)
     {
-        if (!isset($this->refIndex[$className]))
-        {
-            $this->refIndex[$className]=[];
-
-            foreach ($this->referenceRepository->getReferences() as $key => $ref){
-
-                if(strpos($key,$className.'_'===0))
-                {
-                    $this->refIndex[$className]=$key;
+        if (!isset($this->referencesIndex[$className])) {
+            $this->referencesIndex[$className] = [];
+            foreach ($this->referenceRepository->getReferences() as $key => $ref) {
+                if (strpos($key, $className.'_') === 0) {
+                    $this->referencesIndex[$className][] = $key;
                 }
             }
         }
-
-        if (empty($this->refIndex[$className]))
-        {
-            throw new Exception(sprintf('Aucune Réference trouvée pour "%s"',$className));
-
+        if (empty($this->referencesIndex[$className])) {
+            throw new \Exception(sprintf('Cannot find any references for class "%s"', $className));
         }
-
-        $randomRefKey=$this->faker->randomElement($this->refIndex[$className]);
-
-        return $this->getReference($randomRefKey);
+        $randomReferenceKey = $this->faker->randomElement($this->referencesIndex[$className]);
+        return $this->getReference($randomReferenceKey);
     }
 
 }

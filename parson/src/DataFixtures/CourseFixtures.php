@@ -35,7 +35,7 @@ class CourseFixtures extends BaseFixture implements DependentFixtureInterface
     public function getDependencies()
     {
        return [
-           User::class,
+           UserFixtures::class,
        ];
     }
 }
