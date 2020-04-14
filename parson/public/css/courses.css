@@ -1,0 +1,9 @@
+
+/* Le titre et trunc du descption*/
+.caroussel_content{
+    background: var(--overlay_bg_dark_col);
+    padding: 1rem;
+    margin-bottom: 3%;
+    left: 0;
+    right: 0;
+}
