@@ -53,9 +53,21 @@ class Course
      */
     private $exercises;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="createdCourses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="registredInCourses")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->exercises = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,6 +161,46 @@ class Course
             if ($exercise->getCourse() === $this) {
                 $exercise->setCourse(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addRegistredInCourse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeRegistredInCourse($this);
         }
 
         return $this;

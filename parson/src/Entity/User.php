@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -52,6 +54,22 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imgUrl;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Course", mappedBy="author")
+     */
+    private $createdCourses;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Course", inversedBy="users")
+     */
+    private $registredInCourses;
+
+    public function __construct()
+    {
+        $this->createdCourses = new ArrayCollection();
+        $this->registredInCourses = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -164,6 +182,63 @@ class User implements UserInterface
     public function setImgUrl(?string $imgUrl): self
     {
         $this->imgUrl = $imgUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Course[]
+     */
+    public function getCreatedCourses(): Collection
+    {
+        return $this->createdCourses;
+    }
+
+    public function addCreatedCourse(Course $createdCourse): self
+    {
+        if (!$this->createdCourses->contains($createdCourse)) {
+            $this->createdCourses[] = $createdCourse;
+            $createdCourse->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCreatedCourse(Course $createdCourse): self
+    {
+        if ($this->createdCourses->contains($createdCourse)) {
+            $this->createdCourses->removeElement($createdCourse);
+            // set the owning side to null (unless already changed)
+            if ($createdCourse->getAuthor() === $this) {
+                $createdCourse->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Course[]
+     */
+    public function getRegistredInCourses(): Collection
+    {
+        return $this->registredInCourses;
+    }
+
+    public function addRegistredInCourse(Course $registredInCourse): self
+    {
+        if (!$this->registredInCourses->contains($registredInCourse)) {
+            $this->registredInCourses[] = $registredInCourse;
+        }
+
+        return $this;
+    }
+
+    public function removeRegistredInCourse(Course $registredInCourse): self
+    {
+        if ($this->registredInCourses->contains($registredInCourse)) {
+            $this->registredInCourses->removeElement($registredInCourse);
+        }
 
         return $this;
     }
