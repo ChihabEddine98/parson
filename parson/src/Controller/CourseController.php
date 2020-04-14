@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Course;
 use App\Form\CourseType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,8 +14,12 @@ class CourseController extends AbstractController
      */
     public function index()
     {
+        $repo=$this->getDoctrine()->getRepository(Course::class);
+        $courses=$repo->findAll();
+
         return $this->render('course/course_list.html.twig', [
             'controller_name' => 'CourseController',
+            'courses'=>$courses
         ]);
     }
 
