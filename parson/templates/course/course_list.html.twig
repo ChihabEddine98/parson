@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Utilisateurs ! {% endblock %}
+{% block title %} Tout les Cours ! {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
@@ -8,15 +8,19 @@
 
 {% block body_content %}
 
-    <div class="col-lg-6 mx-auto mt-5 py-5">
+    <div class="col-lg-12 mx-auto mt-3 py-3">
 
         <div class="col-12 text-center ">
+            <h1>  Tout les cours disponibles !</h1>
+            <div class="col-12 text-dark d-flex flex-wrap">
 
-            <div class=" py-5 col-12 text-dark">
-                <h1>  Bienvenue à Users !</h1>
-                <div class="welcome">
-                    <p> Trouvez un cours qui vous va le mieux ! </p>
-                    <p> Pour Bénificier des fonctionnalités de ParSon Veuillez ... </p>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ asset('img/course_default.jpg') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
                 <!-- <div class="btn_">
                     <a href="/register" class="btn"> Commencer ! </a>

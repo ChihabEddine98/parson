@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/course/course_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_list.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +35,7 @@
           <entry key="json" value="1" />
           <entry key="php" value="28" />
           <entry key="rnc" value="1" />
-          <entry key="twig" value="18" />
+          <entry key="twig" value="19" />
           <entry key="yaml" value="23" />
         </counts>
       </usages-collector>
@@ -45,7 +46,7 @@
           <entry key="JSON" value="1" />
           <entry key="PHP" value="28" />
           <entry key="RNG Compact" value="1" />
-          <entry key="Twig" value="18" />
+          <entry key="Twig" value="19" />
           <entry key="YAML" value="23" />
         </counts>
       </usages-collector>
@@ -62,7 +63,7 @@
           <entry key="dummy" value="1" />
           <entry key="env" value="11" />
           <entry key="php" value="1257" />
-          <entry key="twig" value="2557" />
+          <entry key="twig" value="2751" />
           <entry key="yaml" value="4" />
         </counts>
       </usages-collector>
@@ -72,7 +73,7 @@
           <entry key="CSS" value="216" />
           <entry key="PHP" value="1257" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="2557" />
+          <entry key="Twig" value="2751" />
           <entry key="YAML" value="4" />
         </counts>
       </usages-collector>
@@ -85,7 +86,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -99,6 +100,15 @@
                 <element signature="e#2426#2434#0#Twig" expanded="true" />
                 <element signature="e#2608#2613#0#Twig" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/user/user_list.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -157,11 +167,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/course/course_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="75">
+              <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -173,19 +186,6 @@
               <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#12#26#0#Twig" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
-              <folding>
-                <element signature="e#320#346#0#PHP" expanded="true" />
-                <element signature="e#549#578#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -234,8 +234,6 @@
         <option value="$PROJECT_DIR$/config/packages/framework.yaml" />
         <option value="$PROJECT_DIR$/public/css/home.css" />
         <option value="$PROJECT_DIR$/templates/parson/welcome.html.twig" />
-        <option value="$PROJECT_DIR$/templates/user/user_list.html.twig" />
-        <option value="$PROJECT_DIR$/templates/course/course_list.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/user_profile.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/templates/course/course_notes.html.twig" />
@@ -244,6 +242,8 @@
         <option value="$PROJECT_DIR$/templates/auth/login.html.twig" />
         <option value="$PROJECT_DIR$/templates/auth/register.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/templates/user/user_list.html.twig" />
+        <option value="$PROJECT_DIR$/templates/course/course_list.html.twig" />
       </list>
     </option>
   </component>
@@ -307,11 +307,6 @@
             <path>
               <item name="parson" type="b2602c69:ProjectViewProjectNode" />
               <item name="parson" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="parson" type="b2602c69:ProjectViewProjectNode" />
-              <item name="parson" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -319,6 +314,12 @@
               <item name="parson" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="parson" type="b2602c69:ProjectViewProjectNode" />
+              <item name="parson" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="parson" type="b2602c69:ProjectViewProjectNode" />
@@ -375,6 +376,9 @@
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Chihab Eddine\Desktop\L3\S6\info\prog_web\projet\parson\parson\public\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Chihab Eddine\Desktop\L3\S6\info\prog_web\projet\parson\parson\templates\parson" />
       <recent name="C:\Users\Chihab Eddine\Desktop\L3\S6\info\prog_web\projet\parson\parson\templates\cours" />
@@ -407,12 +411,12 @@
       <workItem from="1586369250952" duration="3866000" />
       <workItem from="1586373966759" duration="1440000" />
       <workItem from="1586528935933" duration="9803000" />
-      <workItem from="1586775678692" duration="6655000" />
+      <workItem from="1586775678692" duration="7870000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37982000" />
+    <option name="totallyTimeSpent" value="39197000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -636,13 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/user_list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -651,13 +648,6 @@
             <element signature="e#320#346#0#PHP" expanded="true" />
             <element signature="e#549#578#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/course/course_list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
@@ -734,6 +724,23 @@
             <element signature="e#2174#2184#0#Twig" expanded="true" />
             <element signature="e#2426#2434#0#Twig" expanded="true" />
             <element signature="e#2608#2613#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/user_list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/course/course_list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
