@@ -13,6 +13,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 abstract  class BaseFixture extends Fixture
 {
@@ -26,6 +27,8 @@ abstract  class BaseFixture extends Fixture
      * @var Generator
      */
     protected $faker;
+
+    private $refIndex=[];
 
     abstract protected function loadData(ObjectManager $manager);
 
@@ -56,6 +59,33 @@ abstract  class BaseFixture extends Fixture
         }
 
 
+    }
+
+
+    protected function getRandomRef(string $className)
+    {
+        if (!isset($this->refIndex[$className]))
+        {
+            $this->refIndex[$className]=[];
+
+            foreach ($this->referenceRepository->getReferences() as $key => $ref){
+
+                if(strpos($key,$className.'_'===0))
+                {
+                    $this->refIndex[$className]=$key;
+                }
+            }
+        }
+
+        if (empty($this->refIndex[$className]))
+        {
+            throw new Exception(sprintf('Aucune Réference trouvée pour "%s"',$className));
+
+        }
+
+        $randomRefKey=$this->faker->randomElement($this->refIndex[$className]);
+
+        return $this->getReference($randomRefKey);
     }
 
 }
