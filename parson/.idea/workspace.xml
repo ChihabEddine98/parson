@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/user_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_list.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +36,7 @@
           <entry key="json" value="2" />
           <entry key="php" value="38" />
           <entry key="rnc" value="1" />
-          <entry key="twig" value="20" />
+          <entry key="twig" value="21" />
           <entry key="yaml" value="27" />
         </counts>
       </usages-collector>
@@ -45,7 +47,7 @@
           <entry key="JSON" value="2" />
           <entry key="PHP" value="38" />
           <entry key="RNG Compact" value="1" />
-          <entry key="Twig" value="20" />
+          <entry key="Twig" value="21" />
           <entry key="YAML" value="27" />
         </counts>
       </usages-collector>
@@ -63,7 +65,7 @@
           <entry key="env" value="11" />
           <entry key="json" value="132" />
           <entry key="php" value="2259" />
-          <entry key="twig" value="4196" />
+          <entry key="twig" value="4207" />
           <entry key="yaml" value="10" />
         </counts>
       </usages-collector>
@@ -74,7 +76,7 @@
           <entry key="JSON" value="132" />
           <entry key="PHP" value="2259" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="4196" />
+          <entry key="Twig" value="4207" />
           <entry key="YAML" value="10" />
         </counts>
       </usages-collector>
@@ -97,15 +99,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/packages/framework.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/course/course_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
@@ -114,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/user/user_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+            <state relative-caret-position="863">
+              <caret line="69" column="10" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -130,6 +123,23 @@
               <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="e#30#78#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+              <folding>
+                <element signature="e#722#733#0#Twig" expanded="true" />
+                <element signature="e#1850#1860#0#Twig" expanded="true" />
+                <element signature="e#1986#1993#0#Twig" expanded="true" />
+                <element signature="e#2174#2184#0#Twig" expanded="true" />
+                <element signature="e#2426#2434#0#Twig" expanded="true" />
+                <element signature="e#2608#2613#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -224,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/Controller/AuthController.php" />
         <option value="$PROJECT_DIR$/templates/auth/login.html.twig" />
         <option value="$PROJECT_DIR$/templates/auth/register.html.twig" />
-        <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/CourseController.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/ExerciseFixtures.php" />
@@ -239,6 +248,7 @@
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/public/css/users.css" />
         <option value="$PROJECT_DIR$/templates/user/user_list.html.twig" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
       </list>
     </option>
   </component>
@@ -418,12 +428,12 @@
       <workItem from="1586369250952" duration="3866000" />
       <workItem from="1586373966759" duration="1440000" />
       <workItem from="1586528935933" duration="9803000" />
-      <workItem from="1586775678692" duration="23510000" />
+      <workItem from="1586775678692" duration="23974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54837000" />
+    <option name="totallyTimeSpent" value="55301000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -619,22 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
-          <folding>
-            <element signature="e#722#733#0#Twig" expanded="true" />
-            <element signature="e#1267#1276#0#Twig" expanded="true" />
-            <element signature="e#1850#1860#0#Twig" expanded="true" />
-            <element signature="e#1986#1993#0#Twig" expanded="true" />
-            <element signature="e#2174#2184#0#Twig" expanded="true" />
-            <element signature="e#2426#2434#0#Twig" expanded="true" />
-            <element signature="e#2608#2613#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CourseController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -785,8 +779,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/user/user_list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+        <state relative-caret-position="863">
+          <caret line="69" column="10" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+          <folding>
+            <element signature="e#722#733#0#Twig" expanded="true" />
+            <element signature="e#1850#1860#0#Twig" expanded="true" />
+            <element signature="e#1986#1993#0#Twig" expanded="true" />
+            <element signature="e#2174#2184#0#Twig" expanded="true" />
+            <element signature="e#2426#2434#0#Twig" expanded="true" />
+            <element signature="e#2608#2613#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
