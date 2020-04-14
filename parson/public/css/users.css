@@ -1,0 +1,21 @@
+
+
+.userImgList{
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 2px;
+    object-fit: cover;
+
+}
+
+.sexeImgList{
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 5px 0;
+    object-fit: cover;
+}
+

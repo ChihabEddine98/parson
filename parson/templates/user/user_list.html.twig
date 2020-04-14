@@ -3,7 +3,7 @@
 {% block title %} Utilisateurs ! {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/users.css') }}">
 {% endblock %}
 
 {% block body_content %}
@@ -18,34 +18,44 @@
                     <h2> Utilisateurs !</h2>
                     <hr>
 
-                    <table class="table">
+                    <table class="table bg-dark text-light">
                         <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Nom & Prénoms</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Sexe</th>
+                            <th scope="col">Role</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        {% for user in users %}
+                            <tr>
+                                <th scope="row">
+                                    <img class="userImgList" src="{{ asset('img/profil_default_male.png') }}" alt="">
+                                </th>
+                                <td>{{ user.fullname }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    <img class="sexeImgList" src="/img/{{ user.sexe ? "male" :"female" }}.png" alt="">
+                                </td>
+                                <td>
+                                    <img class="sexeImgList" src="/img/{{ "ROLE_ADMIN" in user.roles ? "admin_icon" :"simple_icon" }}.png" alt="">
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <i class="fas fa-pencil-alt text-warning"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <i class="fas fa-trash-alt text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
 
