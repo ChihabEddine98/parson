@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Utilisateurs ! {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="col-lg-6 mx-auto mt-5 py-5">
+
+        <div class="col-12 text-center ">
+
+            <div class=" py-5 col-12 text-dark">
+                <h1>  Bienvenue à Login !</h1>
+                <div class="welcome">
+                    <p> Trouvez un cours qui vous va le mieux ! </p>
+                    <p> Pour Bénificier des fonctionnalités de ParSon Veuillez ... </p>
+                </div>
+                <!-- <div class="btn_">
+                    <a href="/register" class="btn"> Commencer ! </a>
+                </div> -->
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
