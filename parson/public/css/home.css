@@ -1,0 +1,8 @@
+body{
+    background-image: url("/img/bg.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-position: 0 56px;
+
+
+}
