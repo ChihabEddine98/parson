@@ -9,30 +9,50 @@ use Symfony\Component\Routing\Annotation\Route;
 class CourseController extends AbstractController
 {
     /**
-     * @Route("/course", name="course")
+     * @Route("/courses", name="courses")
      */
     public function index()
     {
-
-        dump("Chihab yooo");
-        return $this->render('course/index.html.twig', [
+        return $this->render('course/course_list.html.twig', [
             'controller_name' => 'CourseController',
         ]);
     }
 
 
     /**
-     * @Route("course/new",name="new_course")
+     * @Route("/courses/new",name="new_course")
      */
     public function new()
     {
         $form=$this->createForm(CourseType::class);
 
-        return $this->render('course/new.html.twig',[
+        return $this->render('course/course_new.html.twig',[
             'courseForm'=>$form->createView()
         ]);
     }
 
+
+    /**
+     * @Route("/courses/me",name="my_courses")
+     */
+
+    public function mesCours()
+    {
+        return $this->render('course/course_list.html.twig', [
+            'controller_name' => 'CourseController',
+        ]);
+    }
+
+    /**
+     * @Route("/notes/me",name="my_marks")
+     */
+
+    public function mesNotes()
+    {
+        return $this->render('course/course_notes.html.twig', [
+            'controller_name' => 'CourseController',
+        ]);
+    }
 
 
 }

@@ -8,13 +8,13 @@
         {% block stylesheets %}
             <script src="https://kit.fontawesome.com/00eef3ac9c.js" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         {% endblock %}
 
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand text-warning ml-4" href="#"><i class="fas fa-graduation-cap"> </i> ParSon</a>
+        <a class="navbar-brand text-warning ml-4" href="{{ path('parson_home') }}"><i class="fas fa-graduation-cap"> </i> ParSon</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,17 +23,17 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item mx-auto">
-                    <a class="nav-link" href="#"> <i class="fas fa-users-cog"></i> Utilisateurs</a>
+                    <a class="nav-link" href="{{ path('user_list') }}"> <i class="fas fa-users-cog"></i> Utilisateurs</a>
                 </li>
                 <li class="nav-item dropdown mx-auto">
                     <a class="nav-link dropdown-toggle" href="#" id="formation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-chalkboard-teacher"></i> Formations
                     </a>
                     <div class="dropdown-menu" role="menu" aria-labelledby="formation">
-                        <a class="dropdown-item" href="#"><i class="far fa-plus-square"></i> Un cours</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-stream"></i> Tous les cours</a>
+                        <a class="dropdown-item" href="{{ path('new_course') }}"><i class="far fa-plus-square"></i>Ajouter un cours</a>
+                        <a class="dropdown-item" href="{{ path('courses') }}"><i class="fas fa-stream"></i> Tous les cours</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="fas fa-award"></i> Mes cours</a>
+                        <a class="dropdown-item" href="{{ path('my_courses') }}"><i class="fas fa-award"></i> Mes cours</a>
                     </div>
                 </li>
             </ul>
@@ -52,9 +52,9 @@
                         <img class="navbar-userImg rounded-circle mr-2" src="/img/profil_default_male.png" alt=""> Chihab Eddine
                     </a>
                     <div class="dropdown-menu col-lg-12 px-3" role="menu" aria-labelledby="compte">
-                        <a class="dropdown-item" href="#"><i class="fas fa-address-card"></i>  Mon profil</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-award"></i> Mes cours</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-poll"></i> Mes notes</a>
+                        <a class="dropdown-item" href="{{ path('user_profile') }}"><i class="fas fa-address-card"></i>  Mon profil</a>
+                        <a class="dropdown-item" href="{{ path('my_courses') }}"><i class="fas fa-award"></i> Mes cours</a>
+                        <a class="dropdown-item" href="{{ path('my_marks') }}"><i class="fas fa-poll"></i> Mes notes</a>
                         <div class="dropdown-divider"></div>
                         <a class="btn btn-outline-danger w-100" href="#"><i class="fas fa-power-off"></i> Déconnexion</a>
                     </div>
