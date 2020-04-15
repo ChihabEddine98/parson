@@ -24,7 +24,8 @@
 
                     <div class="row col-lg-12 col-sm-6 courseDetails  d-flex flex-row">
 
-                            <div class="col my-2 d-flex flex-column">
+                            {# Info Auteur #}
+                            <div class=" col col-lg-4 col-sm-6 my-2 d-flex flex-column">
                                 <a href="#">
                                     <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
                                 </a>
@@ -39,22 +40,25 @@
                                 </p>
                             </div>
 
-                            <div class="my-2 d-flex flex-column">
+                            {# Info Heures et nb_students #}
+                            <div class=" col-lg-5 col-sm-6 my-2 d-flex flex-column">
+                                <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
                                 <a href="#">
-                                    <img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
+                                        # étudiant(e)s inscrit(e)s
                                 </a>
                                 <a href="#">
-                                    Chihab Benamara
+                                    320
                                 </a>
                                 <a href="#" class="text-dark">
-                                    ga_benamara@esi.dz
+                                    Note moyenne : 12.5/20
                                 </a>
                                 <p>
-                                    Le 17/03/2020 à 19:30
+                                    # volume horaire : 25H
                                 </p>
                             </div>
 
-                            <div class=" ml-5 my-2 d-flex flex-column">
+                            {# Cours notes !#}
+                            <div class="col col-lg-3 col-sm-6 my-2 d-flex flex-column">
                                 <a href="#">
                                     <img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">
                                 </a>
