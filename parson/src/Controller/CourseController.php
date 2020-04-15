@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Course;
+use App\Entity\Exercise;
 use App\Form\CourseType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,11 +64,23 @@ class CourseController extends AbstractController
      * @Route("/courses/{id}",name="course_detail")
      */
 
-    public function show(Course $cours)
+    public function courseDetail(Course $cours)
     {
         return $this->render('course/course_detail.html.twig', [
             'controller_name' => 'CourseController',
             'course'=> $cours
+        ]);
+    }
+
+    /**
+     * @Route("/exercises/{id}",name="exercise_detail")
+     */
+
+    public function exerciseDetail(Exercise $exercise)
+    {
+        return $this->render('course/course_exercise_detail.html.twig', [
+            'controller_name' => 'CourseController',
+            'exercise'=> $exercise
         ]);
     }
 

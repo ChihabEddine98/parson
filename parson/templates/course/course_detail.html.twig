@@ -90,14 +90,14 @@
                         <div class="row ml-5">
                             {% for exercise in course.exercises %}
                                 <div class="card
-                                    {{ random(['text-light bg-primary','text-light bg-dark',
+                                    {{ random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
                                     'text-light bg-danger','text-light bg-success',
                                     'text-light bg-secondary','text-dark bg-warning']) }} mb-3 mx-1" style="max-width: 18rem;">
                                     <div class="card-header">Le {{exercise.createdAt|date('d/m/Y à H:i') }}</div>
                                     <div class="card-body text-center">
                                         <h5 class="card-title">{{ exercise.title|truncate(50) }}</h5>
                                         <p class="card-text">{{ exercise.type|capitalize }}</p>
-                                        <a href="#" class="btn btn-outline-light">
+                                        <a href="{{ path('exercise_detail',{'id':exercise.id}) }}" class="btn btn-outline-light">
                                            Voir En Détail
                                         </a>
                                     </div>
@@ -111,6 +111,8 @@
                         <hr class="divider">
 
                         <div class="row ">
+                            <h2 class="text-left col-12 mb-5"> Avis sur le cours :</h2>
+
                             <div class="col-md-7">
                                 <div class="user">
                                     <h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt=""> Chihab Benamara</a>
@@ -146,12 +148,6 @@
                         </div>
                         <!-- /END AVIS  -->
 
-                        <hr>
-
-                        <!-- FOOTER -->
-                        <footer>
-                            <p>&copy; 2020 Université Paris Diderot, Benamara Abdelkader & Djelid Aymen </p>
-                        </footer>
 
 
                 </div>

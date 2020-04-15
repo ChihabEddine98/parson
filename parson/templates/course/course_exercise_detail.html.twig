@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Tout les Cours ! {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="col-lg-12 mx-auto mt-3 pt-1">
+
+        <div class="col-lg-12  ">
+
+            <div class="col-lg-12  text-dark ">
+
+                <div class="row col-12 mb-3 courseImg">
+                    <img style="height: 320px;object-fit: cover;" class="col-12" src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="">
+                </div>
+
+                <div class=" row col-lg-9 col-sm-10 courseDetails mx-auto px-5 mb-5">
+                    <h1 class="courseTitle text-center"> {{ exercise.course.title }} </h1>
+                </div>
+
+                <div class="text-center row col-lg-12 col-sm-6 courseDetails  d-flex flex-row">
+
+                    {# Info Auteur #}
+                    <div class=" col col-lg-12 col-sm-6 my-2 d-flex flex-column">
+                        <a href="#">
+                            <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
+                        </a>
+                        <a href="#">
+                            {{ exercise.course.author.fullname }}
+                        </a>
+                        <a href="#" class="text-dark">
+                            {{ exercise.course.author.email }}
+                        </a>
+                        <p>
+                            Le {{ exercise.course.createdAt|date('d/m/Y') }} à {{ exercise.course.createdAt|date('H:i') }}
+                        </p>
+                    </div>
+
+                </div>
+
+                <hr class="divider">
+                <div class="row ml-3">
+                    <h2> Question :</h2>
+                </div>
+                <div class="row col-12 ml-3">
+                    <h3> {{ exercise.question }} ?</h3>
+                </div>
+
+                <div class="row col-12 ml-3 mt-5">
+                    <h3> Résoudre le probleme !</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <ul>
+                        {% for instruction in exercise.solution %}
+                            <li class="row instruction">
+                                <h5> {{ instruction }} </h5>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="row col-12 mx-5">
+                    <a href="" class="btn btn-success"> Valider</a>
+                </div>
+
+
+
+
+                </div>
+
+                <!-- <div class="btn_">
+                    <a href="/register" class="btn"> Commencer ! </a>
+                </div> -->
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
