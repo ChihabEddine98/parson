@@ -117,18 +117,19 @@
                                 <div class="user">
                                     <h2 class="userName">
                                         <a href="">
-                                        <img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
+                                        <img src="{{ comment.user.imgUrl ? comment.user.imgUrl : asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
                                             {{ comment.user.fullName }}
                                         </a>
-                                         <h6 class="text-muted">{{ comment.createdAt|da }}</h6></h2>
+                                         <h6 class="text-muted">{{ comment.createdAt|ago }}</h6></h2>
                                 </div>
-                                <p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.
-                                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                    Fusce dapibus, tellus ac cursus commodo.
+                                <p class="avis">
+                                    {{ comment.description }}
                                 </p>
                             </div>
                             <div class="col-md-5">
-                                <img src="{{ asset('img/can_robots_beat_humans.jpg') }}" class="w-75" alt="" style="object-fit: cover">
+                                {% if comment.imgUrl %}
+                                <img src="{{ comment.imgUrl }}" class="w-75" alt="" style="object-fit: cover">
+                                {% endif %}
                             </div>
                         </div>
 
