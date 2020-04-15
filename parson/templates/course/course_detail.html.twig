@@ -109,14 +109,18 @@
                         {# Avis Sur Le cours !#}
 
                         <hr class="divider">
+                        <h2 class="text-left col-12 mb-5"> Avis sur le cours :</h2>
 
+                        {% for comment in course.comments %}
                         <div class="row ">
-                            <h2 class="text-left col-12 mb-5"> Avis sur le cours :</h2>
-
                             <div class="col-md-7">
                                 <div class="user">
-                                    <h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt=""> Chihab Benamara</a>
-                                         <h6 class="text-muted">10 minutes ago</h6></h2>
+                                    <h2 class="userName">
+                                        <a href="">
+                                        <img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
+                                            {{ comment.user.fullName }}
+                                        </a>
+                                         <h6 class="text-muted">{{ comment.createdAt|da }}</h6></h2>
                                 </div>
                                 <p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.
                                     Praesent commodo cursus magna, vel scelerisque nisl consectetur.
@@ -129,23 +133,23 @@
                         </div>
 
                         <hr class="divider">
-
-                        <div class="row ">
-                            <div class="col-md-7">
-                                <div class="user">
-                                    <h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
-                                            Aymen Djelid</a>
-                                        <h6 class="text-muted">40 minutes ago</h6></h2>
-                                </div>
-                                <p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.
-                                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                    Fusce dapibus, tellus ac cursus commodo.
-                                </p>
-                            </div>
-                            <div class="col-md-5">
-                                <img src="{{ asset('img/course_default.jpg') }}" class="w-75" alt="" style="object-fit: cover">
-                            </div>
-                        </div>
+                        {% endfor %}
+                        {#<div class="row ">#}
+                            {#<div class="col-md-7">#}
+                                {#<div class="user">#}
+                                    {#<h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">#}
+                                            {#Aymen Djelid</a>#}
+                                        {#<h6 class="text-muted">40 minutes ago</h6></h2>#}
+                                {#</div>#}
+                                {#<p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.#}
+                                    {#Praesent commodo cursus magna, vel scelerisque nisl consectetur.#}
+                                    {#Fusce dapibus, tellus ac cursus commodo.#}
+                                {#</p>#}
+                            {#</div>#}
+                            {#<div class="col-md-5">#}
+                                {#<img src="{{ asset('img/course_default.jpg') }}" class="w-75" alt="" style="object-fit: cover">#}
+                            {#</div>#}
+                        {#</div>#}
                         <!-- /END AVIS  -->
 
 
