@@ -87,7 +87,7 @@
 
                         <h2 class="text-left col-12 mb-5"> Exercices :</h2>
 
-                        <div class="row">
+                        <div class="row ml-5">
                             {% for exercise in course.exercises %}
                                 <div class="card
                                     {{ random(['text-light bg-primary','text-light bg-dark',
@@ -106,48 +106,47 @@
                         </div><!-- /.row -->
 
 
-                        <!-- START THE FEATURETTES -->
+                        {# Avis Sur Le cours !#}
 
-                        <hr class="featurette-divider">
+                        <hr class="divider">
 
-                        <div class="row featurette">
+                        <div class="row ">
                             <div class="col-md-7">
-                                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-                                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                                <div class="user">
+                                    <h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt=""> Chihab Benamara</a>
+                                         <h6 class="text-muted">10 minutes ago</h6></h2>
+                                </div>
+                                <p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.
+                                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                                    Fusce dapibus, tellus ac cursus commodo.
+                                </p>
                             </div>
                             <div class="col-md-5">
-                                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                                <img src="{{ asset('img/can_robots_beat_humans.jpg') }}" class="w-75" alt="" style="object-fit: cover">
                             </div>
                         </div>
 
-                        <hr class="featurette-divider">
+                        <hr class="divider">
 
-                        <div class="row featurette">
-                            <div class="col-md-7 push-md-5">
-                                <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                            </div>
-                            <div class="col-md-5 pull-md-7">
-                                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-                            </div>
-                        </div>
-
-                        <hr class="featurette-divider">
-
-                        <div class="row featurette">
+                        <div class="row ">
                             <div class="col-md-7">
-                                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                                <div class="user">
+                                    <h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
+                                            Aymen Djelid</a>
+                                        <h6 class="text-muted">40 minutes ago</h6></h2>
+                                </div>
+                                <p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.
+                                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                                    Fusce dapibus, tellus ac cursus commodo.
+                                </p>
                             </div>
                             <div class="col-md-5">
-                                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                                <img src="{{ asset('img/course_default.jpg') }}" class="w-75" alt="" style="object-fit: cover">
                             </div>
                         </div>
+                        <!-- /END AVIS  -->
 
-                        <hr class="featurette-divider">
-
-                        <!-- /END THE FEATURETTES -->
-
+                        <hr>
 
                         <!-- FOOTER -->
                         <footer>
