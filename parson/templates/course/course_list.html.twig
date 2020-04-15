@@ -55,8 +55,6 @@
                         <h5 class="card-title">{{ cours.title|truncate(20) }}</h5>
                         <p class="card-text">{{ cours.description|truncate(59) }}</p>
                         <a href="{{ path('course_detail',{'id':cours.id}) }}" class="btn btn-info">Voir en détail</a>
-
-
                     </div>
                 </div>
                 {% endfor %}
