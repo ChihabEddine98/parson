@@ -54,18 +54,18 @@
                     <h3> Résoudre le probleme !</h3>
                 </div>
                 <hr>
-                <div class="row">
+                <div class="row bg-dark text-light pt-4">
                     <ul id="instructions">
                         {% for instruction in exercise.solution %}
                             <li class="row instruction">
-                                <h5 class="p-2 border border-dark "> {{ instruction }} </h5>
+                                <h5 class="p-2 border border-secondary "> {{ instruction }} </h5>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
 
-                <div class="row col-12 mx-5">
-                    <a href="" class="btn btn-success"> Valider</a>
+                <div class="row col-3 mx-auto my-3 ">
+                    <a href="" class="btn btn-success w-100"> Valider</a>
                 </div>
 
 
