@@ -22,7 +22,7 @@
                     <div class="carousel-inner">
                         {% for cours in courses %}
                             <div class="carousel-item {{ loop.index==1 ?"active": ""  }}">
-                                <a href="#">
+                                <a href="{{ path('course_detail',{'id':cours.id}) }}">
                                     <img class="d-block w-100"
                                          src="{{ asset('img/can_robots_beat_humans.jpg') }}"
                                          alt="{{ cours.title|truncate(15) }}">
@@ -30,7 +30,7 @@
                                 <div class="carousel-caption d-none d-md-block text-light caroussel_content ">
                                     <h5>{{ cours.title }}</h5>
                                     <p>{{ cours.description|truncate(80) }}</p>
-                                    <a href="#" class="btn btn-outline-light">Voir en détail</a>
+                                    <a href="{{ path('course_detail',{'id':cours.id}) }}" class="btn btn-outline-light">Voir en détail</a>
                                 </div>
                             </div>
                         {%  endfor %}
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ cours.title|truncate(20) }}</h5>
                         <p class="card-text">{{ cours.description|truncate(59) }}</p>
-                        <a href="#" class="btn btn-info">Voir en détail</a>
+                        <a href="{{ path('course_detail',{'id':cours.id}) }}" class="btn btn-info">Voir en détail</a>
 
 
                     </div>

@@ -18,8 +18,8 @@
                         <img style="height: 320px;object-fit: cover;" class="col-12" src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="">
                     </div>
 
-                    <div class="row col-lg-7 col-sm-10 courseDetails mx-auto px-5 ">
-                         <h1 class="courseTitle"> Can Robots Beat Humans ? </h1>
+                    <div class=" row col-lg-9 col-sm-10 courseDetails mx-auto px-5 mb-5">
+                         <h1 class="courseTitle"> {{ course.title }} </h1>
                     </div>
 
                     <div class="row col-lg-12 col-sm-6 courseDetails  d-flex flex-row">
@@ -30,13 +30,13 @@
                                     <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
                                 </a>
                                 <a href="#">
-                                    Chihab Benamara
+                                    {{ course.author.fullname }}
                                 </a>
                                 <a href="#" class="text-dark">
-                                    ga_benamara@esi.dz
+                                    {{ course.author.email }}
                                 </a>
                                 <p>
-                                    Le 17/03/2020 à 19:30
+                                    Le {{ course.createdAt|date('d/m/Y') }} à {{ course.createdAt|date('H:i') }}
                                 </p>
                             </div>
 
@@ -74,27 +74,41 @@
 
                     </div>
 
+                    <hr class="divider">
+
+                    {# Description du cours !#}
+                    <div class="col-12 text-center">
+                        <h2 class="text-left col-12"> Description :</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad assumenda beatae nam, quam
+                            quis sed. A ab amet animi cum dolores dolorum earum est fugiat harum in incidunt inventore
+                            iste labore laboriosam, laudantium, magnam nemo nesciunt non nulla odit, perferendis placeat
+                            quas qui quo quod reprehenderit sint voluptatum! Accusamus animi asperiores corporis,
+                            dolorem doloribus et exercitationem facilis, fuga fugit illum in inventore ipsum minus modi
+                            placeat quis quisquam quos rerum sapiente totam. Cupiditate dignissimos distinctio earum
+                            laudantium non perspiciatis quaerat quos, repellendus rerum ut. Ab ad amet aperiam at beatae
+                            cumque earum eos fugit laboriosam laudantium maxime natus, nemo nesciunt non placeat quam
+                            quibusdam similique sunt tempore veniam veritatis vero voluptate, voluptates! Accusantium at
+                            commodi corporis culpa doloremque dolores eius est, exercitationem hic ipsam maiores
+                            molestias nemo quod soluta tenetur veniam vero? Dicta dolor fugiat illum ipsum? Asperiores,
+                            assumenda at aut beatae blanditiis consequuntur expedita hic illum inventore molestiae
+                            neque, nihil odit omnis perferendis placeat porro quae quas quasi quibusdam sapiente
+                            similique sit tempore! Ab architecto asperiores dolorem dolores exercitationem expedita
+                            fugiat laudantium molestias necessitatibus nobis praesentium quaerat quibusdam quo,
+                            reprehenderit rerum sint totam ullam. Alias dignissimos eaque fugit iste libero, molestiae
+                            nesciunt nihil ratione sed ut velit, voluptate.
+                        </p>
+                    </div>
+                    {# Exercices #}
                     <div class="container marketing">
 
-                        <!-- Three columns of text below the carousel -->
+
                         <div class="row">
                             <div class="col-lg-4">
                                 <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                                <h2>Heading</h2>
+                                <h2>Exercice 1 </h2>
                                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                            </div><!-- /.col-lg-4 -->
-                            <div class="col-lg-4">
-                                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                                <h2>Heading</h2>
-                                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                            </div><!-- /.col-lg-4 -->
-                            <div class="col-lg-4">
-                                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                                <h2>Heading</h2>
-                                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                                <p><a class="btn btn-secondary" href="#" role="button">Voir details &raquo;</a></p>
                             </div><!-- /.col-lg-4 -->
                         </div><!-- /.row -->
 

@@ -60,13 +60,14 @@ class CourseController extends AbstractController
     }
 
     /**
-     * @Route("/courses/12",name="course_detail")
+     * @Route("/courses/{id}",name="course_detail")
      */
 
-    public function show()
+    public function show(Course $cours)
     {
         return $this->render('course/course_detail.html.twig', [
             'controller_name' => 'CourseController',
+            'course'=> $cours
         ]);
     }
 
