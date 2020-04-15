@@ -47,13 +47,13 @@
                                         # étudiant(e)s inscrit(e)s
                                 </a>
                                 <a href="#">
-                                    320
+                                    {{ course.users.count ? course.users.count : "Personne encore" }}
                                 </a>
                                 <a href="#" class="text-dark">
                                     Note moyenne : 12.5/20
                                 </a>
                                 <p>
-                                    # volume horaire : 25H
+                                    # volume horaire : {{ course.timeNeeded }} H
                                 </p>
                             </div>
 
