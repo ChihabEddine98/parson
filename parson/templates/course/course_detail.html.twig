@@ -19,7 +19,7 @@
                     </div>
 
                     <div class=" row col-lg-9 col-sm-10 courseDetails mx-auto px-5 mb-5">
-                         <h1 class="courseTitle"> {{ course.title }} </h1>
+                         <h1 class="courseTitle text-center"> {{ course.title }} </h1>
                     </div>
 
                     <div class="row col-lg-12 col-sm-6 courseDetails  d-flex flex-row">
@@ -70,46 +70,32 @@
                                 </a>
                             </div>
 
-
-
                     </div>
 
                     <hr class="divider">
 
                     {# Description du cours !#}
-                    <div class="col-12 text-center">
+                    <div class="col-12 text-center mb-5">
                         <h2 class="text-left col-12"> Description :</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad assumenda beatae nam, quam
-                            quis sed. A ab amet animi cum dolores dolorum earum est fugiat harum in incidunt inventore
-                            iste labore laboriosam, laudantium, magnam nemo nesciunt non nulla odit, perferendis placeat
-                            quas qui quo quod reprehenderit sint voluptatum! Accusamus animi asperiores corporis,
-                            dolorem doloribus et exercitationem facilis, fuga fugit illum in inventore ipsum minus modi
-                            placeat quis quisquam quos rerum sapiente totam. Cupiditate dignissimos distinctio earum
-                            laudantium non perspiciatis quaerat quos, repellendus rerum ut. Ab ad amet aperiam at beatae
-                            cumque earum eos fugit laboriosam laudantium maxime natus, nemo nesciunt non placeat quam
-                            quibusdam similique sunt tempore veniam veritatis vero voluptate, voluptates! Accusantium at
-                            commodi corporis culpa doloremque dolores eius est, exercitationem hic ipsam maiores
-                            molestias nemo quod soluta tenetur veniam vero? Dicta dolor fugiat illum ipsum? Asperiores,
-                            assumenda at aut beatae blanditiis consequuntur expedita hic illum inventore molestiae
-                            neque, nihil odit omnis perferendis placeat porro quae quas quasi quibusdam sapiente
-                            similique sit tempore! Ab architecto asperiores dolorem dolores exercitationem expedita
-                            fugiat laudantium molestias necessitatibus nobis praesentium quaerat quibusdam quo,
-                            reprehenderit rerum sint totam ullam. Alias dignissimos eaque fugit iste libero, molestiae
-                            nesciunt nihil ratione sed ut velit, voluptate.
+                           {{ course.description }}
                         </p>
                     </div>
+                    <hr>
                     {# Exercices #}
-                    <div class="container marketing">
+                    <div class="container">
 
+                        <h2 class="text-left col-12 mb-5"> Exercices :</h2>
 
                         <div class="row">
-                            <div class="col-lg-4">
+                            {% for exercise in course.exercises %}
+                            <div class="col-lg-4 mt-3">
                                 <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                                <h2>Exercice 1 </h2>
+                                <h2>{{ exercise.title|truncate(20) }}</h2>
                                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
                                 <p><a class="btn btn-secondary" href="#" role="button">Voir details &raquo;</a></p>
                             </div><!-- /.col-lg-4 -->
+                            {% endfor %}
                         </div><!-- /.row -->
 
 
