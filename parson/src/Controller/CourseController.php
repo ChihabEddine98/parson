@@ -59,5 +59,16 @@ class CourseController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/courses/12",name="course_detail")
+     */
+
+    public function show()
+    {
+        return $this->render('course/course_detail.html.twig', [
+            'controller_name' => 'CourseController',
+        ]);
+    }
+
 
 }

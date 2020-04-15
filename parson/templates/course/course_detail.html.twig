@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Tout les Cours ! {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="col-lg-12 mx-auto mt-3 pt-1">
+
+        <div class="col-lg-12  ">
+
+                <div class="col-lg-12  text-dark ">
+
+                    <div class="row col-12 mb-3 courseImg">
+                        <img style="height: 320px;object-fit: cover;" class="col-12" src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="">
+                    </div>
+
+                    <div class="row col-lg-7 col-sm-10 courseDetails mx-auto px-5 ">
+                         <h1 class="courseTitle"> Can Robots Beat Humans ? </h1>
+                    </div>
+
+                    <div class="row col-lg-12 col-sm-6 courseDetails  d-flex flex-row">
+
+                            <div class="col my-2 d-flex flex-column">
+                                <a href="#">
+                                    <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
+                                </a>
+                                <a href="#">
+                                    Chihab Benamara
+                                </a>
+                                <a href="#" class="text-dark">
+                                    ga_benamara@esi.dz
+                                </a>
+                                <p>
+                                    Le 17/03/2020 à 19:30
+                                </p>
+                            </div>
+
+                            <div class="my-2 d-flex flex-column">
+                                <a href="#">
+                                    <img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
+                                </a>
+                                <a href="#">
+                                    Chihab Benamara
+                                </a>
+                                <a href="#" class="text-dark">
+                                    ga_benamara@esi.dz
+                                </a>
+                                <p>
+                                    Le 17/03/2020 à 19:30
+                                </p>
+                            </div>
+
+                            <div class=" ml-5 my-2 d-flex flex-column">
+                                <a href="#">
+                                    <img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">
+                                </a>
+                                <a href="#">
+                                    4.8/5
+                                </a>
+                                <a href="#" class="">
+                                    Donnez Votre Avis
+                                </a>
+                            </div>
+
+
+
+                    </div>
+
+                    <div class="container marketing">
+
+                        <!-- Three columns of text below the carousel -->
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                                <h2>Heading</h2>
+                                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                                <h2>Heading</h2>
+                                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                                <h2>Heading</h2>
+                                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                            </div><!-- /.col-lg-4 -->
+                        </div><!-- /.row -->
+
+
+                        <!-- START THE FEATURETTES -->
+
+                        <hr class="featurette-divider">
+
+                        <div class="row featurette">
+                            <div class="col-md-7">
+                                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+                                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                            </div>
+                        </div>
+
+                        <hr class="featurette-divider">
+
+                        <div class="row featurette">
+                            <div class="col-md-7 push-md-5">
+                                <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+                                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                            </div>
+                            <div class="col-md-5 pull-md-7">
+                                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                            </div>
+                        </div>
+
+                        <hr class="featurette-divider">
+
+                        <div class="row featurette">
+                            <div class="col-md-7">
+                                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                            </div>
+                            <div class="col-md-5">
+                                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                            </div>
+                        </div>
+
+                        <hr class="featurette-divider">
+
+                        <!-- /END THE FEATURETTES -->
+
+
+                        <!-- FOOTER -->
+                        <footer>
+                            <p>&copy; 2020 Université Paris Diderot, Benamara Abdelkader & Djelid Aymen </p>
+                        </footer>
+
+
+                </div>
+
+            <!-- <div class="btn_">
+                <a href="/register" class="btn"> Commencer ! </a>
+            </div> -->
+
+        </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
