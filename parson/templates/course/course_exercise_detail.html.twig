@@ -55,10 +55,10 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <ul>
+                    <ul id="instructions">
                         {% for instruction in exercise.solution %}
                             <li class="row instruction">
-                                <h5> {{ instruction }} </h5>
+                                <h5 class="p-2 border border-dark "> {{ instruction }} </h5>
                             </li>
                         {% endfor %}
                     </ul>
@@ -82,5 +82,36 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( document ).ready(function() {
+            console.log('heeeeey');
+            $('#instructions').sortable({
+                stop:function(event, ui){
+                    var element_dd = ui.item[0].attributes.element.value,
+                        position = ui.item.index(),
+                        link = base_url+'/update/post/'+element_dd;
+                    $.ajax({
+                        type:"POST",
+                        url:link,
+                        data:{
+                            'position':position
+                        },
+                        success:function(result){
+                            console.log(result);
+                        },
+                        error:function(error){
+
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
 {% endblock %}
 
