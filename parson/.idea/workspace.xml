@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,7 +66,7 @@
           <entry key="env" value="11" />
           <entry key="json" value="132" />
           <entry key="php" value="2390" />
-          <entry key="twig" value="7884" />
+          <entry key="twig" value="7980" />
           <entry key="yaml" value="10" />
         </counts>
       </usages-collector>
@@ -76,7 +77,7 @@
           <entry key="JSON" value="132" />
           <entry key="PHP" value="2390" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="7884" />
+          <entry key="Twig" value="7980" />
           <entry key="YAML" value="10" />
         </counts>
       </usages-collector>
@@ -189,8 +190,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+            <state relative-caret-position="177">
+              <caret line="60" column="66" selection-start-line="60" selection-start-column="66" selection-end-line="60" selection-end-column="66" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -448,18 +449,18 @@
       <workItem from="1586369250952" duration="3866000" />
       <workItem from="1586373966759" duration="1440000" />
       <workItem from="1586528935933" duration="9803000" />
-      <workItem from="1586775678692" duration="40533000" />
+      <workItem from="1586775678692" duration="40835000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71860000" />
+    <option name="totallyTimeSpent" value="72162000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24697986" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24697986" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -472,7 +473,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21985815" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21985815" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067115" side_tool="true" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -838,8 +839,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+        <state relative-caret-position="177">
+          <caret line="60" column="66" selection-start-line="60" selection-start-column="66" selection-end-line="60" selection-end-column="66" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
