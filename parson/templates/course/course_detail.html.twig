@@ -89,15 +89,15 @@
 
                         <div class="row ml-5">
                             {% for exercise in course.exercises %}
-                                <div class="card
-                                    {{ random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
+                                {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
                                     'text-light bg-danger','text-light bg-success',
-                                    'text-light bg-secondary','text-dark bg-warning']) }} mb-3 mx-1" style="max-width: 18rem;">
+                                    'text-light bg-secondary','text-dark bg-warning'])  %}
+                                <div class="card {{theme}} mb-3 mx-1" style="max-width: 18rem;">
                                     <div class="card-header">Le {{exercise.createdAt|date('d/m/Y à H:i') }}</div>
                                     <div class="card-body text-center">
                                         <h5 class="card-title">{{ exercise.title|truncate(50) }}</h5>
                                         <p class="card-text">{{ exercise.type|capitalize }}</p>
-                                        <a href="{{ path('exercise_detail',{'id':exercise.id}) }}" class="btn btn-outline-light">
+                                        <a href="{{ path('exercise_detail',{'id':exercise.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
                                            Voir En Détail
                                         </a>
                                     </div>

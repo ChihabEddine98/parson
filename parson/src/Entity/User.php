@@ -61,14 +61,21 @@ class User implements UserInterface
     private $createdCourses;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Course", inversedBy="users")
+     * @ORM\OneToMany(targetEntity="App\Entity\UserCourse", mappedBy="user")
      */
     private $registredInCourses;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+
 
     public function __construct()
     {
         $this->createdCourses = new ArrayCollection();
         $this->registredInCourses = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -218,28 +225,70 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Course[]
+     * @return Collection|UserCourse[]
      */
     public function getRegistredInCourses(): Collection
     {
         return $this->registredInCourses;
     }
 
-    public function addRegistredInCourse(Course $registredInCourse): self
+    public function addRegistredInCourse(UserCourse $registredInCourse): self
     {
         if (!$this->registredInCourses->contains($registredInCourse)) {
             $this->registredInCourses[] = $registredInCourse;
+            $registredInCourse->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeRegistredInCourse(Course $registredInCourse): self
+    public function removeRegistredInCourse(UserCourse $registredInCourse): self
     {
         if ($this->registredInCourses->contains($registredInCourse)) {
             $this->registredInCourses->removeElement($registredInCourse);
+            // set the owning side to null (unless already changed)
+            if ($registredInCourse->getUser() === $this) {
+                $registredInCourse->setUser(null);
+            }
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+
+
+
 }

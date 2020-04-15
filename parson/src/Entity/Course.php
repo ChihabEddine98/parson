@@ -60,14 +60,21 @@ class Course
     private $author;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="registredInCourses")
+     * @ORM\OneToMany(targetEntity="App\Entity\UserCourse", mappedBy="course")
      */
     private $users;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="course")
+     */
+    private $comments;
+
 
     public function __construct()
     {
         $this->exercises = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,30 +186,66 @@ class Course
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection|UserCourse[]
      */
     public function getUsers(): Collection
     {
         return $this->users;
     }
 
-    public function addUser(User $user): self
+    public function addUser(UserCourse $user): self
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->addRegistredInCourse($this);
+            $user->setCourse($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeUser(UserCourse $user): self
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
-            $user->removeRegistredInCourse($this);
+            // set the owning side to null (unless already changed)
+            if ($user->getCourse() === $this) {
+                $user->setCourse(null);
+            }
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setCourse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getCourse() === $this) {
+                $comment->setCourse(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }
