@@ -25,7 +25,7 @@
                     <div class="row col-lg-12 col-sm-6 courseDetails  d-flex flex-row">
 
                             {# Info Auteur #}
-                            <div class=" col col-lg-4 col-sm-6 my-2 d-flex flex-column">
+                            <div class=" col col-lg-3 col-sm-6 my-2 d-flex flex-column text-center">
                                 <a href="#">
                                     <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
                                 </a>
@@ -36,18 +36,20 @@
                                     {{ course.author.email }}
                                 </a>
                                 <p>
-                                    Le {{ course.createdAt|date('d/m/Y') }} à {{ course.createdAt|date('H:i') }}
+                                    {{ course.createdAt | ago }}
                                 </p>
                             </div>
 
                             {# Info Heures et nb_students #}
-                            <div class=" col-lg-5 col-sm-6 my-2 d-flex flex-column">
-                                <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
-                                <a href="#">
-                                        # étudiant(e)s inscrit(e)s
+                            <div class=" col-lg-6 col-sm-6 my-2 d-flex flex-column text-center">
+                                <a href="">
+                                    <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
                                 </a>
                                 <a href="#">
-                                    {{ course.users.count ? course.users.count : "Personne encore" }}
+                                    <b>{{ course.users.count ? course.users.count : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
+                                </a>
+                                <a href="#">
+
                                 </a>
                                 <a href="#" class="text-dark">
                                     Note  moyenne  : <b>{{ average }} / 20 </b>
@@ -58,12 +60,14 @@
                             </div>
 
                             {# Cours notes !#}
-                            <div class="col col-lg-3 col-sm-6 my-2 d-flex flex-column">
+                            <div class="col col-lg-3 col-sm-6 my-2 d-flex flex-column text-center">
                                 <a href="#">
                                     <img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">
                                 </a>
-                                <a href="#">
-                                    4.8/5
+                                <a href="#" class="">
+                                    <b>
+                                        {{ rating|number_format(1) }} / 5
+                                    </b>
                                 </a>
                                 <a href="#" class="">
                                     Donnez Votre Avis

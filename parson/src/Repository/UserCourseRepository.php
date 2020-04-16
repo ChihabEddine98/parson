@@ -20,7 +20,7 @@ class UserCourseRepository extends ServiceEntityRepository
     }
 
      /**
-      * @return UserCourse[] Returns an array of UserCourse objects
+      * @return float Returns the average for score
       */
 
     public function findAverageByCourse($value)
@@ -35,6 +35,21 @@ class UserCourseRepository extends ServiceEntityRepository
         return $scoreDql[0]['note_moyenne'];
     }
 
+    /**
+     * @return float Returns the average for rating
+     */
+
+    public function findAverageRateByCourse($value)
+    {
+        $scoreDql =$this->createQueryBuilder('u')
+            ->select('avg(u.rate) as rate_moyenne')
+            ->Where('u.course = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+
+        return $scoreDql[0]['rate_moyenne'];
+    }
 
     /*
     public function findOneBySomeField($value): ?UserCourse

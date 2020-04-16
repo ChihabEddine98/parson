@@ -70,11 +70,14 @@ class CourseController extends AbstractController
     {
         $coursSimilaires=$repo->findByCategoryAndNotThisId($cours->getCategory(),$cours->getId());
         $moyenne=$repoScore->findAverageByCourse($cours);
+        $avisMoyen=$repoScore->findAverageRateByCourse($cours);
+
         return $this->render('course/course_detail.html.twig', [
             'controller_name' => 'CourseController',
             'course'=> $cours,
             'coursesLike'=>$coursSimilaires,
-            'average' => $moyenne
+            'average' => $moyenne,
+            'rating'=> $avisMoyen
         ]);
     }
 
