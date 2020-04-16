@@ -153,6 +153,16 @@
                         <h2 class="text-left col-12 mb-5"> Avis sur le cours :
                             <small>({{ course.comments.count }} commentaires)</small>
                         </h2>
+                        <form class="mb-4 mx-2">
+                            <div class="row">
+                                <div class="col col-lg-8 col-md-6 col-sm-12">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Dites ce que vous pensez !"rows="3"></textarea>
+                                </div>
+                                <div class="col col-lg-4 col-md-6 col-sm-12 py-3" >
+                                    <button type="submit" class="btn btn-primary w-50 align-middle"> Envoyer</button>
+                                </div>
+                            </div>
+                        </form>
 
                         {% for comment in course.comments %}
                         <div class="row ">

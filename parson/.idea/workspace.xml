@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/course/course_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_detail.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,7 +65,7 @@
           <entry key="env" value="11" />
           <entry key="json" value="132" />
           <entry key="php" value="3017" />
-          <entry key="twig" value="8752" />
+          <entry key="twig" value="8964" />
           <entry key="yaml" value="14" />
         </counts>
       </usages-collector>
@@ -78,7 +76,7 @@
           <entry key="JSON" value="132" />
           <entry key="PHP" value="3017" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="8752" />
+          <entry key="Twig" value="8964" />
           <entry key="YAML" value="14" />
         </counts>
       </usages-collector>
@@ -106,8 +104,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/course/course_detail.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="275">
+              <caret line="163" column="34" lean-forward="true" selection-start-line="163" selection-start-column="34" selection-end-line="163" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -455,12 +453,12 @@
       <workItem from="1586369250952" duration="3866000" />
       <workItem from="1586373966759" duration="1440000" />
       <workItem from="1586528935933" duration="9803000" />
-      <workItem from="1586775678692" duration="53302000" />
+      <workItem from="1586775678692" duration="54218000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84629000" />
+    <option name="totallyTimeSpent" value="85545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -866,8 +864,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/course/course_detail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="275">
+          <caret line="163" column="34" lean-forward="true" selection-start-line="163" selection-start-column="34" selection-end-line="163" selection-end-column="34" />
         </state>
       </provider>
     </entry>
