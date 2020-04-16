@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Course;
 use App\Entity\Exercise;
 use App\Form\CourseType;
+use App\Repository\CourseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -64,11 +65,14 @@ class CourseController extends AbstractController
      * @Route("/courses/{id}",name="course_detail")
      */
 
-    public function courseDetail(Course $cours)
+    public function courseDetail(Course $cours,CourseRepository $repo)
     {
+        $coursSimilaires=$repo->findByCategoryAndNotThisId($cours->getCategory(),$cours->getId());
+
         return $this->render('course/course_detail.html.twig', [
             'controller_name' => 'CourseController',
-            'course'=> $cours
+            'course'=> $cours,
+            'coursesLike'=>$coursSimilaires
         ]);
     }
 

@@ -22,19 +22,20 @@ class CourseRepository extends ServiceEntityRepository
     // /**
     //  * @return Course[] Returns an array of Course objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByCategoryAndNotThisId($value,$id)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.category = :val')
             ->setParameter('val', $value)
+            ->andWhere('c.id != :id')
+            ->setParameter('id',$id)
             ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Course

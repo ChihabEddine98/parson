@@ -83,9 +83,12 @@
                     </div>
                     <hr>
                     {# Exercices #}
+                    <h2 class="text-left col-12 mb-3"> Exercices :</h2>
+
+                    {% if course.exercises | length > 0  %}
+
                     <div class="container">
 
-                        <h2 class="text-left col-12 mb-5"> Exercices :</h2>
 
                         <div class="row ml-5">
                             {% for exercise in course.exercises %}
@@ -105,11 +108,47 @@
                             {% endfor %}
                         </div><!-- /.row -->
 
+                        {% else %}
 
+                         <h6 class="text-center col-12"> Aucun Exercice Disponible</h6>
+
+                        {% endif %}
+
+                        <hr>
+
+                        {# Cours Similaires #}
+                        <h2 class="text-left col-12 mb-3"> Cours Similaires :</h2>
+
+                        {% if coursesLike|length > 0 %}
+                        <div class="container">
+
+                            <div class="row ml-5">
+                                {% for course in coursesLike %}
+                                    {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
+                                        'text-light bg-danger','text-light bg-success',
+                                        'text-light bg-secondary','text-dark bg-warning'])  %}
+                                    <div class="card {{theme}} mb-3 mx-1" style="max-width: 18rem;">
+                                        <div class="card-header">Le {{course.createdAt|date('d/m/Y à H:i') }}</div>
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">{{ course.title|truncate(50) }}</h5>
+                                            <p class="card-text">{{ course.timeNeeded|capitalize }}</p>
+                                            <a href="{{ path('exercise_detail',{'id':course.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
+                                                Voir En Détail
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div><!-- /.row -->
+
+                        {% else %}
+                            <h6 class="col-12 text-center "> Aucun cours de la meme catégorie </h6>
+                        {% endif %}
                         {# Avis Sur Le cours !#}
 
                         <hr class="divider">
-                        <h2 class="text-left col-12 mb-5"> Avis sur le cours :</h2>
+                        <h2 class="text-left col-12 mb-5"> Avis sur le cours :
+                            <small>({{ course.comments.count }} commentaires)</small>
+                        </h2>
 
                         {% for comment in course.comments %}
                         <div class="row ">
