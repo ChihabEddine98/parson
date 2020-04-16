@@ -19,22 +19,22 @@ class UserCourseRepository extends ServiceEntityRepository
         parent::__construct($registry, UserCourse::class);
     }
 
-    // /**
-    //  * @return UserCourse[] Returns an array of UserCourse objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return UserCourse[] Returns an array of UserCourse objects
+      */
+
+    public function findAverageByCourse($value)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
+        $scoreDql =$this->createQueryBuilder('u')
+            ->select('avg(u.score) as note_moyenne')
+            ->Where('u.course = :val')
             ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
+
+        return $scoreDql[0]['note_moyenne'];
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?UserCourse

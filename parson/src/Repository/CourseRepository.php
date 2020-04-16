@@ -19,9 +19,9 @@ class CourseRepository extends ServiceEntityRepository
         parent::__construct($registry, Course::class);
     }
 
-    // /**
-    //  * @return Course[] Returns an array of Course objects
-    //  */
+     /**
+      * @return Course[] Returns an array of Course objects
+      */
 
     public function findByCategoryAndNotThisId($value,$id)
     {
@@ -35,7 +35,7 @@ class CourseRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
+    
 
     /*
     public function findOneBySomeField($value): ?Course

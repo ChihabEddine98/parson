@@ -6,6 +6,7 @@ use App\Entity\Course;
 use App\Entity\Exercise;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
+use App\Repository\UserCourseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -65,14 +66,15 @@ class CourseController extends AbstractController
      * @Route("/courses/{id}",name="course_detail")
      */
 
-    public function courseDetail(Course $cours,CourseRepository $repo)
+    public function courseDetail(Course $cours,CourseRepository $repo,UserCourseRepository $repoScore)
     {
         $coursSimilaires=$repo->findByCategoryAndNotThisId($cours->getCategory(),$cours->getId());
-
+        $moyenne=$repoScore->findAverageByCourse($cours);
         return $this->render('course/course_detail.html.twig', [
             'controller_name' => 'CourseController',
             'course'=> $cours,
-            'coursesLike'=>$coursSimilaires
+            'coursesLike'=>$coursSimilaires,
+            'average' => $moyenne
         ]);
     }
 
