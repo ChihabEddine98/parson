@@ -128,10 +128,10 @@
                                         'text-light bg-danger','text-light bg-success',
                                         'text-light bg-secondary','text-dark bg-warning'])  %}
                                     <div class="card {{theme}} mb-3 mx-1" style="max-width: 18rem;">
-                                        <div class="card-header">Le {{course.createdAt|date('d/m/Y à H:i') }}</div>
+                                        <div class="card-header">{{course.createdAt|ago}}</div>
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ course.title|truncate(50) }}</h5>
-                                            <p class="card-text">{{ course.timeNeeded|capitalize }}</p>
+                                            <p class="card-text">{{ course.timeNeeded }} H</p>
                                             <a href="{{ path('exercise_detail',{'id':course.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
                                                 Voir En Détail
                                             </a>
