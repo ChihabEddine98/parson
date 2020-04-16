@@ -26,8 +26,8 @@ class CourseRepository extends ServiceEntityRepository
     public function findByCategoryAndNotThisId($value,$id)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.category = :val')
-            ->setParameter('val', $value)
+            ->andWhere('c.category LIKE :val')
+            ->setParameter('val', '%'.$value.'%')
             ->andWhere('c.id != :id')
             ->setParameter('id',$id)
             ->orderBy('c.id', 'ASC')
