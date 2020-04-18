@@ -169,7 +169,7 @@
                             <div class="col-md-7">
                                 <div class="user">
                                     <h2 class="userName">
-                                        <a href="">
+                                        <a href="{{ path('user_profile' ,{'id':comment.user.id}) }}">
                                         <img src="{{ comment.user.imgUrl ? comment.user.imgUrl : asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
                                             {{ comment.user.fullName }}
                                         </a>
