@@ -8,24 +8,79 @@
 
 {% block body_content %}
 
-    <div class="col-lg-6 mx-auto mt-5 py-5">
+<div class="col-lg-12 mx-auto mt-3 pt-1">
 
-        <div class="col-12 text-center ">
+    <div class="col-lg-12 text-center align-items-center ">
 
-            <div class=" py-5 col-12 text-dark">
-                <h1>  Bienvenue à Profile ! {{ user.fullName }}</h1>
-                <div class="welcome">
-                    <p> Trouvez un cours qui vous va le mieux ! </p>
-                    <p> Pour Bénificier des fonctionnalités de ParSon Veuillez ... </p>
+        <div class="col-lg-12  text-dark ">
+
+            <div class="row col-12 mb-3 courseImg d-flex flex-row">
+                <div class="col col-4">
+                    <img style="height: 240px;object-fit: cover;" class="col-lg-10 col-md-7 col-sm-10 rounded-circle" src="{{ asset('img/profil_default_male.png') }}" alt="">
                 </div>
-                <!-- <div class="btn_">
-                    <a href="/register" class="btn"> Commencer ! </a>
-                </div> -->
+                <div class="col col-8 info pl-0 d-flex flex-column text-left px-0  mt-4">
+                    <div class="d-flex flex-row">
+                        <h1 class="courseTitle "> {{ user.fullName }} </h1>
+                        <img src="{{ asset('img/admin_icon.png') }}" class="sexeImg mx-3 mt-0" alt="">
+                    </div>
+                    <h4 class="text-muted ml-1"> {{ user.email }}</h4>
+                    <h5 class="text-muted ml-1"> 06.60.54.94</h5>
+                    <h5 class="text-muted ml-1"> 9 Place Lucie Aubrac 94600 Choisy Le Roi</h5>
+                    <h5 class="text-muted ml-1"> Membre {{ user.createdAt|ago }}</h5>
+                </div>
+            </div><!-- /.row -->
+
+            <hr>
+            <h1> Cours Crées </h1>
+            <div class="row ml-5">
+                {% if user.createdCourses.count %}
+                    {% for course in user.createdCourses %}
+                        {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
+                            'text-light bg-danger','text-light bg-success',
+                            'text-light bg-secondary','text-dark bg-warning'])  %}
+                        <div class="card {{theme}} mb-3 mx-1" style="max-width: 18rem;">
+                            <div class="card-header">{{course.createdAt|ago }}</div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ course.title|truncate(50) }}</h5>
+                                <p> <b>( {{ course.exercises.count }} exercice , {{ course.comments.count }} avis ) </b></p>
+                                <a href="{{ path('course_detail',{'id':course.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
+                                    Voir En Détail
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1>  Aucun cours pour le moment :/</h1>
+                {% endif %}
+
             </div>
 
+
+
+
+
+        </div>
+        </div>
         </div>
 
-    </div>
+            {#<div class="col-lg-6 mx-auto mt-5 py-5">#}
+
+        {#<div class="col-12 text-center ">#}
+
+            {#<div class=" py-5 col-12 text-dark">#}
+                {#<h1>  Bienvenue à Profile ! {{ user.fullName }}</h1>#}
+                {#<div class="welcome">#}
+                    {#<p> Trouvez un cours qui vous va le mieux ! </p>#}
+                    {#<p> Pour Bénificier des fonctionnalités de ParSon Veuillez ... </p>#}
+                {#</div>#}
+                {#<!-- <div class="btn_">#}
+                    {#<a href="/register" class="btn"> Commencer ! </a>#}
+                {#</div> -->#}
+            {#</div>#}
+
+        {#</div>#}
+
+    {#</div>#}
 
 {% endblock %}
 
