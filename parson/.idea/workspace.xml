@@ -66,7 +66,7 @@
           <entry key="env" value="11" />
           <entry key="json" value="132" />
           <entry key="php" value="3042" />
-          <entry key="twig" value="10174" />
+          <entry key="twig" value="10215" />
           <entry key="yaml" value="27" />
         </counts>
       </usages-collector>
@@ -77,7 +77,7 @@
           <entry key="JSON" value="132" />
           <entry key="PHP" value="3042" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="10174" />
+          <entry key="Twig" value="10215" />
           <entry key="YAML" value="27" />
         </counts>
       </usages-collector>
@@ -102,9 +102,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/course/course_detail.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="180" column="34" lean-forward="true" selection-start-line="180" selection-start-column="34" selection-end-line="180" selection-end-column="34" />
+            <state relative-caret-position="250">
+              <caret line="34" column="64" selection-start-line="34" selection-start-column="64" selection-end-line="34" selection-end-column="64" />
               <folding>
+                <element signature="e#1094#1106#0#Twig" expanded="true" />
+                <element signature="e#1339#1351#0#Twig" expanded="true" />
                 <element signature="e#6888#6901#0#Twig" expanded="true" />
                 <element signature="e#8765#8777#0#Twig" expanded="true" />
               </folding>
@@ -469,12 +471,12 @@
       <workItem from="1586373966759" duration="1440000" />
       <workItem from="1586528935933" duration="9803000" />
       <workItem from="1586775678692" duration="54444000" />
-      <workItem from="1587208796424" duration="10750000" />
+      <workItem from="1587208796424" duration="10911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96521000" />
+    <option name="totallyTimeSpent" value="96682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -854,9 +856,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/course/course_detail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="180" column="34" lean-forward="true" selection-start-line="180" selection-start-column="34" selection-end-line="180" selection-end-column="34" />
+        <state relative-caret-position="250">
+          <caret line="34" column="64" selection-start-line="34" selection-start-column="64" selection-end-line="34" selection-end-column="64" />
           <folding>
+            <element signature="e#1094#1106#0#Twig" expanded="true" />
+            <element signature="e#1339#1351#0#Twig" expanded="true" />
             <element signature="e#6888#6901#0#Twig" expanded="true" />
             <element signature="e#8765#8777#0#Twig" expanded="true" />
           </folding>

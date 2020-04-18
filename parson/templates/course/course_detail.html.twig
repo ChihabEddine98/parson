@@ -26,15 +26,15 @@
 
                             {# Info Auteur #}
                             <div class=" col col-lg-3 mx-auto my-2 d-flex flex-column text-center">
-                                <a href="#">
+                                <a href="{{ path('user_profile',{'id':course.author.id}) }}">
                                     <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
                                 </a>
-                                <a href="#">
+                                <a href="{{ path('user_profile',{'id':course.author.id}) }}">
                                     {{ course.author.fullname }}
                                 </a>
-                                <a href="#" class="text-dark">
+                                <p href="#" class="text-dark m-0">
                                     {{ course.author.email }}
-                                </a>
+                                </p>
                                 <p>
                                     {{ course.createdAt | ago }}
                                 </p>
