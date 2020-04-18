@@ -33,6 +33,44 @@
             </div><!-- /.row -->
 
             <hr>
+            <div class="row p-0">
+                {# Info Heures et nb_students #}
+                <div class="col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
+                    <a href="">
+                        <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
+                    </a>
+                    <h5 href="#">
+                        <b>{{ 240 ? 240 : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
+                    </h5>
+                    <a href="#">
+
+                    </a>
+                    <a href="#" class="text-dark">
+                        Note  moyenne  : <b>17.48 / 20 </b>
+                    </a>
+                    <p>
+                        #Volume horaire : <b>{{ 250 }} H </b>
+                    </p>
+                </div>
+
+                {# Cours notes !#}
+                <div class="col col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
+                    <a href="#">
+                        <img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">
+                    </a>
+                    <h5 href="#" class="mb-0">
+                        Avis Moyen
+                    </h5>
+                    <b>
+                        4.3 / 5
+                    </b>
+                    <a href="#" class="">
+                        Donnez Votre Avis
+                    </a>
+                </div>
+            </div> {# END row #}
+
+            <hr>
             <h1> Cours Crées (<b>{{ user.createdCourses.count }}</b> résultats)</h1>
             <div class="row ml-5">
                 {% if user.createdCourses.count %}
@@ -55,7 +93,8 @@
                     <h1>  Aucun cours pour le moment :/</h1>
                 {% endif %}
 
-            </div>
+            </div>{# END row #}
+
 
 
 
