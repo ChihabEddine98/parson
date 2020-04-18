@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Tout les Cours ! {% endblock %}
+{% block title %} {{ course.title }} {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
@@ -22,10 +22,10 @@
                          <h1 class="courseTitle text-center"> {{ course.title }} </h1>
                     </div>
 
-                    <div class="row col-lg-12 col-sm-6 courseDetails  d-flex flex-row">
+                    <div class="row col-lg-12 col-sm-12 courseDetails  d-flex flex-row">
 
                             {# Info Auteur #}
-                            <div class=" col col-lg-3 col-sm-6 my-2 d-flex flex-column text-center">
+                            <div class=" col col-lg-3 mx-auto my-2 d-flex flex-column text-center">
                                 <a href="#">
                                     <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
                                 </a>
@@ -41,7 +41,7 @@
                             </div>
 
                             {# Info Heures et nb_students #}
-                            <div class=" col-lg-6 col-sm-6 my-2 d-flex flex-column text-center">
+                            <div class=" col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
                                 <a href="">
                                     <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
                                 </a>
@@ -60,7 +60,7 @@
                             </div>
 
                             {# Cours notes !#}
-                            <div class="col col-lg-3 col-sm-6 my-2 d-flex flex-column text-center">
+                            <div class="col col-lg-3 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
                                 <a href="#">
                                     <img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">
                                 </a>

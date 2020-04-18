@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Tout les Cours ! {% endblock %}
+{% block title %} {{ exercise.title }} {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
