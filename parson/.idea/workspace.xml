@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/course_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/course_notes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_notes.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +67,7 @@
           <entry key="json" value="132" />
           <entry key="php" value="3017" />
           <entry key="twig" value="9064" />
-          <entry key="yaml" value="14" />
+          <entry key="yaml" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -82,7 +78,7 @@
           <entry key="PHP" value="3017" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Twig" value="9064" />
-          <entry key="YAML" value="14" />
+          <entry key="YAML" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -160,11 +156,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/user/user_profile.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -181,11 +177,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/packages/translation.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="16" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="16" />
+            <state relative-caret-position="150">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -241,7 +237,6 @@
         <option value="$PROJECT_DIR$/src/Entity/UserCourse.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/CommentFixtures.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/UserCourseFixtures.php" />
-        <option value="$PROJECT_DIR$/config/packages/translation.yaml" />
         <option value="$PROJECT_DIR$/templates/course/course_list.html.twig" />
         <option value="$PROJECT_DIR$/src/Repository/CourseRepository.php" />
         <option value="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" />
@@ -250,6 +245,7 @@
         <option value="$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig" />
         <option value="$PROJECT_DIR$/templates/course/course_notes.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/user_profile.html.twig" />
+        <option value="$PROJECT_DIR$/config/packages/translation.yaml" />
       </list>
     </option>
   </component>
@@ -447,12 +443,12 @@
       <workItem from="1586373966759" duration="1440000" />
       <workItem from="1586528935933" duration="9803000" />
       <workItem from="1586775678692" duration="54444000" />
-      <workItem from="1587208796424" duration="1493000" />
+      <workItem from="1587208796424" duration="2955000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87264000" />
+    <option name="totallyTimeSpent" value="88726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -756,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/translation.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/course/course_detail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -818,7 +807,14 @@
     <entry file="file://$PROJECT_DIR$/templates/user/user_profile.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/translation.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
         </state>
       </provider>
     </entry>
