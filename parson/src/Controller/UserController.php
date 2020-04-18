@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,12 +23,13 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/users/me", name="user_profile")
+     * @Route("/users/{id}", name="user_profile")
      */
-    public function profile()
+    public function profile(User $user)
     {
         return $this->render('user/user_profile.html.twig', [
             'controller_name' => 'UserController',
+            'user'=>$user
         ]);
     }
 }
