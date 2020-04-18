@@ -136,7 +136,7 @@
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ course.title|truncate(50) }}</h5>
                                             <p class="card-text">{{ course.timeNeeded }} H</p>
-                                            <a href="{{ path('exercise_detail',{'id':course.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
+                                            <a href="{{ path('course_detail',{'id':course.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
                                                 Voir En Détail
                                             </a>
                                         </div>
