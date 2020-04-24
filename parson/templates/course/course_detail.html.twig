@@ -41,35 +41,37 @@
                             </div>
 
                             {# Info Heures et nb_students #}
-                            <div class=" col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
-                                <a href="">
-                                    <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
-                                </a>
-                                <a href="#">
-                                    <b>{{ course.users.count ? course.users.count : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
-                                </a>
-                                <a href="#">
-
-                                </a>
-                                <a href="#" class="text-dark">
-                                    Note  moyenne  : <b>{{ average|number_format(2)}} / 20 </b>
-                                </a>
+                            <div class=" col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center"
+                                 style="font-size: 1.4em;">
                                 <p>
-                                    #Volume horaire : <b>{{ course.timeNeeded }} H </b>
+                                    {#<img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">#}
+                                    <i class="fas fa-chart-line" style="font-size: 2.8rem; color:#48bfff;"></i>
+                                </p>
+                                <p class="text-dark m-0">
+                                    <b style="font-size: 1.6em;">{{ course.users.count ? course.users.count : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
+                                </p>
+
+                                <p class="text-dark m-0">
+                                    Note  moyenne  : <b>{{ average|number_format(2)}} / 20 </b>
+                                </p>
+                                <p>
+                                    Volume horaire : <b>{{ course.timeNeeded }} H </b>
                                 </p>
                             </div>
 
                             {# Cours notes !#}
-                            <div class="col col-lg-3 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
+                            <div class="col col-lg-3 col-sm-12 mx-auto my-2 d-flex flex-column text-center"
+                                style="font-size: 1.4em;">
                                 <a href="#">
-                                    <img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">
+                                    {#<img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">#}
+                                    <i class="fas fa-heart" style="color: red; font-size: 2.8em;"></i>
                                 </a>
-                                <a href="#" class="">
+                                <p style="font-size: 1.3em; color: #0a0a0a;">
                                     <b>
                                         {{ rating|number_format(1) }} / 5
                                     </b>
-                                </a>
-                                <a href="#" class="">
+                                </p>
+                                <a href="#" class="btn btn-outline-danger btn-lg">
                                     Donnez Votre Avis
                                 </a>
                             </div>
@@ -104,7 +106,9 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title">{{ exercise.title|truncate(50) }}</h5>
                                         <p class="card-text">{{ exercise.type|capitalize }}</p>
-                                        <a href="{{ path('exercise_detail',{'id':exercise.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
+                                        <a href="{{ path('exercise_detail',{'id':exercise.id}) }}"
+                                           class="btn
+                                           btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
                                            Voir En Détail
                                         </a>
                                     </div>
