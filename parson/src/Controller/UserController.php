@@ -30,13 +30,15 @@ class UserController extends AbstractController
     {
         // Calculate avergae Rating !
         $courses=$user->getCreatedCourses();
-        $rates=[];
         $somme=0;
+        $noteSomme=0;
         $i=0;
         foreach ($courses as $course)
         {
            $rate=$repoScore->findAverageRateByCourse($course);
+           $note=$repoScore->findAverageByCourse($course);
            $somme+=$rate;
+           $noteSomme+=$note;
            $i+=1;
         }
        /* array_map(function ($course) use ($repoScore){
@@ -49,16 +51,19 @@ class UserController extends AbstractController
          if ($i>0)
          {
              $avisMoyen=$somme/$i;
+             $moyenne=$noteSomme/$i;
          }
          else
          {
              $avisMoyen=0;
+             $moyenne=0;
          }
 
         return $this->render('user/user_profile.html.twig', [
             'controller_name' => 'UserController',
             'user'=>$user,
-            'rating'=> $avisMoyen
+            'rating'=> $avisMoyen,
+            'average'=> $moyenne
         ]);
     }
 }
