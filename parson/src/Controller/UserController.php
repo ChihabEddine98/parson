@@ -32,11 +32,15 @@ class UserController extends AbstractController
         $courses=$user->getCreatedCourses();
         $somme=0;
         $noteSomme=0;
+        $heureSomme=0;
+        $userSomme=0;
         $i=0;
         foreach ($courses as $course)
         {
            $rate=$repoScore->findAverageRateByCourse($course);
            $note=$repoScore->findAverageByCourse($course);
+           $heureSomme+=$course->getTimeNeeded();
+           $userSomme+=count($course->getUsers());
            $somme+=$rate;
            $noteSomme+=$note;
            $i+=1;
@@ -63,7 +67,9 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
             'user'=>$user,
             'rating'=> $avisMoyen,
-            'average'=> $moyenne
+            'average'=> $moyenne,
+            'nbUsers'=> $userSomme,
+            'nbHours'=> $heureSomme
         ]);
     }
 }

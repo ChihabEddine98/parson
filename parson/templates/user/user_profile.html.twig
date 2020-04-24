@@ -42,7 +42,7 @@
                         <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
                     </a>
                     <h5 href="#">
-                        <b>{{ 240 ? 240 : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
+                        <b>{{ nbUsers ? nbUsers : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
                     </h5>
                     <a href="#">
 
@@ -51,7 +51,7 @@
                         Note  moyenne  : <b>{{ average|number_format(2)}} / 20 </b>
                     </a>
                     <p>
-                        #Volume horaire : <b>{{ 250 }} H </b>
+                        #Volume horaire : <b>{{ nbHours|number_format(0) }} H </b>
                     </p>
                 </div>
 
