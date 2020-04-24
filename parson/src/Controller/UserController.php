@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\UserCourseRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,11 +26,15 @@ class UserController extends AbstractController
     /**
      * @Route("/users/{id}", name="user_profile")
      */
-    public function profile(User $user)
+    public function profile(User $user,UserCourseRepository $repoScore)
     {
+
+        $avisMoyen=$repoScore->findAverageRateByUser($user);
+
         return $this->render('user/user_profile.html.twig', [
             'controller_name' => 'UserController',
-            'user'=>$user
+            'user'=>$user,
+            'rating'=> $avisMoyen
         ]);
     }
 }
