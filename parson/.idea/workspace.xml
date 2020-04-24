@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +66,7 @@
           <entry key="dummy" value="1" />
           <entry key="env" value="11" />
           <entry key="json" value="132" />
-          <entry key="php" value="3086" />
+          <entry key="php" value="3452" />
           <entry key="twig" value="10232" />
           <entry key="yaml" value="27" />
         </counts>
@@ -79,7 +76,7 @@
           <entry key=".env file" value="11" />
           <entry key="CSS" value="609" />
           <entry key="JSON" value="132" />
-          <entry key="PHP" value="3086" />
+          <entry key="PHP" value="3452" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Twig" value="10232" />
           <entry key="YAML" value="27" />
@@ -98,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/templates/course/course_detail.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="404">
-              <caret line="68" column="69" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="69" />
+              <caret line="68" column="69" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -133,11 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/user/user_profile.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+            <state relative-caret-position="101">
+              <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -181,14 +178,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+            <state relative-caret-position="390">
+              <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
               <folding>
                 <element signature="e#34#54#0#PHP" expanded="true" />
-                <element signature="e#829#858#0#PHP" expanded="true" />
+                <element signature="e#1062#1091#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -258,8 +255,8 @@
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/course/course_detail.html.twig" />
         <option value="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" />
-        <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/templates/user/user_profile.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
       </list>
     </option>
   </component>
@@ -452,18 +449,18 @@
       <workItem from="1586528935933" duration="9803000" />
       <workItem from="1586775678692" duration="54444000" />
       <workItem from="1587208796424" duration="11548000" />
-      <workItem from="1587737026401" duration="431000" />
+      <workItem from="1587737026401" duration="1592000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97750000" />
+    <option name="totallyTimeSpent" value="98911000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2536913" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2536913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -476,7 +473,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.14609928" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.27234042" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067115" side_tool="true" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -792,25 +789,25 @@
     <entry file="file://$PROJECT_DIR$/templates/course/course_detail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
-          <caret line="68" column="69" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-          <folding>
-            <element signature="e#34#54#0#PHP" expanded="true" />
-            <element signature="e#829#858#0#PHP" expanded="true" />
-          </folding>
+          <caret line="68" column="69" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/user/user_profile.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+        <state relative-caret-position="101">
+          <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+          <folding>
+            <element signature="e#34#54#0#PHP" expanded="true" />
+            <element signature="e#1062#1091#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

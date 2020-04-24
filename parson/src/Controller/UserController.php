@@ -28,8 +28,32 @@ class UserController extends AbstractController
      */
     public function profile(User $user,UserCourseRepository $repoScore)
     {
+        // Calculate avergae Rating !
+        $courses=$user->getCreatedCourses();
+        $rates=[];
+        $somme=0;
+        $i=0;
+        foreach ($courses as $course)
+        {
+           $rate=$repoScore->findAverageRateByCourse($course);
+           $somme+=$rate;
+           $i+=1;
+        }
+       /* array_map(function ($course) use ($repoScore){
+            return $repoScore->findAverageRateByCourse($course);
+        },$courses);*/
 
-        $avisMoyen=$repoScore->findAverageRateByUser($user);
+
+        //$avisMoyen=array_sum($courses)/count($courses);
+
+         if ($i>0)
+         {
+             $avisMoyen=$somme/$i;
+         }
+         else
+         {
+             $avisMoyen=0;
+         }
 
         return $this->render('user/user_profile.html.twig', [
             'controller_name' => 'UserController',
