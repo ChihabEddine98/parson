@@ -24,10 +24,19 @@
                         <img src="{{ asset('img/admin_icon.png') }}" class="sexeImg mx-3 mt-0" alt="">
                     </div>
                     <h4 class="text-muted ml-1"> {{ user.email }}</h4>
-                    <h5 class="text-muted ml-1"> 06.60.54.94</h5>
-                    <h5 class="text-muted ml-1"> 9 Place Lucie Aubrac 94600 Choisy Le Roi</h5>
                     <h5 class="text-muted ml-1"> Membre {{ user.createdAt|ago }}</h5>
-                    <h5 class="text-muted ml-1"> <b> {{ user.comments.count }}</b> comments</h5>
+                    <h5 class="text-muted ml-1">
+                        <i class="fas fa-phone-square-alt" style="font-size: 1.3em;"></i>
+                        06.60.54.94
+                    </h5>
+                    <h5 class="text-muted ml-1">
+                        <i class="fas fa-map-marked-alt" style="font-size: 1.3em;"></i>
+                        9 Place Lucie Aubrac 94600 Choisy Le Roi
+                    </h5>
+                    <h5 class="text-muted ml-1" style="font-size: 1.4em;">
+                        <i class="fas fa-comments" ></i>
+                        <b> {{ user.comments.count }}</b> comments
+                    </h5>
 
                 </div>
             </div><!-- /.row -->
@@ -39,7 +48,8 @@
                 {# Info Heures et nb_students #}
                 <div class="col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
                     <a href="">
-                        <img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">
+                        {#<img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">#}
+                        <i class="fas fa-chart-line" style="font-size: 2.8rem; color:#48bfff;"></i>
                     </a>
                     <h5 href="#">
                         <b>{{ nbUsers ? nbUsers : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
@@ -58,7 +68,8 @@
                 {# Cours notes !#}
                 <div class="col col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center">
                     <a href="#">
-                        <img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">
+                        {#<img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">#}
+                        <i class="fas fa-heart" style="color: red; font-size: 2.8em;"></i>
                     </a>
                     <h5 href="#" class="mb-0">
                         Avis Moyen
