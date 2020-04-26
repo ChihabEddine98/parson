@@ -8,16 +8,47 @@
 
 {% block body_content %}
 
-    <div class="col-lg-6 mx-auto mt-5 py-5">
+    <div class="col-lg-6 mx-auto mt-5 pt-1 bg-warning">
 
         <div class="col-12 text-center ">
 
-            <div class=" py-5 col-12 text-dark">
-                <h1>  Bienvenue à Login !</h1>
-                <div class="welcome">
-                    <p> Trouvez un cours qui vous va le mieux ! </p>
-                    <p> Pour Bénificier des fonctionnalités de ParSon Veuillez ... </p>
-                </div>
+            <div class=" py-5 col-12 text-dark ">
+
+                <form  class="form-signin" method="POST">
+
+                    <h1>  Connexion à ParSon !</h1>
+
+                    <div class="row mx-4 mt-5">
+                        <input type="text" class="form-control text-center" placeholder="Email">
+                    </div>
+
+                    <div class="row my-3 mx-4">
+                        <input type="password" class="form-control text-center" placeholder="Mot De Passe">
+                    </div>
+
+                    <div class="checkbox my-3 mx-4">
+                        <label>
+                            <input type="checkbox" class="" value="remember_me">
+                            Se souvenir de moi
+                        </label>
+                    </div>
+
+                    <button class="btn btn-outline-dark btn-lg " type="submit">
+                        Connexion
+                    </button>
+
+                    <div class="row mb-1 mt-5 mx-5 px-5 text-center">
+                            Pas encore inscrits ?
+                        <a href="" class="">
+                           <b>
+                               Inscription
+                           </b>
+                        </a>
+                    </div>
+
+                </form>
+
+
                 <!-- <div class="btn_">
                     <a href="/register" class="btn"> Commencer ! </a>
                 </div> -->
