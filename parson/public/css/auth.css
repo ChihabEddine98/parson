@@ -1,0 +1,54 @@
+
+
+
+.body-container{
+    background-color: var(--overlay_bg_col);
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.login-img-container{
+    width: 100%;
+    align-items: center;
+}
+.login-img{
+
+    width: 8em;
+    height: 8em;
+
+    margin: auto;
+
+}
+
+.body-container input{
+
+    font-size: 24px;
+    margin: auto;
+    width: 90%;
+    background-color: var(--overlay_fg_col);
+    border-radius: 5px;
+    border: 2px var(--col-navbar) solid;
+}
+
+.body-container .checkbox{
+    margin: auto;
+}
+.body-container .checkbox input{
+
+    width: 25px;
+    height: 25px;
+}
+
+.body-container .checkbox label {
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.body-container .register{
+
+    margin: 20px auto 0px auto;
+
+    font-size: 20px;
+
+}
