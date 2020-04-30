@@ -14,6 +14,12 @@
 
             <div class=" py-5 col-12 text-dark ">
 
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+
                 <form  class="form-signin" method="POST">
 
                     <div class="row mt-2 login-img-container">
@@ -21,11 +27,11 @@
                     </div>
 
                     <div class="row mx-4 mt-3">
-                        <input type="text" class="form-control text-center" placeholder="Email">
+                        <input type="text" class="form-control text-center" name="_username" placeholder="Email">
                     </div>
 
                     <div class="row my-3 mx-4">
-                        <input type="password" class="form-control text-center" placeholder="Mot De Passe">
+                        <input type="password" class="form-control text-center" name="_password" placeholder="Mot De Passe">
                     </div>
 
                     <div class="checkbox my-3">
