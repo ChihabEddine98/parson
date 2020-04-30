@@ -14,8 +14,8 @@ class UserFixtures extends BaseFixture
             $sexe=$this->faker->boolean;
             $sexe_text=$sexe ? "male" :"female";
             $user->setEmail('user'.$i.'@mail.com')
-                ->setAddress($this->faker->address)
-                ->setPhone($this->faker->phoneNumber)
+                ->setAddress($this->faker->streetAddress)
+                ->setPhone($this->faker->e164PhoneNumber)
                 -> setPassword("123")
                 ->setFullName($this->faker->name($sexe_text))
                 ->setSexe($sexe)
