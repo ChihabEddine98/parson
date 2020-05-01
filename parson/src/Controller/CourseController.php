@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CourseController extends AbstractController
+class CourseController extends BaseController
 {
     /**
      * @Route("/courses", name="courses")
@@ -44,6 +44,7 @@ class CourseController extends AbstractController
 
     /**
      * @Route("/courses/me",name="my_courses")
+     * @IsGranted("ROLE_USER")
      */
 
     public function mesCours()

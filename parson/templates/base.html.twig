@@ -22,15 +22,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item mx-auto">
-                    <a class="nav-link" href="{{ path('user_list') }}"> <i class="fas fa-users-cog"></i> Utilisateurs</a>
-                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item mx-auto">
+                        <a class="nav-link" href="{{ path('user_list') }}"> <i class="fas fa-users-cog"></i> Utilisateurs</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item dropdown mx-auto">
                     <a class="nav-link dropdown-toggle" href="#" id="formation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-chalkboard-teacher"></i> Formations
                     </a>
                     <div class="dropdown-menu" role="menu" aria-labelledby="formation">
-                        <a class="dropdown-item" href="{{ path('new_course') }}"><i class="far fa-plus-square"></i>Ajouter un cours</a>
+                        {% if is_granted('ROLE_ENS') %}
+                            <a class="dropdown-item" href="{{ path('new_course') }}"><i class="far fa-plus-square"></i>Ajouter un cours</a>
+                        {% endif %}
                         <a class="dropdown-item" href="{{ path('courses') }}"><i class="fas fa-stream"></i> Tous les cours</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('my_courses') }}"><i class="fas fa-award"></i> Mes cours</a>
