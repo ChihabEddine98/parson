@@ -21,7 +21,8 @@
                 <div class="col col-sm-12 col-lg-8 info pl-0 d-flex flex-column text-left px-0  mt-4">
                     <div class="d-flex flex-row">
                         <h1 class="courseTitle "> {{ user.fullName }} </h1>
-                        <img src="{{ asset('img/admin_icon.png') }}" class="sexeImg mx-3 mt-0" alt="">
+                        <i class="fas fa-chalkboard-teacher ml-4 mt-3" style="font-size: 32px; color: #9f2dc8"></i>
+{#                        <img src="{{ asset('img/admin_icon.png') }}" class="sexeImg mx-3 mt-0" alt="">#}
                     </div>
                     <h4 class="text-muted ml-1"> {{ user.email }}</h4>
                     <h5 class="text-muted ml-1"> Membre {{ user.createdAt|ago }}</h5>
@@ -52,7 +53,7 @@
                         <i class="fas fa-chart-line" style="font-size: 2.8rem; color:#48bfff;"></i>
                     </a>
                     <h5 href="#">
-                        <b>{{ nbUsers ? nbUsers : "Personne encore" }}</b> étudiant(e)s inscrit(e)s
+                        <b>{{nbUsers}}</b>  inscrit(e)s
                     </h5>
                     <a href="#">
 
