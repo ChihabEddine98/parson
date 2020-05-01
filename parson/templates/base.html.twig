@@ -37,7 +37,9 @@
                         {% endif %}
                         <a class="dropdown-item" href="{{ path('courses') }}"><i class="fas fa-stream"></i> Tous les cours</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('my_courses') }}"><i class="fas fa-award"></i> Mes cours</a>
+                        {% if is_granted('ROLE_ENS') %}
+                            <a class="dropdown-item" href="{{ path('my_created_courses') }}"><i class="fas fa-award"></i> Mes Cours Crées</a>
+                        {% endif %}
                     </div>
                 </li>
 
@@ -54,7 +56,7 @@
                         </a>
                         <div class="dropdown-menu col-lg-12 px-3" role="menu" aria-labelledby="compte">
                             <a class="dropdown-item" href="{{ path('user_profile',{'id':app.user.id}) }}"><i class="fas fa-address-card"></i>  Mon profil</a>
-                            <a class="dropdown-item" href="{{ path('my_courses',{'id':app.user.id}) }}"><i class="fas fa-award"></i> Mes cours</a>
+                            <a class="dropdown-item" href="{{ path('my_courses') }}"><i class="fas fa-award"></i> Mes cours</a>
                             <a class="dropdown-item" href="{{ path('my_marks') }}"><i class="fas fa-poll"></i> Mes notes</a>
                             <div class="dropdown-divider"></div>
                             <a class="btn btn-outline-danger w-100" href="{{path('app_logout')}}"><i class="fas fa-power-off"></i> Déconnexion</a>

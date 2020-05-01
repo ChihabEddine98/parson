@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mes Cours {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="col-lg-12 mx-auto mt-3 py-3">
+
+        <div class="col-lg-12 text-center ">
+            {% if courses|length > 0 %}
+                {#<h1>  Tout les cours disponibles !</h1>#}
+                <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto mb-3" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for cours in courses %}
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index }}" class="{{ loop.index==1 ?"active": "" }}"></li>
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        {% for cours in courses %}
+                            <div class="carousel-item {{ loop.index==1 ?"active": ""  }}">
+                                <a href="{{ path('course_detail',{'id':cours.course.id}) }}">
+                                    <img class="d-block w-100"
+                                         src="{{ asset('img/can_robots_beat_humans.jpg') }}"
+                                         alt="{{ cours.course.title|truncate(15) }}">
+                                </a>
+                                <div class="carousel-caption d-none d-md-block text-light caroussel_content ">
+                                    <h5>{{ cours.course.title }}</h5>
+                                    <p>{{ cours.course.description|truncate(80) }}</p>
+                                    <a href="{{ path('course_detail',{'id':cours.course.id}) }}" class="btn btn-outline-light">Voir en détail</a>
+                                </div>
+                            </div>
+                        {%  endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <div class="col-lg-12  text-dark d-flex flex-wrap">
+
+                    {% for cours in courses %}
+
+                        <div class="card m-2" style="width: 20rem;">
+                            <img class="card-img-top" style="height: 43%;" src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ cours.course.title|truncate(20) }}</h5>
+                                <p class="card-text">{{ cours.course.description|truncate(59) }}</p>
+                                <p> <b>( {{ cours.course.exercises.count }} exercice , {{ cours.course.comments.count }} avis ) </b></p>
+                                <a href="{{ path('course_detail',{'id': cours.course.id}) }}" class="btn btn-info">Voir en détail</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <h1>  Aucun cours pour le moment :/</h1>
+            {% endif %}
+            <!-- <div class="btn_">
+                <a href="/register" class="btn"> Commencer ! </a>
+            </div> -->
+
+        </div>
+
+    </div>
+
+{% endblock %}
+

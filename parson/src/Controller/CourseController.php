@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Course;
 use App\Entity\Exercise;
+use App\Entity\UserCourse;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
 use App\Repository\UserCourseRepository;
@@ -22,7 +23,7 @@ class CourseController extends BaseController
         $courses=$repo->findAll();
 
         return $this->render('course/course_list.html.twig', [
-            'controller_name' => 'CourseController',
+            'title' => ' Tout Les cours',
             'courses'=>$courses
         ]);
     }
@@ -42,6 +43,7 @@ class CourseController extends BaseController
     }
 
 
+
     /**
      * @Route("/courses/me",name="my_courses")
      * @IsGranted("ROLE_USER")
@@ -49,11 +51,26 @@ class CourseController extends BaseController
 
     public function mesCours()
     {
-        return $this->render('course/course_list.html.twig', [
-            'controller_name' => 'CourseController',
+
+        $courses=$this->getUser()->getRegistredInCourses();
+        return $this->render('course/course_my.html.twig', [
+            'courses' => $courses
         ]);
     }
 
+    /**
+     * @Route("/courses/by_me",name="my_created_courses")
+     * @IsGranted("ROLE_ENS")
+     */
+
+    public function mesCoursCrees()
+    {
+        $courses=$this->getUser()->getCreatedCourses();
+        return $this->render('course/course_list.html.twig', [
+            'title'=> "Les cours que j'encadre ",
+            'courses' => $courses
+        ]);
+    }
     /**
      * @Route("/notes/me",name="my_marks")
      * @IsGranted("ROLE_USER")
