@@ -35,33 +35,36 @@ class UserController extends AbstractController
         $heureSomme=0;
         $userSomme=0;
         $i=0;
-        foreach ($courses as $course)
-        {
-           $rate=$repoScore->findAverageRateByCourse($course);
-           $note=$repoScore->findAverageByCourse($course);
-           $heureSomme+=$course->getTimeNeeded();
-           $userSomme+=count($course->getUsers());
-           $somme+=$rate;
-           $noteSomme+=$note;
-           $i+=1;
-        }
-       /* array_map(function ($course) use ($repoScore){
-            return $repoScore->findAverageRateByCourse($course);
-        },$courses);*/
+//        foreach ($courses as $course)
+//        {
+//           $rate=$repoScore->findAverageRateByCourse($course);
+//           $note=$repoScore->findAverageByCourse($course);
+//           $heureSomme+=$course->getTimeNeeded();
+//           $userSomme+=count($course->getUsers());
+//           $somme+=$rate;
+//           $noteSomme+=$note;
+//           $i+=1;
+//        }
+//       /* array_map(function ($course) use ($repoScore){
+//            return $repoScore->findAverageRateByCourse($course);
+//        },$courses);*/
+//
+//
+//        //$avisMoyen=array_sum($courses)/count($courses);
+//
+//         if ($i>0)
+//         {
+//             $avisMoyen=$somme/$i;
+//             $moyenne=$noteSomme/$i;
+//         }
+//         else
+//         {
+//             $avisMoyen=0;
+//             $moyenne=0;
+//         }
 
-
-        //$avisMoyen=array_sum($courses)/count($courses);
-
-         if ($i>0)
-         {
-             $avisMoyen=$somme/$i;
-             $moyenne=$noteSomme/$i;
-         }
-         else
-         {
-             $avisMoyen=0;
-             $moyenne=0;
-         }
+        $avisMoyen=$repoScore->findAverageRateByUser($user);
+        $moyenne = $repoScore->findAverageByUser($user);
 
         return $this->render('user/user_profile.html.twig', [
             'controller_name' => 'UserController',
