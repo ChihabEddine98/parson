@@ -74,6 +74,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "start": "php bin/console ser:r",
         "load-fixtures":[
             "php bin/console doctrine:database:drop --if-exists --force",
             "php bin/console doctrine:database:create ",
