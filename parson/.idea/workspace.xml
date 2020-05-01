@@ -102,7 +102,7 @@
       <workItem from="1588265255512" duration="510000" />
       <workItem from="1588265779613" duration="66000" />
       <workItem from="1588266734104" duration="188000" />
-      <workItem from="1588266956425" duration="28546000" />
+      <workItem from="1588266956425" duration="28569000" />
     </task>
     <task id="LOCAL-00001" summary="add address and phone to user entity">
       <created>1588269623379</created>
@@ -244,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588374389381</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Calcul de moyenne dans profile plus efficace">
+      <created>1588374780858</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1588374780858</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +279,8 @@
     <MESSAGE value="new mes_notes_page !" />
     <MESSAGE value="Calcul de moyenne dans mes notes" />
     <MESSAGE value="Calcul de moyenne dans mes notes plus efficace" />
-    <option name="LAST_COMMIT_MESSAGE" value="Calcul de moyenne dans mes notes plus efficace" />
+    <MESSAGE value="Calcul de moyenne dans profile plus efficace" />
+    <option name="LAST_COMMIT_MESSAGE" value="Calcul de moyenne dans profile plus efficace" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588268854130">
@@ -287,10 +295,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1588265582445" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588374388569">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588374779966">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588374388569" />
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588374779966" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
