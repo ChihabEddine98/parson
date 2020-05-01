@@ -78,8 +78,10 @@ class CourseController extends BaseController
 
     public function mesNotes()
     {
+        $courses=$this->getUser()->getRegistredInCourses();
+
         return $this->render('course/course_notes.html.twig', [
-            'controller_name' => 'CourseController',
+            'courses' => $courses
         ]);
     }
 

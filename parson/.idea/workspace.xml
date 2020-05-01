@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/course_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/course/course_notes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_notes.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +33,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
-    <option name="width" value="1750" />
-    <option name="height" value="970" />
-  </component>
   <component name="ProjectId" id="1bGjE2iO1X0VF0nhD4tte61ko92" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -109,7 +103,7 @@
       <workItem from="1588265255512" duration="510000" />
       <workItem from="1588265779613" duration="66000" />
       <workItem from="1588266734104" duration="188000" />
-      <workItem from="1588266956425" duration="24782000" />
+      <workItem from="1588266956425" duration="26766000" />
     </task>
     <task id="LOCAL-00001" summary="add address and phone to user entity">
       <created>1588269623379</created>
@@ -223,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588296347862</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix some design stuff in userProfile and course_detail.html.twig">
+      <created>1588304731846</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1588304731846</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +248,8 @@
     <MESSAGE value="responsive user profile page" />
     <MESSAGE value="use is_granted instead of app.user" />
     <MESSAGE value="getUser with custom BaseController.php !" />
-    <option name="LAST_COMMIT_MESSAGE" value="getUser with custom BaseController.php !" />
+    <MESSAGE value="fix some design stuff in userProfile and course_detail.html.twig" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some design stuff in userProfile and course_detail.html.twig" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588268854130">
@@ -262,10 +264,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1588265582445" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588296346907">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588304730791">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588296346907" />
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588304730791" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
