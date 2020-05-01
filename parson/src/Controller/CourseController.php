@@ -7,6 +7,7 @@ use App\Entity\Exercise;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
 use App\Repository\UserCourseRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -29,6 +30,7 @@ class CourseController extends AbstractController
 
     /**
      * @Route("/courses/new",name="new_course")
+     * @IsGranted("ROLE_ENS")
      */
     public function new()
     {
@@ -53,6 +55,7 @@ class CourseController extends AbstractController
 
     /**
      * @Route("/notes/me",name="my_marks")
+     * @IsGranted("ROLE_USER")
      */
 
     public function mesNotes()
