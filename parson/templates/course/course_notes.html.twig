@@ -14,6 +14,15 @@
 
             <div class="col-12">
                 <h1> Mes Résultats </h1>
+                <div class="col-6 mx-auto">
+                    {% if average < 10 %}
+                        <h3 class="text-center alert alert-danger text-danger py-1"> Moyenne
+                            : {{ average | number_format(1) }} /20 </h3>
+                    {% else %}
+                        <h3 class="text-center alert alert-success  py-1"> Moyenne : {{ average | number_format(1) }}
+                            /20 </h3>
+                    {% endif %}
+                </div>
                 <table class="table table-dark">
                     <thead>
                     <tr>
@@ -47,7 +56,6 @@
                     </tbody>
 
                 </table>
-                <h3 class="text-right"> Moyenne : {{ average}} </h3>
 
             </div>
 
