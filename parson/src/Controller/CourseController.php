@@ -76,12 +76,19 @@ class CourseController extends BaseController
      * @IsGranted("ROLE_USER")
      */
 
-    public function mesNotes()
+    public function mesNotes(UserCourseRepository $repoScore)
     {
         $courses=$this->getUser()->getRegistredInCourses();
 
+        // Calculate avergae Rating !
+
+
+        $moyenne=$repoScore->findAverageByUser($this->getUser());
+
+
         return $this->render('course/course_notes.html.twig', [
-            'courses' => $courses
+            'courses' => $courses,
+            'average'=>$moyenne
         ]);
     }
 

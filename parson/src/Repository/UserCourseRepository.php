@@ -50,7 +50,21 @@ class UserCourseRepository extends ServiceEntityRepository
 
         return $scoreDql[0]['rate_moyenne'];
     }
+    /**
+     * @return float Returns the average for rating
+     */
 
+    public function findAverageByUser($value)
+    {
+        $scoreDql =$this->createQueryBuilder('u')
+            ->select('avg(u.score) as moyenne')
+            ->Where('u.user = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+
+        return $scoreDql[0]['moyenne'];
+    }
     /**
      * @return float Returns the average for rating
      */

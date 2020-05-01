@@ -19,6 +19,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Cours</th>
+                        <th scope="col">Catégorie</th>
                         <th scope="col">Note (/20)</th>
                         <th scope="col">Avis (/5)</th>
                         <th scope="col">Remarques</th>
@@ -29,6 +30,7 @@
                         <tr>
                             <th scope="row">{{ loop.index }}</th>
                             <td width="30%;">{{ cours.course.title }}</td>
+                            <td>{{ cours.course.category }}</td>
                             <td>{{ cours.score|number_format(2) }}</td>
                             <td>{{ cours.rate|number_format(2) }}</td>
                             <td>
@@ -43,7 +45,9 @@
                         </tr>
                     {% endfor %}
                     </tbody>
+
                 </table>
+                <h3 class="text-right"> Moyenne : {{ average}} </h3>
 
             </div>
 
