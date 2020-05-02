@@ -73,7 +73,7 @@ abstract  class BaseFixture extends Fixture
             }
         }
         if (empty($this->referencesIndex[$className])) {
-            throw new \Exception(sprintf('Cannot find any references for class "%s"', $className));
+            throw new \Exception(sprintf('Réference introuvable pour : "%s"', $className));
         }
         $randomReferenceKey = $this->faker->randomElement($this->referencesIndex[$className]);
         return $this->getReference($randomReferenceKey);
