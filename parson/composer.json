@@ -75,6 +75,10 @@
             "@auto-scripts"
         ],
         "start": "php bin/console ser:r",
+        "launch": [
+            "@load-fixtures",
+            "@start"
+        ],
         "load-fixtures":[
             "php bin/console doctrine:database:drop --if-exists --force",
             "php bin/console doctrine:database:create ",
