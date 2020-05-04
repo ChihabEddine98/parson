@@ -8,8 +8,10 @@ use App\Entity\UserCourse;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
 use App\Repository\UserCourseRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CourseController extends BaseController
@@ -33,9 +35,21 @@ class CourseController extends BaseController
      * @Route("/courses/new",name="new_course")
      * @IsGranted("ROLE_ENS")
      */
-    public function new()
+    public function new(EntityManagerInterface $manager,Request $request)
     {
         $form=$this->createForm(CourseType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $course=$form->getData();
+            $course->setAuthor($this->getUser());
+
+            $manager->persist($course);
+            $manager->flush();
+
+            return $this->redirectToRoute('my_created_courses');
+        }
 
         return $this->render('course/course_new.html.twig',[
             'courseForm'=>$form->createView()
