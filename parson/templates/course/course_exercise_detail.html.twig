@@ -29,10 +29,10 @@
                         <a href="{{ path('user_profile',{id: exercise.course.author.id}) }}">
                             <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
                         </a>
-                        <a href="#">
+                        <a href="{{ path('user_profile',{id: exercise.course.author.id}) }}">
                             {{ exercise.course.author.fullname }}
                         </a>
-                        <a href="#" class="text-dark">
+                        <a href="{{ path('user_profile',{id: exercise.course.author.id}) }}" class="text-dark">
                             {{ exercise.course.author.email }}
                         </a>
                         <p>
@@ -56,7 +56,7 @@
                 <hr>
                 <div class="row bg-dark text-light pt-4">
                     <ul id="instructions">
-                        {% for instruction in exercise.solution %}
+                        {% for instruction in exercise.solution|shuffle %}
                             <li class="row instruction">
                                 <h5 class="p-2 border border-light "> {{ instruction }} </h5>
                             </li>
