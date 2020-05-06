@@ -4,7 +4,6 @@
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_exercise_detail.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +80,7 @@
       <workItem from="1588386885962" duration="931000" />
       <workItem from="1588552572288" duration="6308000" />
       <workItem from="1588787021616" duration="338000" />
-      <workItem from="1588787396152" duration="12184000" />
+      <workItem from="1588787396152" duration="12870000" />
     </task>
     <task id="LOCAL-00001" summary="add address and phone to user entity">
       <created>1588269623379</created>
@@ -335,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588803811487</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="save just order of instructions">
+      <created>1588804548440</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1588804548440</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +349,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hashed_password !" />
     <MESSAGE value="start control access" />
     <MESSAGE value="responsive user profile page" />
     <MESSAGE value="use is_granted instead of app.user" />
@@ -368,7 +373,8 @@
     <MESSAGE value="submit exo parson show message and hide it" />
     <MESSAGE value="submit exo parson show message and hide it with right colors !" />
     <MESSAGE value="get submitted instruction from parson type !" />
-    <option name="LAST_COMMIT_MESSAGE" value="get submitted instruction from parson type !" />
+    <MESSAGE value="save just order of instructions" />
+    <option name="LAST_COMMIT_MESSAGE" value="save just order of instructions" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1588387290998">
@@ -387,10 +393,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1588265582445" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588803810742">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588804547343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588803810742" />
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588804547343" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

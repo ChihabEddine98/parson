@@ -152,18 +152,25 @@ class CourseController extends BaseController
 
         $exo=$repo->findOneBy(['id'=>$id]);
 
-        dd($data['items']);
-        dd($exo->getSolution());
+//        array_push($data['items'],'chihab');
+
+//        $diff= $data['items']===$exo->getSolution();
+//        dd($diff);
+//        dd();
 
 
         $i=0;
         foreach ( $data['items'] as $item)
         {
-            if ($i!=$item)
+            if ($item != $exo->getSolution()[$i])
+            {
+                $result=false;
+                return new JsonResponse(array('result'=>$result));
+            }
             $i++;
         }
 
-       return new JsonResponse(array('result'=>$result));
+        return new JsonResponse(array('result'=>true));
 
     }
 
