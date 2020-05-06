@@ -7,6 +7,7 @@ use App\Entity\Exercise;
 use App\Entity\UserCourse;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
+use App\Repository\ExerciseRepository;
 use App\Repository\UserCourseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -143,12 +144,26 @@ class CourseController extends BaseController
     /**
      * @Route("/exo/parson/submit",name="exo_parson_submit")
      */
-    public function submitExoParson(Request $request)
+    public function submitExoParson(Request $request,ExerciseRepository $repo)
     {
         $data=json_decode($request->getContent(),true);
-       print_r($data['items']);
+        $result=true;
+        $id=$data['id'];
 
-       return new JsonResponse(array('result'=>true));
+        $exo=$repo->findOneBy(['id'=>$id]);
+
+        dd($data['items']);
+        dd($exo->getSolution());
+
+
+        $i=0;
+        foreach ( $data['items'] as $item)
+        {
+            if ($i!=$item)
+            $i++;
+        }
+
+       return new JsonResponse(array('result'=>$result));
 
     }
 

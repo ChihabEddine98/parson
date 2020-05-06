@@ -128,7 +128,7 @@
                         url: "{{ path('exo_parson_submit') }}",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
-                        data: JSON.stringify({ "items": items }),
+                        data: JSON.stringify({ "items": items , "id":{{ exercise.id }} }),
                     })//done handler
                         .done(function (data) {
                             var msg=data.result ? 'Bravoo ! c\'est le bon code !': 'Ooops ! retentez !';
@@ -153,10 +153,10 @@
                     sortedItems.length = 0;
 
                     $("#instructions li").each(function (index, value) {
-                        let item = {};
+                        let item = $(this).attr("id");
 
-                        item.id = $(this).attr("id");
-                        item.order = $(this).data("order");
+                       // item.id = $(this).attr("id");
+                        // item.order = $(this).data("order");
                         sortedItems.push(item);
                     });
 
