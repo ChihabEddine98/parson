@@ -56,17 +56,18 @@
                 <hr>
                 <div class="row bg-dark text-light pt-4">
                     <ul id="instructions">
-                        {% for instruction in exercise.solution|shuffle %}
-                            <li class="row instruction">
+                        {% for key,instruction in exercise.solution|shuffle %}
+                            <li class="row instruction" id="{{ instruction }}">
                                 <h5 class="p-2 border border-light "> {{ instruction }} </h5>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
 
-                <div class="row col-3 mx-auto my-3 ">
-                    <a href="" class="btn btn-success w-100"> Valider</a>
-                </div>
+                <button>Valider</button>
+{#                <div class="row col-3 mx-auto my-3 ">#}
+{#                    <a href="" class="btn btn-success w-100"> Valider</a>#}
+{#                </div>#}
 
 
 
@@ -89,27 +90,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
     <script>
         $( document ).ready(function() {
-            console.log('heeeeey');
-            $('#instructions').sortable({
-                stop:function(event, ui){
-                    var element_dd = ui.item[0].attributes.element.value,
-                        position = ui.item.index(),
-                        link = base_url+'/update/post/'+element_dd;
-                    $.ajax({
-                        type:"POST",
-                        url:link,
-                        data:{
-                            'position':position
-                        },
-                        success:function(result){
-                            console.log(result);
-                        },
-                        error:function(error){
 
-                        }
+            // $('#instructions').sortable({
+            //     stop:function(event, ui){
+            //         var element_dd = ui.item[0].attributes.element.value,
+            //             position = ui.item.index(),
+            //             link = base_url+'/update/post/'+element_dd;
+            //         $.ajax({
+            //             type:"POST",
+            //             url:link,
+            //             data:{
+            //                 'position':position
+            //             },
+            //             success:function(result){
+            //                 console.log(result);
+            //             },
+            //             error:function(error){
+            //
+            //             }
+            //         });
+            //     }
+            // });
+
+            $(function () {
+                $("#instructions").sortable({
+                    update: function (event, ui) {
+                        var order = $(this).sortable('serialize');
+
+                        $(document).on("click", "button", function () { //that doesn't work
+                            $.ajax({
+                                data: order,
+                                type: 'POST',
+                                url: '/exo/parson/submit'
+                            });
+                        });
+                    }
+                }).disableSelection();
+                $('button').on('click', function () {
+                    var r = $("#instructions").sortable("toArray");
+                    var a = $("#instructions").sortable("serialize", {
+                        attribute: "id"
                     });
-                }
+                    console.log(r, a);
+                });
             });
+
         });
 
     </script>

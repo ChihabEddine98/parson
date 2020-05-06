@@ -138,4 +138,12 @@ class CourseController extends BaseController
     }
 
 
+    /**
+     * @Route("/exo/parson/submit",name="exo_parson_submit")
+     */
+    public function submitExoParson($data)
+    {
+        dd("yoooo");
+    }
+
 }
