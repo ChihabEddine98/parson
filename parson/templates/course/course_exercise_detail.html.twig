@@ -55,9 +55,9 @@
                 </div>
                 <hr>
 
-                    <div class="alert alert-success" id="result">
+                    <div class="alert" id="result">
                        <h5>
-                           Yoooo
+                           Bravooo !
                        </h5>
                     </div>
 
@@ -131,7 +131,17 @@
                         data: JSON.stringify({ "items": items }),
                     })//done handler
                         .done(function (data) {
-                            $('#result h5').text(data);
+                            var msg=data.result ? 'Bravoo ! c\'est le bon code !': 'Ooops ! retentez !';
+                            if (data.result)
+                            {
+                                $('#result').addClass('alert-success').removeClass('alert-danger');
+                            }
+                            else
+                            {
+                                $('#result').addClass('alert-danger').removeClass('alert-success');
+
+                            }
+                            $('#result h5').text(msg);
                             $('#result').show();
 
                             console.log(data.d);

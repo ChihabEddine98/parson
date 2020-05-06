@@ -147,7 +147,7 @@ class CourseController extends BaseController
     {
         $data=$request->request->get('items');
 
-       return new JsonResponse(array('result'=>" haha"));
+       return new JsonResponse(array('result'=>true));
 
     }
 
