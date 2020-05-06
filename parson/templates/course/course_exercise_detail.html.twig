@@ -26,7 +26,7 @@
 
                     {# Info Auteur #}
                     <div class=" col col-lg-12 col-sm-6 my-2 d-flex flex-column">
-                        <a href="#">
+                        <a href="{{ path('user_profile',{id: exercise.course.author.id}) }}">
                             <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
                         </a>
                         <a href="#">
