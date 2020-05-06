@@ -11,6 +11,7 @@ use App\Repository\UserCourseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -133,7 +134,8 @@ class CourseController extends BaseController
     {
         return $this->render('course/course_exercise_detail.html.twig', [
             'controller_name' => 'CourseController',
-            'exercise'=> $exercise
+            'exercise'=> $exercise,
+            'result'=>null
         ]);
     }
 
@@ -145,7 +147,7 @@ class CourseController extends BaseController
     {
         $data=$request->request->get('items');
 
-        dd(json_decode($request->getContent()));
+       return new JsonResponse(array('result'=>" haha"));
 
     }
 

@@ -54,6 +54,14 @@
                     <h3> Résoudre le probleme !</h3>
                 </div>
                 <hr>
+
+                    <div class="alert alert-success" id="result">
+                       <h5>
+                           Yoooo
+                       </h5>
+                    </div>
+
+
                 <div class="row bg-dark text-light pt-4">
                     <ul id="instructions">
                         {% for key,instruction in exercise.solution|shuffle %}
@@ -91,14 +99,13 @@
     <script>
         $( document ).ready(function() {
 
+                $('#result').hide();
 
                 var sortedItems = [];
 
                 $("#instructions").sortable({
                     stop: function (e, ui) {
                         SetSortOrder();
-                        var items = PopulateSortItems();
-                        SubmitData(items);
                     },
                 });
                 $("#instructions").disableSelection();
@@ -121,9 +128,12 @@
                         url: "{{ path('exo_parson_submit') }}",
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
-                        data: JSON.stringify({ "items": items })
+                        data: JSON.stringify({ "items": items }),
                     })//done handler
                         .done(function (data) {
+                            $('#result h5').text(data);
+                            $('#result').show();
+
                             console.log(data.d);
                         });
                 }
@@ -146,7 +156,7 @@
                 //For debugging
                 $('#btnSubmit').click(function () {
                     var items = PopulateSortItems();
-                    console.log(items);
+                    SubmitData(items);
                 });
             // $('#instructions').sortable({
             //     stop:function(event, ui){
