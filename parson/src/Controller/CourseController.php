@@ -145,7 +145,8 @@ class CourseController extends BaseController
      */
     public function submitExoParson(Request $request)
     {
-        $data=$request->request->get('items');
+        $data=json_decode($request->getContent(),true);
+       print_r($data['items']);
 
        return new JsonResponse(array('result'=>true));
 
