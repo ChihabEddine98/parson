@@ -64,7 +64,7 @@
                     </ul>
                 </div>
 
-                <button>Valider</button>
+                <button id="btnSubmit">Valider</button>
 {#                <div class="row col-3 mx-auto my-3 ">#}
 {#                    <a href="" class="btn btn-success w-100"> Valider</a>#}
 {#                </div>#}
@@ -91,6 +91,63 @@
     <script>
         $( document ).ready(function() {
 
+
+                var sortedItems = [];
+
+                $("#instructions").sortable({
+                    stop: function (e, ui) {
+                        SetSortOrder();
+                        var items = PopulateSortItems();
+                        SubmitData(items);
+                    },
+                });
+                $("#instructions").disableSelection();
+
+                //Init the list items on load
+                SetSortOrder();
+
+                //Set the data-order attribute to the index
+                function SetSortOrder() {
+                    $("#instructions li").each(function (index, value) {
+                        $(this).data("order", index);
+                    });
+                }
+
+                //AJAX
+                function SubmitData(items) {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path('exo_parson_submit') }}",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({ "items": items })
+                    })//done handler
+                        .done(function (data) {
+                            console.log(data.d);
+                        });
+                }
+
+                //Get the current order state
+                function PopulateSortItems() {
+                    sortedItems.length = 0;
+
+                    $("#instructions li").each(function (index, value) {
+                        let item = {};
+
+                        item.id = $(this).attr("id");
+                        item.order = $(this).data("order");
+                        sortedItems.push(item);
+                    });
+
+                    return sortedItems
+                }
+
+                //For debugging
+                $('#btnSubmit').click(function () {
+                    var items = PopulateSortItems();
+                    console.log(items);
+                });
             // $('#instructions').sortable({
             //     stop:function(event, ui){
             //         var element_dd = ui.item[0].attributes.element.value,
@@ -112,28 +169,37 @@
             //     }
             // });
 
-            $(function () {
-                $("#instructions").sortable({
-                    update: function (event, ui) {
-                        var order = $(this).sortable('serialize');
+            {#$(function () {#}
+            {#    $("#instructions").sortable({#}
+            {#        update: function (event, ui) {#}
+            {#            var order = $("#instructions").sortable("serialize", {#}
+            {#                attribute: "id"#}
+            {#            });#}
 
-                        $(document).on("click", "button", function () { //that doesn't work
-                            $.ajax({
-                                data: order,
-                                type: 'POST',
-                                url: '/exo/parson/submit'
-                            });
-                        });
-                    }
-                }).disableSelection();
-                $('button').on('click', function () {
-                    var r = $("#instructions").sortable("toArray");
-                    var a = $("#instructions").sortable("serialize", {
-                        attribute: "id"
-                    });
-                    console.log(r, a);
-                });
-            });
+            {#            $(document).on("click", "button", function () { //that doesn't work#}
+            {#                $.ajax({#}
+            {#                    data: order,#}
+            {#                    type: 'POST',#}
+            {#                    dataType:json,#}
+            {#                    url: "{{ path('exo_parson_submit') }}"#}
+            {#                });#}
+            {#            });#}
+
+            {#        }#}
+            {#    }).disableSelection();#}
+            {#    $('button').on('click', function () {#}
+            {#        var r = $("#instructions").sortable("toArray");#}
+            {#        var a = $("#instructions").sortable("serialize", {#}
+            {#            attribute: "id"#}
+            {#        });#}
+            {#        #}{#$.ajax(#}{#}#}
+            {#        #}{#    data: r,#}
+            {#        #}{#    type: 'POST',#}
+            {#        #}{#    url: "{{ path('exo_parson_submit') }}"#}
+            {#        #}{#});#}
+            {#        console.log(r);#}
+            {#    });#}
+            {#});#}
 
         });
 

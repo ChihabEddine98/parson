@@ -141,9 +141,12 @@ class CourseController extends BaseController
     /**
      * @Route("/exo/parson/submit",name="exo_parson_submit")
      */
-    public function submitExoParson($data)
+    public function submitExoParson(Request $request)
     {
-        dd("yoooo");
+        $data=$request->request->get('items');
+
+        dd(json_decode($request->getContent()));
+
     }
 
 }
