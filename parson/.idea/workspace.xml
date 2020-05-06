@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +44,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -78,7 +78,9 @@
       <workItem from="1588266734104" duration="188000" />
       <workItem from="1588266956425" duration="29396000" />
       <workItem from="1588386885962" duration="931000" />
-      <workItem from="1588552572288" duration="6252000" />
+      <workItem from="1588552572288" duration="6308000" />
+      <workItem from="1588787021616" duration="338000" />
+      <workItem from="1588787396152" duration="428000" />
     </task>
     <task id="LOCAL-00001" summary="add address and phone to user entity">
       <created>1588269623379</created>
@@ -262,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588556912616</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="update composer.json ( add launch first time script )">
+      <created>1588559132293</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1588559132293</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +279,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add address and phone to user fixtures" />
     <MESSAGE value="update address and phone to user fixtures" />
     <MESSAGE value="update address and phone dynamic in user profile" />
     <MESSAGE value="update login stuff in controlle" />
@@ -295,7 +303,8 @@
     <MESSAGE value="edit BaseFixture.php ( exception ref not disponible )" />
     <MESSAGE value="edit user_profile.html.twig add bootsrap btn 'avis'" />
     <MESSAGE value="create new course work but ugly !" />
-    <option name="LAST_COMMIT_MESSAGE" value="create new course work but ugly !" />
+    <MESSAGE value="update composer.json ( add launch first time script )" />
+    <option name="LAST_COMMIT_MESSAGE" value="update composer.json ( add launch first time script )" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1588387290998">
@@ -314,10 +323,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1588265582445" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588556911387">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588559131637">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588556911387" />
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588559131637" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -342,10 +351,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="424" y="119" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1588296066454" />
-    <state x="156" y="61" width="981" height="707" key="SettingsEditor" timestamp="1588267557889">
+    <state x="266" y="102" width="981" height="707" key="SettingsEditor" timestamp="1588787532209">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="156" y="61" width="981" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588267557889" />
+    <state x="266" y="102" width="981" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588787532209" />
     <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1588387393849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
