@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/UserCourse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserCourse.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
       <workItem from="1588552572288" duration="6308000" />
       <workItem from="1588787021616" duration="338000" />
       <workItem from="1588787396152" duration="13098000" />
-      <workItem from="1588838603312" duration="78000" />
+      <workItem from="1588838603312" duration="648000" />
     </task>
     <task id="LOCAL-00001" summary="add address and phone to user entity">
       <created>1588269623379</created>
@@ -349,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588805230752</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="meaninful version of composer.json start script">
+      <created>1588838707095</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1588838707095</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +364,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="responsive user profile page" />
     <MESSAGE value="use is_granted instead of app.user" />
     <MESSAGE value="getUser with custom BaseController.php !" />
     <MESSAGE value="fix some design stuff in userProfile and course_detail.html.twig" />
@@ -382,7 +388,8 @@
     <MESSAGE value="get submitted instruction from parson type !" />
     <MESSAGE value="save just order of instructions" />
     <MESSAGE value="working evaluate exercice type parsonn !" />
-    <option name="LAST_COMMIT_MESSAGE" value="working evaluate exercice type parsonn !" />
+    <MESSAGE value="meaninful version of composer.json start script" />
+    <option name="LAST_COMMIT_MESSAGE" value="meaninful version of composer.json start script" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1588387290998">
@@ -401,10 +408,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1588265582445" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588805230023">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588838706176">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588805230023" />
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588838706176" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

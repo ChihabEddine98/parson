@@ -42,6 +42,11 @@ class UserCourse
      */
     private $score;
 
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $results = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +96,18 @@ class UserCourse
     public function setScore(?float $score): self
     {
         $this->score = $score;
+
+        return $this;
+    }
+
+    public function getResults(): ?array
+    {
+        return $this->results;
+    }
+
+    public function setResults(?array $results): self
+    {
+        $this->results = $results;
 
         return $this;
     }
