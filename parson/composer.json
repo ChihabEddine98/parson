@@ -74,7 +74,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "start": "php bin/console ser:r",
+        "start": "php bin/console server:run",
         "launch": [
             "@load-fixtures",
             "@start"
