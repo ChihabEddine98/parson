@@ -141,10 +141,26 @@ class CourseController extends BaseController
     }
 
 
+    public function getMarkFromResults(UserCourse $u_c)
+    {
+        $results=$u_c->getResults();
+        $score=0;
+        foreach ($results as $result )
+        {
+            if ($result)
+            {
+                $score+=floatval(array_values($result)[0]);
+
+
+            }
+        }
+        return $score;
+    }
+
     /**
      * @Route("/exo/parson/submit",name="exo_parson_submit")
      */
-    public function submitExoParson(Request $request,ExerciseRepository $repo)
+    public function submitExoParson(EntityManagerInterface $manager,Request $request,ExerciseRepository $repo,UserCourseRepository $userCourseRepo)
     {
         $data=json_decode($request->getContent(),true);
         $result=true;
@@ -165,6 +181,21 @@ class CourseController extends BaseController
             if ($item != $exo->getSolution()[$i])
             {
                 $result=false;
+                $u_c=$userCourseRepo->findOneByUserAndCourse($this->getUser(),$exo->getCourse());
+                $results=$u_c->getResults();
+                foreach ( array_values($results) as $key=>$value)
+                {
+                    if (intval($key)==$exo->getId())
+                    {
+                        print_r(' yeees ');
+                    }
+                }
+                array_push($results,[$exo->getId() => 7]);
+                dd($results);
+                $u_c->setResults($results);
+                $u_c->setScore($this->getMarkFromResults($u_c));
+                $manager->persist($u_c);
+                $manager->flush();
                 return new JsonResponse(array('result'=>$result));
             }
             $i++;

@@ -81,6 +81,18 @@ class UserCourseRepository extends ServiceEntityRepository
         return $scoreDql[0]['rate_moyenne'];
     }
 
+
+    public function findOneByUserAndCourse($user,$course): ?UserCourse
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.user = :val')
+            ->setParameter('val', $user)
+            ->andWhere('u.course = :c')
+            ->setParameter('c', $course)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     /*
     public function findOneBySomeField($value): ?UserCourse
     {
