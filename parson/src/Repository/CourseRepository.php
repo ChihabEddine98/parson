@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Comment;
 use App\Entity\Course;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Course|null find($id, $lockMode = null, $lockVersion = null)
@@ -35,6 +37,8 @@ class CourseRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+
     
 
     /*

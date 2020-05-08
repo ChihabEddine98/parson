@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,19 +23,16 @@ class CommentRepository extends ServiceEntityRepository
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByCourse($value) :QueryBuilder
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.course = :val')
             ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+            ->orderBy('c.createdAt', 'DESC')
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Comment

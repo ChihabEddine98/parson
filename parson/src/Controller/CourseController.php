@@ -7,10 +7,12 @@ use App\Entity\Course;
 use App\Entity\Exercise;
 use App\Entity\UserCourse;
 use App\Form\CourseType;
+use App\Repository\CommentRepository;
 use App\Repository\CourseRepository;
 use App\Repository\ExerciseRepository;
 use App\Repository\UserCourseRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -111,18 +113,30 @@ class CourseController extends BaseController
      * @Route("/courses/{id}",name="course_detail")
      */
 
-    public function courseDetail(Course $cours, CourseRepository $repo, UserCourseRepository $repoScore)
+    public function courseDetail(Course $cours,
+                                 CommentRepository $repoComment,
+                                 CourseRepository $repo,
+                                 UserCourseRepository $repoScore,
+                                 PaginatorInterface $paginator,
+                                 Request $request)
     {
         $coursSimilaires = $repo->findByCategoryAndNotThisId($cours->getCategory(), $cours->getId());
         $moyenne = $repoScore->findAverageByCourse($cours);
         $avisMoyen = $repoScore->findAverageRateByCourse($cours);
+        $query=$repoComment->findByCourse($cours);
+
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3 /*limit per page*/
+        );
 
         return $this->render('course/course_detail.html.twig', [
-            'controller_name' => 'CourseController',
             'course' => $cours,
             'coursesLike' => $coursSimilaires,
             'average' => $moyenne,
-            'rating' => $avisMoyen
+            'rating' => $avisMoyen,
+            'pagination'=>$pagination
         ]);
     }
 
