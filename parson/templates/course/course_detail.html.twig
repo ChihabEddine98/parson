@@ -260,11 +260,15 @@
                 success: function () {
                     $('#comment').val('');
                     $('#message').html("<h2>Commentaire envoyé.</h2>")
-                                 .append("<p> yesssss </p> ")
+                                 .append("<p> Coool ! </p> ")
                     $('#message').css({opacity: 1});
                     setTimeout(function() {
-                        $('#message').delay(500).fadeOut(1000)
-                    },500);
+                        $('#message').delay(800).fadeOut(1000)
+                    },800);
+                    setTimeout(function(){// wait for 5 secs(2)
+                        location.reload(); // then reload the page.(3)
+                    }, 2000);
+
 
 
 
@@ -275,7 +279,7 @@
 
 
         //For debugging
-        $('#btnNewComment').click(function () {
+        $('#btnNewComment').live('click',function () {
             SubmitData();
         });
 
