@@ -32,7 +32,7 @@
                         <i class="fas fa-chalkboard-teacher"></i> Formations
                     </a>
                     <div class="dropdown-menu" role="menu" aria-labelledby="formation">
-                        {% if is_granted('ROLE_ENS') or true %}
+                        {% if is_granted('ROLE_ENS') %}
                             <a class="dropdown-item" href="{{ path('new_course') }}"><i class="far fa-plus-square"></i>Ajouter un cours</a>
                         {% endif %}
                         <a class="dropdown-item" href="{{ path('courses') }}"><i class="fas fa-stream"></i> Tous les cours</a>
@@ -42,6 +42,13 @@
                         {% endif %}
                     </div>
                 </li>
+
+                {% if is_granted('ROLE_ENS') %}
+                <li class="nav-item mx-auto">
+                    <a class="nav-link" href="{{ path('ens_results') }}"> <i class="fas fa-poll"></i> Résultats</a>
+                </li>
+                {% endif %}
+
 
                 <li class="nav-item mx-auto">
                     <a class="nav-link" href="#"> <i class="fas fa-address-book"></i> Contact</a>

@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/course/ens_results.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/course_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_detail.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/courses.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/courses.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,14 +90,7 @@
       <workItem from="1588901502411" duration="2272000" />
       <workItem from="1588907842182" duration="213000" />
       <workItem from="1588908073873" duration="96000" />
-      <workItem from="1588908205650" duration="12179000" />
-    </task>
-    <task id="LOCAL-00003" summary="update address and phone to user fixtures">
-      <created>1588270218395</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1588270218395</updated>
+      <workItem from="1588908205650" duration="14025000" />
     </task>
     <task id="LOCAL-00004" summary="update address and phone dynamic in user profile">
       <created>1588270527436</created>
@@ -431,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588920315414</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="bootstrap theme for paginator more style">
+      <created>1588920767774</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1588920767774</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +443,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update composer.json ( add launch first time script )" />
     <MESSAGE value="add link to my_marks from user_profile.html.twig  ( note moyenne link )" />
     <MESSAGE value="add link to user profile in exercice author" />
     <MESSAGE value="shuffle exercises solution !" />
@@ -464,7 +467,8 @@
     <MESSAGE value="Cool animation after save new comment" />
     <MESSAGE value="add pagination to Comments !" />
     <MESSAGE value="bootstrap theme for paginator" />
-    <option name="LAST_COMMIT_MESSAGE" value="bootstrap theme for paginator" />
+    <MESSAGE value="bootstrap theme for paginator more style" />
+    <option name="LAST_COMMIT_MESSAGE" value="bootstrap theme for paginator more style" />
   </component>
   <component name="WindowStateProjectService">
     <state x="349" y="67" key="#CLI_Interpreters" timestamp="1588908857422">
@@ -495,10 +499,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="364" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1588913992011" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588920314556">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588920766943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588920314556" />
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588920766943" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -535,9 +539,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588915230831" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1588788831266">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1588922309797">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588788831266" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588922309797" />
   </component>
 </project>

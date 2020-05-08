@@ -110,6 +110,27 @@ class CourseController extends BaseController
     }
 
     /**
+     * @Route("/results/ens_me",name="ens_results")
+     * @IsGranted("ROLE_ENS")
+     */
+
+    public function ensResults(UserCourseRepository $repoScore)
+    {
+        $courses = $this->getUser()->getRegistredInCourses();
+
+        // Calculate avergae Rating !
+
+
+        $moyenne = $repoScore->findAverageByUser($this->getUser());
+
+
+        return $this->render('course/ens_results.html.twig', [
+            'courses' => $courses,
+            'average' => $moyenne
+        ]);
+    }
+
+    /**
      * @Route("/courses/{id}",name="course_detail")
      */
 
