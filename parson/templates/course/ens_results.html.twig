@@ -28,27 +28,33 @@
                     <tr>
                         <th scope="col">Etudiant</th>
                         <th scope="col">Cours</th>
-                        <th scope="col">Exo1</th>
-                        <th scope="col">Exo2</th>
+                        <th scope="col">Exercices</th>
                         <th scope="col">Note (/20)</th>
+                        <th scope="col">Avis (/5)</th>
                         <th scope="col">Remarques</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for cours in courses %}
+                    {% for result in results %}
                         <tr>
-                            <th scope="row" width="20%">
+                            <th scope="row" width="15%">
                                 <img src="{{ asset('img/profil_default_male.png') }}" class="userImgList" alt="">
-                                {{ cours.user.fullName }}
+                                {{ result.user.fullName }}
                             </th>
-                            <td width="30%;">{{ cours.course.title }}</td>
-                            <td>{{ cours.course.category }}</td>
-                            <td>{{ cours.score|number_format(2) }}</td>
-                            <td>{{ cours.rate|number_format(2) }}</td>
+                            <td width="30%;">{{ result.course.title }}</td>
+                            <td width="30%">
+                                {% if result.results %}
+                                {{ result.results|json_encode }}
+                                {% else %}
+                                    Nope
+                                {% endif %}
+                            </td>
+                            <td>{{ result.score|number_format(2) }}</td>
+                            <td>{{ result.rate|number_format(2) }}</td>
                             <td>
-                                {% if cours.score < 10 %}
+                                {% if result.score < 10 %}
                                     <i class="fas fa-exclamation" style="color: #ff384e;"> Défaillant</i>
-                                {% elseif cours.score >= 10 and cours.score < 12 %}
+                                {% elseif result.score >= 10 and result.score < 12 %}
                                     <i class="fas fa-exclamation-triangle" style="color: #e4ef46;"> Admis </i>
                                 {% else %}
                                     <i class="fas fa-check" style="color: #3adb76;"> Bien</i>

@@ -121,13 +121,13 @@ class CourseController extends BaseController
         // Calculate avergae Rating !
 
         $results=$repoScore->findBy(['course'=>$createdCourses]);
-        dd($results);
 
         $moyenne = $repoScore->findAverageByUser($this->getUser());
 
 
         return $this->render('course/ens_results.html.twig', [
             'courses' => $courses,
+            'results'=> $results,
             'average' => $moyenne
         ]);
     }
