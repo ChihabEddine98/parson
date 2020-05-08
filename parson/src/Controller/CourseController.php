@@ -190,6 +190,7 @@ class CourseController extends BaseController
                     foreach ( $results as $key=>$value)
                     {
                         $r=$results[$key];
+
                         try {
                             if ($r[$exo->getId()])
                             {
@@ -216,8 +217,8 @@ class CourseController extends BaseController
 
                 }
 
-                dd($results_new);
-                $u_c->setResults($results);
+
+                $u_c->setResults($results_new);
                 $u_c->setScore($this->getMarkFromResults($u_c));
                 $manager->persist($u_c);
                 $manager->flush();
