@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Course;
 use App\Entity\Exercise;
 use App\Entity\UserCourse;
@@ -228,6 +229,30 @@ class CourseController extends BaseController
         $note=number_format(20/$exo->getCourse()->getExercises()->count(),2);
         $this->changeResult($manager, $u_c, $results, $exo->getId(), $note);
         return new JsonResponse(array('result' => true));
+
+    }
+
+
+    /**
+     * @Route("/course/comment/new",name="new_comment")
+     */
+    public function saveComment(EntityManagerInterface $manager, Request $request, CourseRepository $repo)
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $id = $data['id'];
+        $course = $repo->findOneBy(['id' => $id]);
+
+        $comment=new Comment();
+        $comment->setCourse($course);
+        $comment->setDescription($data['comment']);
+        $comment->setUser($this->getUser());
+
+        $manager->persist($comment);
+        $manager->flush();
+
+
+        return new JsonResponse(true);
 
     }
 

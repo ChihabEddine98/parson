@@ -163,19 +163,25 @@
                         <h2 class="text-left col-12 mb-5"> Avis sur le cours :
                             <small>({{ course.comments.count }} commentaires)</small>
                         </h2>
-                        <form class="mb-4 mx-2">
+                            <div class="mb-4 mx-2">
                             <div class="row">
                                 <div class="col col-lg-8 col-md-6 col-sm-12">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Dites ce que vous pensez !"rows="3"></textarea>
+                                    <textarea class="form-control" id="comment"
+                                              placeholder="Dites ce que vous pensez !" rows="3" name="comment"></textarea>
                                 </div>
-                                <div class="col col-lg-4 col-md-6 col-sm-12 py-3" >
-                                    <button type="submit" class="btn btn-primary w-50 align-middle"> Envoyer</button>
+                                <div class="col col-lg-4 col-md-6 col-sm-12 py-3 " >
+                                    <button id="btnNewComment" class="btn btn-primary w-50 align-middle"> Envoyer</button>
+                                </div>
+                                <div id="message" class="col col-lg-7 m-3 alert alert-success" style="opacity: 0;">
+                                    heeyoo
                                 </div>
                             </div>
-                        </form>
+                            </div>
+
+
 
                         {% for comment in course.comments %}
-                        <div class="row ">
+                        <div class="row " id="comments">
                             <div class="col-md-7">
                                 <div class="user">
                                     <h2 class="userName">
@@ -232,3 +238,49 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( document ).ready(function() {
+
+
+
+        //AJAX
+        function SubmitData() {
+
+            var comment = $("#comment").val();
+
+            $.ajax({
+                type: "POST",
+                dataType:"json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ "comment": comment , "id":{{ course.id }} }),
+                url: "{{ path('new_comment') }}",
+                success: function () {
+                    $('#comment').val('');
+                    $('#message').html("<h2>Commentaire envoyé.</h2>")
+                                 .append("<p> yesssss </p> ")
+                    $('#message').css({opacity: 1});
+                    setTimeout(function() {
+                        $('#message').delay(500).fadeOut(1000)
+                    },500);
+
+
+
+                }
+            });
+            return false;
+        }
+
+
+        //For debugging
+        $('#btnNewComment').click(function () {
+            SubmitData();
+        });
+
+    });
+
+</script>
+
+{% endblock %}
