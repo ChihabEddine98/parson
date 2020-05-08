@@ -178,8 +178,6 @@
                             </div>
                             </div>
 
-
-
                         {% for comment in pagination %}
                         <div class="row " id="comments">
                             <div class="col-md-7">
@@ -204,9 +202,10 @@
 
                         <hr class="divider">
                         {% endfor %}
-                        <div class="navigation">
-                            {{ knp_pagination_render(pagination) }}
-                        </div>
+                            <div class="mx-auto col col-lg-12 col-md-10 col-sm-6">
+                                {{ knp_pagination_render(pagination) }}
+                            </div>
+
                         {#<div class="row ">#}
                             {#<div class="col-md-7">#}
                                 {#<div class="user">#}
