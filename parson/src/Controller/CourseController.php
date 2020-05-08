@@ -225,7 +225,8 @@ class CourseController extends BaseController
         // Si la réponse est vraie !
         $u_c = $userCourseRepo->findOneByUserAndCourse($this->getUser(), $exo->getCourse());
         $results = $u_c->getResults();
-        $this->changeResult($manager, $u_c, $results, $exo->getId(), 5);
+        $note=number_format(20/$exo->getCourse()->getExercises()->count(),2);
+        $this->changeResult($manager, $u_c, $results, $exo->getId(), $note);
         return new JsonResponse(array('result' => true));
 
     }
