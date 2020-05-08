@@ -86,7 +86,7 @@
       <workItem from="1588901502411" duration="2272000" />
       <workItem from="1588907842182" duration="213000" />
       <workItem from="1588908073873" duration="96000" />
-      <workItem from="1588908205650" duration="1879000" />
+      <workItem from="1588908205650" duration="2915000" />
     </task>
     <task id="LOCAL-00001" summary="add address and phone to user entity">
       <created>1588269623379</created>
@@ -375,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588842887966</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="update when exo exists in results !">
+      <created>1588910107126</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1588910107126</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +390,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix some design stuff in userProfile and course_detail.html.twig" />
     <MESSAGE value="new mes_notes_page !" />
     <MESSAGE value="Calcul de moyenne dans mes notes" />
     <MESSAGE value="Calcul de moyenne dans mes notes plus efficace" />
@@ -408,7 +414,8 @@
     <MESSAGE value="meaninful version of composer.json start script" />
     <MESSAGE value="add result for all exercises in user_course.php" />
     <MESSAGE value="some bug in calculating score" />
-    <option name="LAST_COMMIT_MESSAGE" value="some bug in calculating score" />
+    <MESSAGE value="update when exo exists in results !" />
+    <option name="LAST_COMMIT_MESSAGE" value="update when exo exists in results !" />
   </component>
   <component name="WindowStateProjectService">
     <state x="349" y="67" key="#CLI_Interpreters" timestamp="1588908857422">
@@ -435,10 +442,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1588265582445" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588842886974">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1588910104504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588842886974" />
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588910104504" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

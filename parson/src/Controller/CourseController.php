@@ -181,6 +181,7 @@ class CourseController extends BaseController
             if ($item != $exo->getSolution()[$i])
             {
                 $result=false;
+                $changed=false;
                 $u_c=$userCourseRepo->findOneByUserAndCourse($this->getUser(),$exo->getCourse());
                 $results=$u_c->getResults();
                 $results_new=array();
@@ -189,21 +190,23 @@ class CourseController extends BaseController
                     foreach ( $results as $key=>$value)
                     {
                         $r=$results[$key];
-                        if ($r[$exo->getId()])
+                        try {
+                            if ($r[$exo->getId()])
+                            {
+                                $changed=true;
+                                $r[$exo->getId()]=3;
+                                array_push($results_new,[$exo->getId() => 3]);
+                            }
+                        }catch (\ErrorException $e)
                         {
-                            $r[$exo->getId()]=3;
-                            array_push($results_new,[$exo->getId() => 3]);
+                            array_push($results_new,$r);
                         }
-                        else
-                        {
-                            array_push($results,[$exo->getId() => 7]);
-                            array_push($results_new,[$exo->getId() => 7]);
 
-                        }
-//                        if (intval($key)==$exo->getId())
-//                        {
-//                            print_r(' yeees ');
-//                        }
+
+                    }
+                    if (!$changed)
+                    {
+                        array_push($results_new,[$exo->getId() => 7]);
                     }
                 }
                 else
