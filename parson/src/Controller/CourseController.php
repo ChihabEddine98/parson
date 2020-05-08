@@ -183,15 +183,37 @@ class CourseController extends BaseController
                 $result=false;
                 $u_c=$userCourseRepo->findOneByUserAndCourse($this->getUser(),$exo->getCourse());
                 $results=$u_c->getResults();
-                foreach ( array_values($results) as $key=>$value)
+                $results_new=array();
+                if ($results)
                 {
-                    if (intval($key)==$exo->getId())
+                    foreach ( $results as $key=>$value)
                     {
-                        print_r(' yeees ');
+                        $r=$results[$key];
+                        if ($r[$exo->getId()])
+                        {
+                            $r[$exo->getId()]=3;
+                            array_push($results_new,[$exo->getId() => 3]);
+                        }
+                        else
+                        {
+                            array_push($results,[$exo->getId() => 7]);
+                            array_push($results_new,[$exo->getId() => 7]);
+
+                        }
+//                        if (intval($key)==$exo->getId())
+//                        {
+//                            print_r(' yeees ');
+//                        }
                     }
                 }
-                array_push($results,[$exo->getId() => 7]);
-                dd($results);
+                else
+                {
+                    array_push($results,[$exo->getId() => 8]);
+                    array_push($results_new,[$exo->getId() => 8]);
+
+                }
+
+                dd($results_new);
                 $u_c->setResults($results);
                 $u_c->setScore($this->getMarkFromResults($u_c));
                 $manager->persist($u_c);
