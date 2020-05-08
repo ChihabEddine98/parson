@@ -117,9 +117,11 @@ class CourseController extends BaseController
     public function ensResults(UserCourseRepository $repoScore)
     {
         $courses = $this->getUser()->getRegistredInCourses();
-
+        $createdCourses=$this->getUser()->getCreatedCourses()->getValues();
         // Calculate avergae Rating !
 
+        $results=$repoScore->findBy(['course'=>$createdCourses]);
+        dd($results);
 
         $moyenne = $repoScore->findAverageByUser($this->getUser());
 
