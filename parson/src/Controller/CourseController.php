@@ -317,8 +317,11 @@ class CourseController extends BaseController
         $manager->persist($result);
         $manager->flush();
 
+        $avisMoyen = $repo->findAverageRateByCourse($course);
 
-        return new JsonResponse(true);
+
+
+        return new JsonResponse($avisMoyen);
 
     }
 

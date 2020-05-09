@@ -67,7 +67,7 @@
                                     <i class="fas fa-heart" style="color: red; font-size: 2.8em;"></i>
                                 </a>
                                 <p style="font-size: 1.3em; color: #0a0a0a;">
-                                    <b>
+                                    <b id="rateScore">
                                         {{ rating|number_format(1) }} / 5
                                     </b>
                                     <br>
@@ -304,14 +304,16 @@
             cursor:"pointer",
             rate : function (stars)
             {
+
                 $.ajax({
                     type: "POST",
                     dataType:"json",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify({ "stars": stars , "id":{{ course.id }} }),
                     url: "{{ path('course_rate') }}",
-                    success: function () {
-                        console.log(" rated successfully ");
+                    success: function (data) {
+                        var n=parseFloat(data);
+                        $('#rateScore').html(n.toFixed(1)+'/5');
                     }
                 });
             }
