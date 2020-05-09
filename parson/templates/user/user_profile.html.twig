@@ -4,6 +4,8 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="/{{ asset('css/rating.css') }}">
+
 {% endblock %}
 
 {% block body_content %}
@@ -21,7 +23,9 @@
                 <div class="col col-sm-12 col-lg-8 info pl-0 d-flex flex-column text-left px-0  mt-4">
                     <div class="d-flex flex-row">
                         <h1 class="courseTitle "> {{ user.fullName }} </h1>
-                        <i class="fas fa-chalkboard-teacher ml-4 mt-3" style="font-size: 32px; color: #9f2dc8"></i>
+                        {% if  'ROLE_ENS' in user.roles or 'ROLE_ADMIN' in user.roles  %}
+                            <i class="fas fa-chalkboard-teacher ml-4 mt-3" style="font-size: 32px; color: #bc4ee9"></i>
+                        {% endif %}
 {#                        <img src="{{ asset('img/admin_icon.png') }}" class="sexeImg mx-3 mt-0" alt="">#}
                     </div>
                     <h4 class="text-muted ml-1"> {{ user.email }}</h4>
@@ -78,11 +82,10 @@
                     <b>
                         {{ rating|number_format(1) }} / 5
                     </b>
-                    <a href="#" class="mx-auto btn btn-outline-danger btn-lg">
-                        Donnez Votre Avis
-                    </a>
                 </div>
             </div> {# END row #}
+
+
 
             <hr>
             <h1> Cours Crées (<b>{{ user.createdCourses.count }}</b> résultats)</h1>
@@ -138,4 +141,5 @@
     {#</div>#}
 
 {% endblock %}
+
 

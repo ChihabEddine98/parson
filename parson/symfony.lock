@@ -2,6 +2,9 @@
     "behat/transliterator": {
         "version": "v1.3.0"
     },
+    "blackknight467/star-rating-bundle": {
+        "version": "v2.0.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {

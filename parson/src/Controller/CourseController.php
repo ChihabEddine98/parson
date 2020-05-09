@@ -299,4 +299,27 @@ class CourseController extends BaseController
 
     }
 
+
+    /**
+     * @Route("/course/rate",name="course_rate")
+     */
+    public function saveRate(EntityManagerInterface $manager, Request $request
+        , UserCourseRepository $repo,CourseRepository $courseRepo)
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $id = $data['id'];
+
+        $course=$courseRepo->findOneBy(["id"=>intval($id)]);
+
+        $result=$repo->findOneByUserAndCourse($this->getUser(),$course);
+        $result->setRate(intval($data['stars']));
+        $manager->persist($result);
+        $manager->flush();
+
+
+        return new JsonResponse(true);
+
+    }
+
 }
