@@ -235,6 +235,17 @@ class CourseController extends BaseController
         $manager->flush();
     }
 
+    public function newResult(EntityManagerInterface $manager,$exo, $note)
+    {
+        $r=new UserCourse();
+        $r->setUser($this->getUser())
+            ->setCourse($exo->getCourse())
+            ->setScore(0)
+            ->setRate(1);
+
+        $this->changeResult($manager, $r, [], $exo->getId(), $note);
+
+    }
     /**
      * @Route("/exo/parson/submit",name="exo_parson_submit")
      */
@@ -264,17 +275,7 @@ class CourseController extends BaseController
                 }
                 else
                 {
-                    $r=new UserCourse();
-                    $r->setUser($this->getUser())
-                        ->setCourse($exo->getCourse())
-                        ->setScore(0)
-                        ->setResults([])
-                        ->setRate(1);
-
-                    $manager->persist($r);
-                    $manager->flush();
-
-                    $results=[];
+                    $this->newResult($manager,$exo,0);
                 }
 
 
@@ -286,9 +287,23 @@ class CourseController extends BaseController
 
         // Si la réponse est vraie !
         $u_c = $userCourseRepo->findOneByUserAndCourse($this->getUser(), $exo->getCourse());
-        $results = $u_c->getResults();
-        $note=number_format(20/$exo->getCourse()->getExercises()->count(),2);
-        $this->changeResult($manager, $u_c, $results, $exo->getId(), $note);
+        if ($u_c)
+        {
+            $results = $u_c->getResults();
+            $note=number_format(20/$exo->getCourse()->getExercises()->count(),2);
+            $this->changeResult($manager, $u_c, $results, $exo->getId(), $note);
+
+        }
+        else
+        {
+            $note=number_format(20/$exo->getCourse()->getExercises()->count(),2);
+
+            $this->newResult($manager,$exo,$note);
+
+
+
+        }
+
         return new JsonResponse(array('result' => true));
 
     }
@@ -331,7 +346,19 @@ class CourseController extends BaseController
         $course=$courseRepo->findOneBy(["id"=>intval($id)]);
 
         $result=$repo->findOneByUserAndCourse($this->getUser(),$course);
-        $result->setRate(intval($data['stars']));
+        if ($result)
+        {
+            $result->setRate(intval($data['stars']));
+        }
+        else
+        {
+            $result=new UserCourse();
+            $result->setRate(intval($data['stars']))
+                   ->setUser($this->getUser())
+                   ->setCourse($course)
+                   ->setResults([])
+                   ->setScore(0);
+        }
         $manager->persist($result);
         $manager->flush();
 
