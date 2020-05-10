@@ -256,9 +256,27 @@ class CourseController extends BaseController
             if ($item != $exo->getSolution()[$i]) {
                 $result = false;
                 $u_c = $userCourseRepo->findOneByUserAndCourse($this->getUser(), $exo->getCourse());
-                $results = $u_c->getResults();
+                if ($u_c)
+                {
+                    $results = $u_c->getResults();
+                    $this->changeResult($manager, $u_c, $results, $exo->getId(), 0);
 
-                $this->changeResult($manager, $u_c, $results, $exo->getId(), 0);
+                }
+                else
+                {
+                    $r=new UserCourse();
+                    $r->setUser($this->getUser())
+                        ->setCourse($exo->getCourse())
+                        ->setScore(0)
+                        ->setResults([])
+                        ->setRate(1);
+
+                    $manager->persist($r);
+                    $manager->flush();
+
+                    $results=[];
+                }
+
 
                 return new JsonResponse(array('result' => $result));
 
