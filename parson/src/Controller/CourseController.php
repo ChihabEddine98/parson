@@ -50,6 +50,7 @@ class CourseController extends BaseController
 
             $manager->persist($course);
             $manager->flush();
+            $this->addFlash('success','Cours Crée avec success !');
 
             return $this->redirectToRoute('my_created_courses');
         }
@@ -59,6 +60,29 @@ class CourseController extends BaseController
         ]);
     }
 
+    /**
+     * @Route("/courses/{id}/edit",name="edit_course")
+     * @IsGranted("ROLE_ENS")
+     */
+    public function edit(Course $course,EntityManagerInterface $manager, Request $request)
+    {
+        $form = $this->createForm(CourseType::class,$course);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $course->setAuthor($this->getUser());
+
+            $manager->persist($course);
+            $manager->flush();
+            $this->addFlash('success','Cours Modifié avec success !');
+
+            return $this->redirectToRoute('my_created_courses');
+        }
+
+        return $this->render('course/course_edit.html.twig', [
+            'courseForm' => $form->createView()
+        ]);
+    }
 
     /**
      * @Route("/courses/me",name="my_courses")

@@ -4,14 +4,12 @@
 
 {% block body_content %}
 
-    <h1> Ajouter un Cours !</h1>
+    {{  include('course/_form.html.twig',{
+        title_text: 'Lancez votre nouveau cours !',
+        btn_text :  'Ajouter'
+    }) }}
 
-    {{ form_start(courseForm) }}
-    {{ form_widget(courseForm) }}
-        <button type="submit" class="btn btn-primary">
-            Ajouter
-        </button>
-    {{ form_end(courseForm) }}
+
 
 
 

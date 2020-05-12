@@ -1,0 +1,12 @@
+<div class="col-lg-7 col-sm-12 col-md-12 mt-3 mx-auto alert alert-primary text-center">
+    <h2> {{ title_text }}</h2>
+</div>
+
+<div class="col-6 mx-auto text-center">
+    {{ form_start(courseForm) }}
+    {{ form_widget(courseForm) }}
+    <button type="submit" class="btn btn-primary btn-lg">
+        {{ btn_text }}
+    </button>
+    {{ form_end(courseForm) }}
+</div>

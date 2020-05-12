@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/course/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/course/course_edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/course/course_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/course/course_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/course_new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,14 +98,8 @@
       <workItem from="1588963662659" duration="7000" />
       <workItem from="1588994047995" duration="11206000" />
       <workItem from="1589005751689" duration="1110000" />
-      <workItem from="1589069186351" duration="3700000" />
-    </task>
-    <task id="LOCAL-00012" summary="hashed_password !">
-      <created>1588288061341</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1588288061341</updated>
+      <workItem from="1589069186351" duration="5079000" />
+      <workItem from="1589254560736" duration="5331000" />
     </task>
     <task id="LOCAL-00013" summary="start control access">
       <created>1588289474974</created>
@@ -437,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589071256772</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="fix ajax send exos parson bug and rating for non existing result bug !">
+      <created>1589072921013</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1589072921013</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +452,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="get submitted instruction from parson type !" />
     <MESSAGE value="save just order of instructions" />
     <MESSAGE value="working evaluate exercice type parsonn !" />
     <MESSAGE value="meaninful version of composer.json start script" />
@@ -470,7 +476,8 @@
     <MESSAGE value="final rating system in course_detail.html.twig" />
     <MESSAGE value="fix some browser errors 'jquery not compatible with bootsrap'" />
     <MESSAGE value="fix ajax send exos parson bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix ajax send exos parson bug" />
+    <MESSAGE value="fix ajax send exos parson bug and rating for non existing result bug !" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix ajax send exos parson bug and rating for non existing result bug !" />
   </component>
   <component name="WindowStateProjectService">
     <state x="349" y="67" key="#CLI_Interpreters" timestamp="1588908857422">
@@ -501,10 +508,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="364" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1588913992011" />
-    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589071254704">
+    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589072920141">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589071254704" />
+    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589072920141" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -541,9 +548,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588915230831" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589069353002">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589256075846">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589069353002" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589256075846" />
   </component>
 </project>

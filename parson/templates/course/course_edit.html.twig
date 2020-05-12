@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier un Cours {% endblock %}
+
+{% block body_content %}
+
+    {{  include('course/_form.html.twig',{
+        title_text: 'Le voila votre cours !',
+        btn_text :  'Valider'
+    }) }}
+
+
+
+
+
+{% endblock %}
