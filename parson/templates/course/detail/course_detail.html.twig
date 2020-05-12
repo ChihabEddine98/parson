@@ -14,6 +14,15 @@
 
                 <div class="col-lg-12  text-dark ">
 
+                    {% if course.author.id==app.user.id %}
+                        <div class="text-center">
+                            <a href="{{ path('edit_course',{'id':course.id})}}" class="btn btn-warning btn-lg"> <span><i class="fas fa-edit"></i></span> Modifier Ce cours </a>
+                            <a href="{{ path('new_exo',{'id':course.id}) }}" class="btn btn-danger btn-lg"><span><i class="fas fa-plus-circle"></i></span> Ajouter un exercice </a>
+                            <a href="{{ path('new_course') }}" class="btn btn-dark btn-lg"><span><i class="fas fa-plus-circle"></i></span> Ajouter un autre cours </a>
+                        </div>
+
+                    {% endif %}
+                    <hr>
                     <div class="row col-12 mb-3 courseImg">
                         <img style="height: 320px;object-fit: cover;" class="col-12" src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="">
                     </div>
@@ -21,6 +30,7 @@
                     <div class=" row col-lg-9 col-sm-10 courseDetails mx-auto px-5 mb-5">
                          <h1 class="courseTitle text-center"> {{ course.title }} </h1>
                     </div>
+
 
                     <div class="row col-lg-12 col-sm-12 courseDetails  d-flex flex-row">
 
@@ -81,6 +91,7 @@
                     </div>
 
                     <hr class="divider">
+
 
                     {# Description du cours !#}
                     <div class="col-12 text-center mb-5">

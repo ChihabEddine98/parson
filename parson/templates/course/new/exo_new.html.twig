@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Ajouter un Exercice {% endblock %}
+
+{% block body_content %}
+
+
+    <div class="col-lg-7 col-sm-12 col-md-12 mt-3 mx-auto alert alert-primary text-center">
+        <h2> Nouveau Exo </h2>
+    </div>
+
+    <div class="col-6 mx-auto text-center">
+        {{ form_start(courseForm) }}
+{#        {{ form_widget(courseForm) }}#}
+        {{ form_row(courseForm.title) }}
+        {{ form_row(courseForm.question) }}
+        {{ form_row(courseForm.type) }}
+        {{ form_row(courseForm.mark) }}
+        <ul id="solution-fields-list"
+            data-prototype="{{ form_widget(courseForm.solution.vars.prototype)|e }}"
+            data-widget-tags="{{ '<li></li>'|e }}"
+            data-widget-counter="{{ courseForm.solution|length }}">
+            {% for emailField in courseForm.solution %}
+                <li>
+                    {{ form_errors(emailField) }}
+                    {{ form_widget(emailField) }}
+                </li>
+            {% endfor %}
+            <button type="button"
+                    class="add-another-collection-widget btn btn-info"
+                    data-list-selector="#email-fields-list"><span><i class="fas fa-plus-circle"></i></span> instruction</button>
+        </ul>
+
+        <button type="submit" class="btn btn-primary btn-lg">
+            Valider
+        </button>
+        {{ form_end(courseForm) }}
+    </div>
+{#    {{  include('course/_form.html.twig',{#}
+{#        title_text: 'Lancez votre nouveau exercice !',#}
+{#        btn_text :  'Ajouter'#}
+{#    }) }}#}
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.add-another-collection-widget').click(function (e) {
+                var list = jQuery(jQuery(this).attr('data-list-selector'));
+
+                // Try to find the counter of the list or use the length of the list
+                var counter = list.data('widget-counter') || list.children().length;
+
+                // grab the prototype template
+                var newWidget = list.attr('data-prototype');
+                console.log(list.attr('data-prototype'));
+
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, counter);
+                // Increase the counter
+                counter++;
+                // And store it, the length cannot be used if deleting widgets is allowed
+                list.data('widget-counter', counter);
+
+                // create a new list element and add it to the list
+                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                newElem.appendTo(list);
+            });
+        });
+    </script>
+{% endblock %}

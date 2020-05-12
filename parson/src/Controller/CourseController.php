@@ -7,6 +7,7 @@ use App\Entity\Course;
 use App\Entity\Exercise;
 use App\Entity\UserCourse;
 use App\Form\CourseType;
+use App\Form\ExoType;
 use App\Repository\CommentRepository;
 use App\Repository\CourseRepository;
 use App\Repository\ExerciseRepository;
@@ -28,7 +29,7 @@ class CourseController extends BaseController
         $repo = $this->getDoctrine()->getRepository(Course::class);
         $courses = $repo->findAll();
 
-        return $this->render('course/course_list.html.twig', [
+        return $this->render('course/list/course_list.html.twig', [
             'title' => ' Tout Les cours',
             'courses' => $courses
         ]);
@@ -55,7 +56,7 @@ class CourseController extends BaseController
             return $this->redirectToRoute('my_created_courses');
         }
 
-        return $this->render('course/course_new.html.twig', [
+        return $this->render('course/new/course_new.html.twig', [
             'courseForm' => $form->createView()
         ]);
     }
@@ -79,7 +80,59 @@ class CourseController extends BaseController
             return $this->redirectToRoute('my_created_courses');
         }
 
-        return $this->render('course/course_edit.html.twig', [
+        return $this->render('course/edit/course_edit.html.twig', [
+            'courseForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/courses/{id}/new_exo",name="new_exo")
+     * @IsGranted("ROLE_ENS")
+     */
+    public function newExo(EntityManagerInterface $manager, Request $request,Course $course)
+    {
+        $form = $this->createForm(ExoType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $exo=$form->getData();
+            dd($exo);
+            $course->setAuthor($this->getUser());
+
+            $manager->persist($course);
+            $manager->flush();
+            $this->addFlash('success','Exercice ajouté avec success !');
+
+            return $this->redirectToRoute('course_detail',[
+                'id'=> $course->getId()
+            ]);
+        }
+
+        return $this->render('course/new/exo_new.html.twig', [
+            'courseForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/exercises/{id}/edit",name="edit_exo")
+     * @IsGranted("ROLE_ENS")
+     */
+    public function editExo(Exercise $course,EntityManagerInterface $manager, Request $request)
+    {
+        $form = $this->createForm(CourseType::class,$course);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $course->setAuthor($this->getUser());
+
+            $manager->persist($course);
+            $manager->flush();
+            $this->addFlash('success','Cours Modifié avec success !');
+
+            return $this->redirectToRoute('my_created_courses');
+        }
+
+        return $this->render('course/edit/course_edit.html.twig', [
             'courseForm' => $form->createView()
         ]);
     }
@@ -93,7 +146,7 @@ class CourseController extends BaseController
     {
 
         $courses = $this->getUser()->getRegistredInCourses();
-        return $this->render('course/course_my.html.twig', [
+        return $this->render('course/list/course_my.html.twig', [
             'courses' => $courses
         ]);
     }
@@ -106,7 +159,7 @@ class CourseController extends BaseController
     public function mesCoursCrees()
     {
         $courses = $this->getUser()->getCreatedCourses();
-        return $this->render('course/course_list.html.twig', [
+        return $this->render('course/list/course_list.html.twig', [
             'title' => "Les cours que j'encadre ",
             'courses' => $courses
         ]);
@@ -127,7 +180,7 @@ class CourseController extends BaseController
         $moyenne = $repoScore->findAverageByUser($this->getUser());
 
 
-        return $this->render('course/course_notes.html.twig', [
+        return $this->render('course/list/course_notes.html.twig', [
             'courses' => $courses,
             'average' => $moyenne
         ]);
@@ -184,7 +237,7 @@ class CourseController extends BaseController
             3 /*limit per page*/
         );
 
-        return $this->render('course/course_detail.html.twig', [
+        return $this->render('course/detail/course_detail.html.twig', [
             'course' => $cours,
             'coursesLike' => $coursSimilaires,
             'average' => $moyenne,
@@ -199,7 +252,7 @@ class CourseController extends BaseController
 
     public function exerciseDetail(Exercise $exercise)
     {
-        return $this->render('course/course_exercise_detail.html.twig', [
+        return $this->render('course/detail/course_exercise_detail.html.twig', [
             'controller_name' => 'CourseController',
             'exercise' => $exercise,
             'result' => null
