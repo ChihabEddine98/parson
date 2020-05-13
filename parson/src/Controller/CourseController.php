@@ -97,7 +97,6 @@ class CourseController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $exo=$form->getData();
             $exo->setCourse($course);
-            dd($exo);
 
             $manager->persist($exo);
             $manager->flush();
@@ -128,7 +127,9 @@ class CourseController extends BaseController
             $manager->flush();
             $this->addFlash('success','Exo Modifié avec success !');
 
-            return $this->redirectToRoute('my_created_courses');
+            return $this->redirectToRoute('exercise_detail',[
+                'id'=> $exo->getId()
+            ]);
         }
 
         return $this->render('course/edit/exo_edit.html.twig', [
