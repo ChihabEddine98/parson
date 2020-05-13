@@ -96,12 +96,12 @@ class CourseController extends BaseController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $exo=$form->getData();
+            $exo->setCourse($course);
             dd($exo);
-            $course->setAuthor($this->getUser());
 
-            $manager->persist($course);
+            $manager->persist($exo);
             $manager->flush();
-            $this->addFlash('success','Exercice ajouté avec success !');
+            $this->addFlash('success','Exo ajouté avec success !');
 
             return $this->redirectToRoute('course_detail',[
                 'id'=> $course->getId()
@@ -117,22 +117,21 @@ class CourseController extends BaseController
      * @Route("/exercises/{id}/edit",name="edit_exo")
      * @IsGranted("ROLE_ENS")
      */
-    public function editExo(Exercise $course,EntityManagerInterface $manager, Request $request)
+    public function editExo(Exercise $exo,EntityManagerInterface $manager, Request $request)
     {
-        $form = $this->createForm(CourseType::class,$course);
+        $form = $this->createForm(ExoType::class,$exo);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $course->setAuthor($this->getUser());
 
-            $manager->persist($course);
+            $manager->persist($exo);
             $manager->flush();
-            $this->addFlash('success','Cours Modifié avec success !');
+            $this->addFlash('success','Exo Modifié avec success !');
 
             return $this->redirectToRoute('my_created_courses');
         }
 
-        return $this->render('course/edit/course_edit.html.twig', [
+        return $this->render('course/edit/exo_edit.html.twig', [
             'courseForm' => $form->createView()
         ]);
     }
@@ -208,7 +207,7 @@ class CourseController extends BaseController
         $avisMoyen=count($results) ? $sommeAvis/count($results): 0;
 
 
-        return $this->render('course/ens_results.html.twig', [
+        return $this->render('course/list/ens_results.html.twig', [
             'results'=> $results,
             'average' => $moyenne,
             'rate' => $avisMoyen

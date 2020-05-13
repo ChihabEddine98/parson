@@ -17,19 +17,7 @@ class ExoType extends AbstractType
         $builder
             ->add('title')
             ->add('question')
-            ->add('type')
-            ->add('mark')
-            ->add('solution',CollectionType::class,[
-                'entry_type'=>TextType::class,
-                'entry_options' => [
-                    'attr' => ['class' => 'email-box'],
-                ],
-                'allow_add'=>true,
-                'allow_delete'=>true,
-                'prototype'=>'email'
-            ])
-        ;
-
+            ->add('type');
     }
 
     public function configureOptions(OptionsResolver $resolver)
