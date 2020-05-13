@@ -15,15 +15,20 @@
             <div class="col-lg-12  text-dark">
                 {% if exercise.course.author.id==app.user.id %}
                     <div class="text-center">
-                        <a href="{{ path('edit_exo',{'id':exercise.id})}}" class="btn btn-warning btn-lg"> <span><i class="fas fa-edit"></i></span> Modifier cet exo </a>
-                        <a href="{{ path('new_exo',{'id':exercise.id}) }}" class="btn btn-danger btn-lg"><span><i class="fas fa-plus-circle"></i></span> une solution </a>
-                        <a href="{{ path('new_exo',{'id':exercise.course.id}) }}" class="btn btn-dark btn-lg"><span><i class="fas fa-plus-circle"></i></span> un autre exo </a>
+                        <a href="{{ path('edit_exo',{'id':exercise.id}) }}" class="btn btn-warning btn-lg"> <span><i
+                                        class="fas fa-edit"></i></span> Modifier cet exo </a>
+                        <button class="add-solution btn btn-danger btn-lg"><span><i
+                                        class="fas fa-plus-circle"></i></span> une solution
+                        </button>
+                        <a href="{{ path('new_exo',{'id':exercise.course.id}) }}" class="btn btn-dark btn-lg"><span><i
+                                        class="fas fa-plus-circle"></i></span> un autre exo </a>
                     </div>
 
                 {% endif %}
                 <hr>
                 <div class="row col-12 mb-3 courseImg">
-                    <img style="height: 320px;object-fit: cover;" class="col-12" src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="">
+                    <img style="height: 320px;object-fit: cover;" class="col-12"
+                         src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="">
                 </div>
 
                 <div class=" row col-lg-12 col-sm-10 courseDetails mx-auto px-5 mb-5">
@@ -46,7 +51,8 @@
                             {{ exercise.course.author.email }}
                         </a>
                         <p>
-                            Le {{ exercise.course.createdAt|date('d/m/Y') }} à {{ exercise.course.createdAt|date('H:i') }}
+                            Le {{ exercise.course.createdAt|date('d/m/Y') }}
+                            à {{ exercise.course.createdAt|date('H:i') }}
                         </p>
                     </div>
 
@@ -65,11 +71,11 @@
                 </div>
                 <hr>
 
-                    <div class="alert" id="result">
-                       <h5>
-                           Bravooo !
-                       </h5>
-                    </div>
+                <div class="alert" id="result">
+                    <h5>
+                        Bravooo !
+                    </h5>
+                </div>
 
 
                 <div class="row bg-dark text-light pt-4">
@@ -86,18 +92,38 @@
                     <button id="btnSubmit" class="btn btn-success w-100">Valider</button>
                 </div>
 
-
-
-
+                <div class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Proposez votre solution !</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <button type="button" class="add-solution btn btn-secondary my-2"><span> <i
+                                                class="fa fa-plus"></i></span> instruction
+                                </button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" id="valid-solution">Valider</button>
+                                <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- <div class="btn_">
-                    <a href="/register" class="btn"> Commencer ! </a>
-                </div> -->
 
             </div>
 
+            <!-- <div class="btn_">
+                <a href="/register" class="btn"> Commencer ! </a>
+            </div> -->
+
         </div>
+
+    </div>
     </div>
 
 {% endblock %}
@@ -106,77 +132,102 @@
     {{ parent() }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
 
-                $('#result').hide();
+            $('#result').hide();
 
-                var sortedItems = [];
+            var sortedItems = [];
 
-                $("#instructions").sortable({
-                    stop: function (e, ui) {
-                        SetSortOrder();
-                    },
+            $("#instructions").sortable({
+                stop: function (e, ui) {
+                    SetSortOrder();
+                },
+            });
+            $("#instructions").disableSelection();
+
+            //Init the list items on load
+            SetSortOrder();
+
+            //Set the data-order attribute to the index
+            function SetSortOrder() {
+                $("#instructions li").each(function (index, value) {
+                    $(this).data("order", index);
                 });
-                $("#instructions").disableSelection();
+            }
 
-                //Init the list items on load
-                SetSortOrder();
+            //AJAX
+            function SubmitData(items) {
 
-                //Set the data-order attribute to the index
-                function SetSortOrder() {
-                    $("#instructions li").each(function (index, value) {
-                        $(this).data("order", index);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('exo_parson_submit') }}",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"items": items, "id":{{ exercise.id }} }),
+                })//done handler
+                    .done(function (data) {
+                        var msg = data.result ? 'Bravoo ! c\'est le bon code !' : 'Ooops ! retentez !';
+                        if (data.result) {
+                            $('#result').addClass('alert-success').removeClass('alert-danger');
+                        } else {
+                            $('#result').addClass('alert-danger').removeClass('alert-success');
+
+                        }
+                        $('#result h5').text(msg);
+                        $('#result').show();
+
+                        console.log(data.d);
                     });
-                }
+            }
 
-                //AJAX
-                function SubmitData(items) {
+            //Get the current order state
+            function PopulateSortItems() {
+                sortedItems.length = 0;
 
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ path('exo_parson_submit') }}",
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        data: JSON.stringify({ "items": items , "id":{{ exercise.id }} }),
-                    })//done handler
-                        .done(function (data) {
-                            var msg=data.result ? 'Bravoo ! c\'est le bon code !': 'Ooops ! retentez !';
-                            if (data.result)
-                            {
-                                $('#result').addClass('alert-success').removeClass('alert-danger');
-                            }
-                            else
-                            {
-                                $('#result').addClass('alert-danger').removeClass('alert-success');
+                $("#instructions li").each(function (index, value) {
+                    let item = $(this).attr("id");
 
-                            }
-                            $('#result h5').text(msg);
-                            $('#result').show();
-
-                            console.log(data.d);
-                        });
-                }
-
-                //Get the current order state
-                function PopulateSortItems() {
-                    sortedItems.length = 0;
-
-                    $("#instructions li").each(function (index, value) {
-                        let item = $(this).attr("id");
-
-                       // item.id = $(this).attr("id");
-                        // item.order = $(this).data("order");
-                        sortedItems.push(item);
-                    });
-
-                    return sortedItems
-                }
-
-                //For debugging
-                $('#btnSubmit').click(function () {
-                    var items = PopulateSortItems();
-                    SubmitData(items);
+                    // item.id = $(this).attr("id");
+                    // item.order = $(this).data("order");
+                    sortedItems.push(item);
                 });
+
+                return sortedItems
+            }
+
+            //For debugging
+            $('#btnSubmit').click(function () {
+                var items = PopulateSortItems();
+                SubmitData(items);
+            });
+
+
+            $('.add-solution').click(function (e) {
+                var list = $('.modal-body');
+                $('.modal').modal();
+
+
+                newInstruction = "<input type=\"text\" placeholder=\"à vous...\"\n" +
+                    "  class=\"form-control mt-2\">";
+
+                // var solutionList=$('#solution-list');
+                // var li= "<li class='my-1'>"+newInstruction.select(input)+" </li>";
+                // solutionList.append(li);
+
+                list.append(newInstruction);
+                // console.log(list);
+
+            });
+            let instructions = [];
+            $('#valid-solution').click(function (e) {
+                var list = $('.modal-body input:text').each(function (instruction) {
+                    instructions.push($(this).val().toString());
+                })
+                console.log(instruction);
+
+            })
+
+
             // $('#instructions').sortable({
             //     stop:function(event, ui){
             //         var element_dd = ui.item[0].attributes.element.value,
