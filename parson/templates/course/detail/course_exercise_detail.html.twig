@@ -33,7 +33,7 @@
 
                 <div class=" row col-lg-12 col-sm-10 courseDetails mx-auto px-5 mb-5">
                     <h1 class="courseTitle text-center"> {{ exercise.course.title }} >
-                        <h2 class="courseTitle text-center"> {{ exercise.title }} </h2></h1>
+                        <h2 class="courseTitle text-center mt-2"> {{ exercise.title }} </h2></h1>
 
                 </div>
 
@@ -73,12 +73,11 @@
 
                 <div class="alert" id="result">
                     <h5>
-                        Bravooo !
                     </h5>
                 </div>
 
 
-                <div class="row bg-dark text-light pt-4">
+                <div class="row bg-dark text-light pt-4" id="ins_div">
                     <ul id="instructions">
                         {% for key,instruction in exercise.solution|shuffle %}
                             <li class="row instruction" id="{{ instruction }}">
@@ -102,9 +101,19 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <div class="p-2 rounded" id="result_solution">
+                                    <h5></h5>
+                                </div>
                                 <button type="button" class="add-solution btn btn-secondary my-2"><span> <i
                                                 class="fa fa-plus"></i></span> instruction
                                 </button>
+                                {% if exercise.solution | length >0 %}
+                                    {% for ins in exercise.solution %}
+                                    <input type="text" value="{{ ins }}"
+                                           class="form-control mt-2">
+                                    {% endfor %}
+                                {% endif %}
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" id="valid-solution">Valider</button>
@@ -221,9 +230,49 @@
             let instructions = [];
             $('#valid-solution').click(function (e) {
                 var list = $('.modal-body input:text').each(function (instruction) {
-                    instructions.push($(this).val().toString());
+                    if ($(this).val())
+                    {
+                        instructions.push($(this).val().toString());
+                    }
                 })
-                console.log(instruction);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('exo_add_sol') }}",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"solution": instructions, "id":{{ exercise.id }} }),
+                })//done handler
+                    .done(function (data) {
+                        let msg="";
+                        if (data.result) {
+                            msg=" Super ! c'est bien sauvegardé";
+                            $('#result_solution').addClass('alert-success').removeClass('alert-danger');
+                        } else {
+                            msg=" Oops ! qq chose d'imprévu";
+                            $('#result_solution').addClass('alert-danger').removeClass('alert-success');
+
+                        }
+                        $('#result_solution h5').text(msg);
+                        $("#result_solution").fadeIn('slow').animate({
+                            opacity: 1.0}, 2000).fadeOut('slow');
+                        li="";
+                        for (let ins of instructions)
+                        {
+                            li+="                            <li class=\"row instruction\" id=\""+ins+"\">\n" +
+                                "                                <h5 class=\"p-2 border border-light \">"+ins+" </h5>\n" +
+                                "                            </li>\n";
+                        }
+                        ins_div="<ul id=\"instructions\">\n" +li+
+                            "</ul>"
+                        $('#ins_div').html(ins_div);
+                        $("#instructions").sortable({
+                            stop: function (e, ui) {
+                                SetSortOrder();
+                            },
+                        });
+                        // $("#result_solution").show();
+                        // setTimeout(function() { $("#result_solution").hide(); }, 2000);
+                    });
 
             })
 

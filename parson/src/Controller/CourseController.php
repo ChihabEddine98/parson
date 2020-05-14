@@ -138,6 +138,22 @@ class CourseController extends BaseController
     }
 
     /**
+     * @Route("/exo/add_solution",name="exo_add_sol")
+     */
+    public function addSolution2Exo(Request $request,EntityManagerInterface $manager,ExerciseRepository $repo)
+    {
+        $data = json_decode($request->getContent(), true);
+        $exo = $repo->findOneBy(['id'=>$data['id']]);
+
+        $exo->setSolution($data['solution']);
+
+        $manager->persist($exo);
+        $manager->flush();
+
+        return new JsonResponse(array('result' => true,'exo'=>$exo));
+
+    }
+    /**
      * @Route("/courses/me",name="my_courses")
      * @IsGranted("ROLE_USER")
      */
@@ -354,7 +370,6 @@ class CourseController extends BaseController
                 {
                     $this->newResult($manager,$exo,0);
                 }
-
 
                 return new JsonResponse(array('result' => $result));
 

@@ -18,7 +18,15 @@
 
             <div class="row col-12 mb-3 courseImg d-flex flex-row">
                 <div class="col-sm-12 col-lg-4">
-                    <img style="height: 240px;object-fit: cover;" class="col-lg-10 col-md-7 col-sm-10 rounded-circle" src="{{ asset('img/profil_default_male.png') }}" alt="">
+                    <img style="height: 220px;object-fit: cover;" class="col-lg-10 col-md-7 col-sm-10 rounded mt-4" src="{{ asset('img/profil_default_male.png') }}" alt="">
+                    {% if app.user.id == user.id %}
+
+                        <p>
+                            <a class="btn btn-outline-primary mt-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <span> <i class="fas fa-pen"></i></span> modifier
+                            </a>
+                        </p>
+                    {% endif %}
                 </div>
                 <div class="col col-sm-12 col-lg-8 info pl-0 d-flex flex-column text-left px-0  mt-4">
                     <div class="d-flex flex-row">
@@ -47,7 +55,13 @@
             </div><!-- /.row -->
 
             <hr>
-            <h1> TODO</h1>
+            <div class="ml-4 collapse" id="collapseExample">
+                <div class="card card-body">
+                    {{ include('user/_user_form.html.twig',{
+                        addr:user.address,
+                    }) }}
+                </div>
+            </div>
             <hr>
             <div class="row p-0">
                 {# Info Heures et nb_students #}
