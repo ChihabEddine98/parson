@@ -39,12 +39,12 @@
                     <h4 class="text-muted ml-1"> {{ user.email }}</h4>
                     <h5 class="text-muted ml-1"> Membre {{ user.createdAt|ago }}</h5>
                     <h5 class="text-muted ml-1">
-                        <i class="fas fa-phone-square-alt" style="font-size: 1.3em;"></i>
-                        {{ user.phone }}
+                        <i class="fas fa-phone-square-alt" style="font-size: 1.3em;"> </i>
+                        <span id="phone_label"> {{ user.phone }}</span>
                     </h5>
                     <h5 class="text-muted ml-1">
                         <i class="fas fa-map-marked-alt" style="font-size: 1.3em;"></i>
-                        {{ user.address }}
+                        <span id="addr_label"> {{ user.address }}</span>
                     </h5>
                     <h5 class="text-muted ml-1" style="font-size: 1.4em;">
                         <i class="fas fa-comments" ></i>
@@ -156,4 +156,58 @@
 
 {% endblock %}
 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+
+            $('#valid_edit_profil').click(function () {
+                addr_input = $('#addr_input').val();
+                phone_input=$('#phone_input').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('edit_user_info') }}",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"addr": addr_input,"phone":phone_input, "id":{{ user.id }} }),
+                })//done handler
+                    .done(function (data) {
+                        var msg;
+                        if (data.result) {
+                            msg=" Super ! c'est bien sauvegardé";
+                            $('#result').addClass('alert-success').removeClass('alert-danger');
+
+                            if (addr_input)
+                            {
+                                $('#addr_label').html(addr_input);
+                            }
+                            if (phone_input)
+                            {
+                                $('#phone_label').html(phone_input);
+                            }
+                        } else {
+                            msg=" Oops ! qq chose d'imprévu";
+                            $('#result').addClass('alert-danger').removeClass('alert-success');
+
+                        }
+                        $('#result h5').text(msg);
+                        $("#result").fadeIn('slow').animate({
+                            opacity: 1.0}, 2000).fadeOut('slow');
+
+                        console.log(data.d);
+                    });
+
+
+            })
+
+
+
+
+        })
+
+    </script>
+
+{% endblock %}
 

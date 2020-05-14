@@ -1,28 +1,30 @@
 <div class="col-lg-7 col-sm-12 col-md-12 mt-3 mx-auto alert alert-primary text-center">
     <h2> Modifiez vos infos ! </h2>
 </div>
-
+<div class="p-2 rounded my-2" id="result">
+    <h5></h5>
+</div>
 <div class="col-6 mx-auto text-center">
 
-        <form method="post" class="text-center">
+        <div  class="text-center">
             <div class="form-group">
                 <input type="text" class="form-control" id="addr_input" aria-describedby="addrHelp"
-                                    placeholder="Entrez votre adresse" value="{{ addr? addr :'' }}">
+                                    placeholder="Entrez votre adresse" value="{{ addr ? addr :'' }}">
                 <small id="addrHelp" class="form-text text-muted">Ex : 9 Place Lucie Aubrac 94600 </small>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="telHelp"
+                <input type="text" class="form-control" id="phone_input" aria-describedby="telHelp"
                        placeholder="Entrez votre Tél">
-                <small id="emailHelp" class="form-text text-muted">Ex : +33.6.60.54.94.35 </small>
+                <small id="telHelp" class="form-text text-muted">Ex : +33.6.60.54.94.35 </small>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Une image !</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">
+            <button type="submit" class="btn btn-primary btn-lg" id="valid_edit_profil">
                 Valider
             </button>
-        </form>
+        </div>
 
 
 </div>

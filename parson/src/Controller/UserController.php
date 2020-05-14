@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserCourseRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
@@ -75,4 +78,28 @@ class UserController extends AbstractController
             'nbHours' => $heureSomme
         ]);
     }
+
+    /**
+     * @Route("/user/edit",name="edit_user_info")
+     */
+    public function editUserInfo(Request $request,EntityManagerInterface $manager,UserRepository $repo)
+    {
+        $data = json_decode($request->getContent(), true);
+        $user=$repo->findOneBy(["id"=>$data['id']]);
+        if ($data['addr'])
+        {
+            $user->setAddress($data['addr']);
+        }
+        if ($data['phone'])
+        {
+            $user->setPhone($data['phone']);
+        }
+
+
+        $manager->persist($user);
+        $manager->flush();
+
+        return new JsonResponse(array('result' => true));
+    }
+
 }
