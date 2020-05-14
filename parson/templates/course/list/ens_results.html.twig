@@ -45,11 +45,26 @@
                                 {{ result.user.fullName }}
                             </th>
                             <td width="30%;">{{ result.course.title }}</td>
-                            <td width="30%">
+                            <td width="60%">
                                 {% if result.results %}
-                                {{ result.results|json_encode }}
+                                    <p>
+                                        <a class="btn btn-outline-light mt-2" data-toggle="collapse" href="{{ '#detail'~loop.index }}" role="button" aria-expanded="false" aria-controls="{{ 'detail'~loop.index }}">
+                                            <span> <i class="fas fa-plus"></i></span> Details
+                                        </a>
+                                    </p>
+                                    <hr>
+                                    <div class="ml-4 collapse" id="{{ 'detail'~loop.index }}">
+                                        <div class="card card-body text-dark">
+                                            <span>
+                                             {{ result.results|json_encode }}
+                                            </span>
+                                            <input type="hidden" value="{{ result.results|json_encode }}" id="{{ 'hDetail'~loop.index }}">
+                                        </div>
+                                    </div>
+                                    <hr>
+
                                 {% else %}
-                                    Nope
+                                    RAS
                                 {% endif %}
                             </td>
                             <td>{{ result.score|number_format(2) }}</td>
@@ -78,3 +93,49 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+
+            for (var i=1;i<= {{ results|length }};i++)
+            {
+                id="#detail"+i;
+                console.log(id);
+
+                let exoH=$(id+' div input:hidden').val();
+                let json=eval(exoH);
+                let renderDetails="";
+                if (json)
+                {
+                    for (var j=0;j<json.length;j++)
+                    {
+                        var obj=json[j];
+                        Object.keys(obj).forEach(function (key) {
+                            let value=obj[key];
+                            color= value ? "#21b358" :"#e73042";
+                            renderDetails+="                                            <div class='my-1' style=\"background-color:"+color+";color:#f9ecec;\">\n" +
+                                "                                                <span class=\"ml-2 my-1\" style=\"float: left\">\n" +
+                                "                                                    Exo"+ key+"\n" +
+                                "                                                </span>\n" +
+                                "                                                <span class=\"mr-2 my-1\" style=\"float: right\">\n" +
+                                "                                                    "+value+" pts\n" +
+                                "                                                </span>\n" +
+                                "                                            </div>";
+                            // renderDetails+="<span class=\"alert alert-success my-1\" style=\"color: #f1f2f3;background-color: #35ac63\">\n"
+                            //     +" Exo "+ key +"--"+ value +
+                            //     "</span>"
+                        })
+
+                }
+
+                }
+                let exoDiv=$(id+' div').html(renderDetails);
+            }
+
+
+
+        });
+    </script>
+
+{% endblock %}
