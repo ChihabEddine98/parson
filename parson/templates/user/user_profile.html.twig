@@ -103,8 +103,9 @@
 
 
             <hr>
-            <h1> Cours Crées (<b>{{ user.createdCourses.count }}</b> résultats)</h1>
-            <div class="row ml-5">
+            {%  if is_granted('ROLE_ENS') %}
+                <h1> Cours Crées (<b>{{ user.createdCourses.count }}</b> résultats)</h1>
+                <div class="row ml-5">
                 {% if user.createdCourses.count %}
                     {% for course in user.createdCourses %}
                         {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
@@ -125,7 +126,33 @@
                     <h1>  Aucun cours pour le moment :/</h1>
                 {% endif %}
 
-            </div>{# END row #}
+                </div>{# END row #}
+            {% else %}
+                <h1> Cours Suivis (<b>{{ user.createdCourses.count }}</b> résultats)</h1>
+                <div class="row ml-5">
+                {% if user.registredInCourses.count %}
+                    {% for course in user.registredInCourses %}
+                        {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
+                            'text-light bg-danger','text-light bg-success',
+                            'text-light bg-secondary','text-dark bg-warning'])  %}
+                        <div class="card {{theme}} mb-3 mx-1" style="max-width: 18rem;">
+                            <div class="card-header">{{course.course.createdAt|ago }}</div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ course.course.title|truncate(50) }}</h5>
+                                <p> <b>( {{ course.course.exercises.count }} exercice , {{ course.course.comments.count }} avis ) </b></p>
+                                <a href="{{ path('course_detail',{'id':course.course.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
+                                    Voir En Détail
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1>  Aucun cours pour le moment :/</h1>
+                {% endif %}
+
+                </div>{# END row #}
+            {% endif %}
+
 
 
 

@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/detail/course_exercise_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/detail/course_exercise_detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/list/ens_results.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/list/ens_results.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/_user_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/_user_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,14 +99,8 @@
       <workItem from="1589069186351" duration="5079000" />
       <workItem from="1589254560736" duration="14579000" />
       <workItem from="1589348063078" duration="6688000" />
-      <workItem from="1589429947453" duration="20739000" />
-    </task>
-    <task id="LOCAL-00021" summary="Calcul de moyenne dans profile plus efficace">
-      <created>1588374780858</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1588374780858</updated>
+      <workItem from="1589429947453" duration="21388000" />
+      <workItem from="1589493757091" duration="1451000" />
     </task>
     <task id="LOCAL-00022" summary="Calcul de moyenne dans profile plus efficace (#2)">
       <created>1588374803707</created>
@@ -447,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589445125369</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="much better showing exos and marks !">
+      <created>1589450750322</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1589450750322</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,7 +453,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="great ! working marks system !" />
     <MESSAGE value="great ! working marks system ! (20/#exos)" />
     <MESSAGE value="style valider btn in parson exercises !" />
     <MESSAGE value="add new comment handle with ajax" />
@@ -480,7 +477,8 @@
     <MESSAGE value="fixed add solution and some fun !" />
     <MESSAGE value="edit user profile ! yoooho" />
     <MESSAGE value="register into a course !" />
-    <option name="LAST_COMMIT_MESSAGE" value="register into a course !" />
+    <MESSAGE value="much better showing exos and marks !" />
+    <option name="LAST_COMMIT_MESSAGE" value="much better showing exos and marks !" />
   </component>
   <component name="WindowStateProjectService">
     <state x="349" y="67" key="#CLI_Interpreters" timestamp="1588908857422">
@@ -519,10 +517,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589440138209" />
-    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589445124198">
+    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589450748966">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589445124198" />
+    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589450748966" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
