@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Course;
 use App\Entity\User;
+use App\Entity\UserCourse;
 use App\Repository\UserCourseRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -100,6 +102,22 @@ class UserController extends AbstractController
         $manager->flush();
 
         return new JsonResponse(array('result' => true));
+    }
+
+    /**
+     * @Route("/register_to_course/{id}",name="register_course")
+     */
+    public function userRegister2Course(Request $request,EntityManagerInterface $manager,Course $course,UserCourseRepository $repo)
+    {
+        $u_c=new UserCourse();
+        $u_c->setCourse($course);
+        $u_c->setUser($this->getUser());
+        $manager->persist($u_c);
+        $manager->flush();
+
+        $this->addFlash('success','Super ! maintenant vous faites partie de ce cours . ');
+
+        return $this->redirectToRoute('course_detail',["id"=>$course->getId()]);
     }
 
 }

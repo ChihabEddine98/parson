@@ -252,13 +252,14 @@ class CourseController extends BaseController
             $request->query->getInt('page', 1), /*page number*/
             3 /*limit per page*/
         );
-
+        $dejaIn=!$repoScore->findOneByUserAndCourse($this->getUser(),$cours);
         return $this->render('course/detail/course_detail.html.twig', [
             'course' => $cours,
             'coursesLike' => $coursSimilaires,
             'average' => $moyenne,
             'rating' => $avisMoyen,
-            'pagination'=>$pagination
+            'pagination'=>$pagination,
+            'alreadyIn'=>!$dejaIn
         ]);
     }
 
