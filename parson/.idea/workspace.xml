@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CourseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CourseType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1589348063078" duration="6688000" />
       <workItem from="1589429947453" duration="21388000" />
       <workItem from="1589493757091" duration="1475000" />
-      <workItem from="1589517334486" duration="2482000" />
+      <workItem from="1589517334486" duration="2544000" />
     </task>
     <task id="LOCAL-00022" summary="Calcul de moyenne dans profile plus efficace (#2)">
       <created>1588374803707</created>
