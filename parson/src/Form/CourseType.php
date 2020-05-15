@@ -14,13 +14,22 @@ class CourseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('description')
-            ->add('category')
-            ->add('timeNeeded')
+            ->add('title',null,[
+                'label'=>false,
+            ])
+            ->add('description',null,[
+                'label'=>false
+            ])
+            ->add('category',null,[
+                'label'=>false
+            ])
+            ->add('timeNeeded',null,[
+                'label'=>false
+            ])
             ->add('imgFile',FileType::class,[
                 'mapped'=>false,
                 'required'=>false,
+                'label'=>false,
                 'constraints'=>[
                     new Image([
                         'maxSize'=>'5M'

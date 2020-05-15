@@ -4,15 +4,53 @@
 
 <div class="col-6 mx-auto text-center">
     {{ form_start(courseForm) }}
-    {{ form_row(courseForm.title) }}
-    {{ form_row(courseForm.category) }}
-    {{ form_row(courseForm.timeNeeded) }}
-    {{ form_row(courseForm.description) }}
-    {{ form_row(courseForm.imgFile,{
+    {{ form_row(courseForm.title,{
         attr: {
-            placeholder: 'Selectionnez une image'
+            placeholder: 'Titre du cours',
+            class : 'text-center'
         }
     }) }}
+    {{ form_row(courseForm.category,{
+        attr: {
+            placeholder: 'Catégorie du cours',
+            class : 'text-center'
+        }
+    }) }}
+    {{ form_row(courseForm.timeNeeded,{
+        attr: {
+            placeholder: 'Temps nécessaire',
+            class : 'text-center'
+        }
+    }) }}
+    {{ form_row(courseForm.description,{
+        attr: {
+            placeholder: 'Description du cours',
+            class : 'text-center'
+        }
+    }) }}
+    <div class="row">
+        {% if courseForm.vars.data.imgUrl|default %}
+            <div class="col-sm-9">
+                {{ form_row(courseForm.imgFile,{
+                    attr: {
+                        placeholder: 'Selectionnez une image'
+                    }
+                }) }}
+            </div>
+            <div class="col-sm-3">
+                    <img class="d-block w-100 border border-dark" src="{{ courseForm.vars.data.imgUrl }}">
+            </div>
+        {% else %}
+            <div class="col-sm-12">
+                {{ form_row(courseForm.imgFile,{
+                    attr: {
+                        placeholder: 'Selectionnez une image'
+                    }
+                }) }}
+            </div>
+        {% endif %}
+    </div>
+
     <button type="submit" class="btn btn-primary btn-lg">
         {{ btn_text }}
     </button>

@@ -41,8 +41,9 @@
 
                     {# Info Auteur #}
                     <div class=" col col-lg-12 col-sm-6 my-2 d-flex flex-column">
+                        {% set imgSrc=exercise.course.author.imgUrl ? asset(exercise.course.author.imgUrl) : asset('img/profil_default_male.png')  %}
                         <a href="{{ path('user_profile',{id: exercise.course.author.id}) }}">
-                            <img src="{{ asset('img/profil_default_male.png') }}" class="userImg" alt="">
+                            <img src="{{ imgSrc }}" class="userImg" alt="">
                         </a>
                         <a href="{{ path('user_profile',{id: exercise.course.author.id}) }}">
                             {{ exercise.course.author.fullname }}
