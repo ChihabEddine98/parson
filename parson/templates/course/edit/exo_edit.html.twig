@@ -1,13 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Modifier un Cours {% endblock %}
+{% block title %} Modifier un Exo {% endblock %}
 
 {% block body_content %}
 
-    {{  include('course/_form.html.twig',{
-        title_text: 'Le voila votre exo !',
-        btn_text :  'Valider'
-    }) }}
+    <div class="col-lg-7 col-sm-12 col-md-12 mt-3 mx-auto alert alert-primary text-center">
+        <h2> Modifiez cet exo !</h2>
+    </div>
+
+    <div class="col-6 mx-auto text-center">
+        {{ form_start(courseForm) }}
+        {{ form_row(courseForm.title,{
+            attr: {
+                placeholder: 'Titre de l\'exo ',
+                class : 'text-center'
+            }
+        }) }}
+        {{ form_row(courseForm.question,{
+            attr: {
+                placeholder: 'Question',
+                class : 'text-center'
+            }
+        }) }}
+        {{ form_row(courseForm.type,{
+            attr: {
+                placeholder: 'Type d`\'exo',
+                class : 'text-center'
+            }
+        }) }}
+        <button type="submit" class="btn btn-primary btn-lg">
+            Valider
+        </button>
+        {{ form_end(courseForm) }}
+    </div>
 
 
 

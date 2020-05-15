@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block body_content %}
-
     <div class="col-lg-6 mx-auto mt-5 pt-1 body-container">
 
         <div class="col-12 text-center ">
@@ -23,7 +22,7 @@
                 <form  class="form-signin" method="POST">
 
                     <div class="row mt-2 login-img-container">
-                        <img src="{{ asset('img/simple_icon.png') }}" class="login-img" alt="">
+                        <img src="{{ asset('img/user_login_img.png') }}" class="login-img" alt="">
                     </div>
 
                     <div class="row mx-4 mt-3">
@@ -49,7 +48,7 @@
 
                     <div class="register ">
                         Pas encore inscrits ?
-                        <a href="{{ path('app_register') }}" class="">
+                        <a href="{{ path('app_register') }}" class="text-dark">
                             <b>
                                 Inscription
                             </b>

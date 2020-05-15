@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserRegisterType;
+use App\Repository\UserCourseRepository;
+use App\Repository\UserRepository;
 use App\Security\LoginFormAuthenticator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -76,4 +79,43 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
+    /**
+     * @Route("/admin/results",name="admin_results")
+     * @IsGranted("ROLE_ADMIN")
+     */
+
+    public function adminResults(UserCourseRepository $repoScore,UserRepository $userRepo)
+    {
+
+        $users=$userRepo->findByRole('ROLE_ENS');
+        $allResults=[];
+        foreach ($users as $user)
+        {
+            $createdCourses=$user->getCreatedCourses()->getValues();
+            // Calculate avergae Rating !
+
+            $results=$repoScore->findBy(['course'=>$createdCourses]);
+            $somme=0;
+            $sommeAvis=0;
+            foreach ($results as $result)
+            {
+                $somme+= $result->getScore();
+                $sommeAvis+=$result->getRate();
+            }
+            $moyenne=count($results) ? $somme/count($results):0;
+            $avisMoyen=count($results) ? $sommeAvis/count($results): 0;
+
+            array_push($allResults,[$results,$user]);
+
+        }
+
+
+        return $this->render('course/list/admin_results.html.twig', [
+            'all_results'=> $allResults,
+            'average' => $moyenne,
+            'rate' => $avisMoyen
+        ]);
+    }
+
 }

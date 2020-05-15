@@ -389,7 +389,7 @@ class CourseController extends BaseController
                     $this->newResult($manager,$exo,0);
                 }
 
-                return new JsonResponse(array('result' => $result));
+                return new JsonResponse(array('result' => $result,'note'=>0));
 
             }
             $i++;
@@ -414,7 +414,7 @@ class CourseController extends BaseController
 
         }
 
-        return new JsonResponse(array('result' => true));
+        return new JsonResponse(array('result' => true,'note'=>$note));
 
     }
 

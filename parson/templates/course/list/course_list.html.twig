@@ -57,7 +57,7 @@
                         <h5 class="card-title">{{ cours.title|truncate(20) }}</h5>
                         <p class="card-text">{{ cours.description|truncate(59) }}</p>
                         <p> <b>( {{ cours.exercises.count }} exercice , {{ cours.comments.count }} avis ) </b></p>
-                        {% if cours.author.id==app.user.id %}
+                        {% if cours.author.id==app.user.id |default %}
                             <a href="{{ path('edit_course',{'id':cours.id}) }}" class="btn btn-warning"> Modifier </a>
                         {% endif %}
                         <a href="{{ path('course_detail',{'id':cours.id}) }}" class="btn btn-dark">Voir en détail</a>

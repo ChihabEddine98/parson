@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Résultats ! {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="col-lg-10 mx-auto mt-5 py-2">
+
+        <div class="col-12 text-center">
+            <h1> Statistiques </h1>
+            {% for results in all_results %}
+                <hr>
+                <div class="col-10">
+                    <div class="col-5">
+                        {% set imgSrc=results[1].imgUrl ? asset(results[1].imgUrl) : asset('img/profil_default_male.png')  %}
+                        <img src="{{ imgSrc }}" style="height: 150px">
+                    </div>
+                    <div class="col-5">
+                        <h2> {{ results[1].fullname }} </h2>
+                    </div>
+                </div>
+                <hr>
+
+                {% set i=loop.index %}
+                <div class="col-12">
+{#                <div class="col-6 mx-auto">#}
+{#                    {% if average < 10 %}#}
+{#                        <h3 class="text-center alert alert-danger text-danger py-1"> Moyenne#}
+{#                            : {{ average | number_format(1) }} /20 </h3>#}
+{#                    {% else %}#}
+{#                        <h3 class="text-center alert alert-success  py-1"> Moyenne  : {{ average | number_format(1) }}#}
+{#                            /20 </h3>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#                <div class="alert alert-danger mx-auto col-6">#}
+{#                    <i class="fas fa-heart" style="font-size: 32px;"></i> <h4> {{ rate|number_format(1) }} / 5</h4>#}
+{#                </div>#}
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Etudiant</th>
+                        <th scope="col">Cours</th>
+                        <th scope="col">Exercices</th>
+                        <th scope="col">Note (/20)</th>
+                        <th scope="col">Avis (/5)</th>
+                        <th scope="col">Remarques</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in results[0] %}
+                        <tr>
+                            <th scope="row" width="15%">
+                                {% set imgSrc=result.user.imgUrl ? asset(result.user.imgUrl) : asset('img/profil_default_male.png')  %}
+                                <img src="{{ imgSrc }}" class="userImgList" alt="">
+                                {{ result.user.fullName }}
+                            </th>
+                            <td width="30%;">{{ result.course.title }}</td>
+                            <td width="60%">
+                                {% if result.results %}
+                                    <p>
+                                        <a class="btn btn-outline-light mt-2" data-toggle="collapse" href="{{ '#detail'~i~loop.index }}" role="button" aria-expanded="false" aria-controls="{{ 'detail'~i~loop.index }}">
+                                            <span> <i class="fas fa-plus"></i></span> Details
+                                        </a>
+                                    </p>
+                                    <hr>
+                                    <div class="ml-4 collapse" id="{{ 'detail'~i~loop.index }}">
+                                        <div class="card card-body text-dark">
+                                            <span>
+                                             {{ result.results|json_encode }}
+                                            </span>
+                                            <input type="hidden" value="{{ result.results|json_encode }}" id="{{ 'hDetail'~i~loop.index }}">
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                {% else %}
+                                    RAS
+                                {% endif %}
+                            </td>
+                            <td>{{ result.score|number_format(2) }}</td>
+                            <td>{{ result.rate|number_format(2) }}</td>
+                            <td>
+                                {% if result.score < 10 %}
+                                    <i class="fas fa-exclamation" style="color: #ff384e;"> Défaillant</i>
+                                {% elseif result.score >= 10 and result.score < 12 %}
+                                    <i class="fas fa-exclamation-triangle" style="color: #e4ef46;"> Admis </i>
+                                {% else %}
+                                    <i class="fas fa-check" style="color: #3adb76;"> Bien</i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var k=0;
+            {% for results in all_results %}
+                 k++
+                for (var i=1;i<= {{ results[0]|length }};i++)
+                {
+                    id="#detail"+k.toString()+i.toString();
+                    console.log(id);
+
+                    let exoH=$(id+' div input:hidden').val();
+                    let json=eval(exoH);
+                    let renderDetails="";
+                    if (json)
+                    {
+                        for (var j=0;j<json.length;j++)
+                        {
+                            var obj=json[j];
+                            Object.keys(obj).forEach(function (key) {
+                                let value=obj[key];
+                                color= value ? "#21b358" :"#e73042";
+                                renderDetails+="                                            <div class='my-1' style=\"background-color:"+color+";color:#f9ecec;\">\n" +
+                                    "                                                <span class=\"ml-2 my-1\" style=\"float: left\">\n" +
+                                    "                                                    Exo"+ key+"\n" +
+                                    "                                                </span>\n" +
+                                    "                                                <span class=\"mr-2 my-1\" style=\"float: right\">\n" +
+                                    "                                                    "+value+" pts\n" +
+                                    "                                                </span>\n" +
+                                    "                                            </div>";
+                                // renderDetails+="<span class=\"alert alert-success my-1\" style=\"color: #f1f2f3;background-color: #35ac63\">\n"
+                                //     +" Exo "+ key +"--"+ value +
+                                //     "</span>"
+                            })
+
+                        }
+
+                    }
+                    let exoDiv=$(id+' div').html(renderDetails);
+                }
+
+            {% endfor %}
+
+
+
+
+
+        });
+    </script>
+
+{% endblock %}

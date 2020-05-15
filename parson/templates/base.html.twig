@@ -27,13 +27,14 @@
                         <a class="nav-link" href="{{ path('user_list') }}"> <i class="fas fa-users-cog"></i> Utilisateurs</a>
                     </li>
                 {% endif %}
-                <li class="nav-item dropdown mx-auto">
+                {% if is_granted('ROLE_USER') %}
+                  <li class="nav-item dropdown mx-auto">
                     <a class="nav-link dropdown-toggle" href="#" id="formation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-chalkboard-teacher"></i> Formations
                     </a>
                     <div class="dropdown-menu" role="menu" aria-labelledby="formation">
                         {% if is_granted('ROLE_ENS') %}
-                            <a class="dropdown-item" href="{{ path('new_course') }}"><i class="far fa-plus-square"></i>Ajouter un cours</a>
+                            <a class="dropdown-item" href="{{ path('new_course') }}"><i class="fas fa-plus"></i> Ajouter un cours</a>
                         {% endif %}
                         <a class="dropdown-item" href="{{ path('courses') }}"><i class="fas fa-stream"></i> Tous les cours</a>
                         <div class="dropdown-divider"></div>
@@ -42,17 +43,23 @@
                         {% endif %}
                     </div>
                 </li>
-
+                {% endif %}
                 {% if is_granted('ROLE_ENS') %}
-                <li class="nav-item mx-auto">
-                    <a class="nav-link" href="{{ path('ens_results') }}"> <i class="fas fa-poll"></i> Résultats</a>
-                </li>
+                    <li class="nav-item mx-auto">
+                        <a class="nav-link" href="{{ path('ens_results') }}"> <i class="fas fa-poll"></i> Résultats</a>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item mx-auto">
+                        <a class="nav-link" href="{{ path('admin_results') }}"> <i class="far fa-chart-bar"></i> stats</a>
+                    </li>
                 {% endif %}
 
 
-                <li class="nav-item mx-auto">
-                    <a class="nav-link" href="#"> <i class="fas fa-address-book"></i> Contact</a>
-                </li>
+{#                <li class="nav-item mx-auto">#}
+{#                    <a class="nav-link" href="#"> <i class="fas fa-address-book"></i> Contact</a>#}
+{#                </li>#}
             </ul>
 
             <ul class="navbar-nav my-2 my-lg-0">
@@ -75,7 +82,8 @@
                         <a href="{{ path('app_register') }}" class="btn btn-outline-warning  mr-lg-2 col-sm-12"> Inscription </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('app_login') }}" class="btn btn-outline-success ml-lg-2 my-2 my-sm-0 col-sm-12"> Connexion</a>
+                        <a href="{{ path('app_login') }}" class="btn btn-outline-light ml-lg-2 my-2 my-sm-0 col-sm-12"
+                        style="border-color: #ff5dad; color: #ff5dad"> Connexion</a>
                     </li>
                 {% endif %}
             </ul>
@@ -95,7 +103,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="show-article-container">
+                        <div class="">
                             {% block body_content %} {% endblock %}
                         </div>
                         <hr>

@@ -68,7 +68,15 @@
                 </div>
 
                 <div class="row col-12 ml-3 mt-5">
-                    <h3> Résoudre le probleme !</h3>
+                    <div class="col-7 titre">
+                        <h3> Résoudre le probleme !</h3>
+                    </div>
+                    <div class="col-5">
+                        <div class="alert alert-success" id="already_done_solution">
+                            <h4></h4>
+                        </div>
+                    </div>
+
                 </div>
                 <hr>
 
@@ -144,7 +152,7 @@
     <script>
         $(document).ready(function () {
 
-            $('#result').hide();
+            $('#already_done_solution').hide();
 
             var sortedItems = [];
 
@@ -177,14 +185,19 @@
                 })//done handler
                     .done(function (data) {
                         var msg = data.result ? 'Bravoo ! c\'est le bon code !' : 'Ooops ! retentez !';
+                        var note= data.note;
                         if (data.result) {
                             $('#result').addClass('alert-success').removeClass('alert-danger');
+                            $('#already_done_solution').addClass('alert-success').removeClass('alert-danger');
                         } else {
                             $('#result').addClass('alert-danger').removeClass('alert-success');
-
+                            $('#already_done_solution').addClass('alert-danger').removeClass('alert-success');
                         }
+                        $('#already_done_solution h4').text(note+' pts');
                         $('#result h5').text(msg);
-                        $('#result').show();
+                        $('#already_done_solution').show();
+                        $('#result').fadeIn('slow').animate({
+                            opacity: 1.0}, 2000).fadeOut('slow');
 
                         console.log(data.d);
                     });

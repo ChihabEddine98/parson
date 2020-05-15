@@ -42,9 +42,11 @@
                         {% if  'ROLE_ENS' in user.roles or 'ROLE_ADMIN' in user.roles  %}
                             <i class="fas fa-chalkboard-teacher ml-4 mt-3" style="font-size: 32px; color: #bc4ee9"></i>
                         {% endif %}
-                        <a class="btn btn-outline-primary btn-lg  mx-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <span> <i class="fas fa-pen"></i></span> modifier
-                        </a>
+                        {% if app.user.id == user.id %}
+                            <a class="btn btn-outline-primary btn-lg  mx-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <span> <i class="fas fa-pen"></i></span> modifier
+                            </a>
+                        {% endif %}
 {#                        <img src="{{ asset('img/admin_icon.png') }}" class="sexeImg mx-3 mt-0" alt="">#}
                     </div>
                     <h4 class="text-muted ml-1"> {{ user.email }}</h4>
