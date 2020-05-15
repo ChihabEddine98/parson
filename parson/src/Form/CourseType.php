@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class CourseType extends AbstractType
 {
@@ -15,10 +16,17 @@ class CourseType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('imgUrl')
             ->add('category')
             ->add('timeNeeded')
-            ->add('imgFile',FileType::class)
+            ->add('imgFile',FileType::class,[
+                'mapped'=>false,
+                'required'=>false,
+                'constraints'=>[
+                    new Image([
+                        'maxSize'=>'5M'
+                    ])
+                ]
+            ])
         ;
     }
 

@@ -7,8 +7,10 @@ use App\Entity\User;
 use App\Entity\UserCourse;
 use App\Repository\UserCourseRepository;
 use App\Repository\UserRepository;
+use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -82,12 +84,33 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/user/edit_img",name="edit_user_img")
+     */
+    public function editUserImg(Request $request,UploaderHelper $uploaderHelper,EntityManagerInterface $manager)
+    {
+        /** @var UploadedFile $upImgFile */
+        $upImgFile=$request->files->get('user_imgFile');
+        if ($upImgFile) {
+            $newImgName=$uploaderHelper->uploadUserImg($upImgFile);
+            $user=$this->getUser();
+            $user->setImgUrl($newImgName);
+            $manager->persist($user);
+            $manager->flush();
+        }
+
+        return $this->redirectToRoute('user_profile',[
+            'id'=>$user->getId()
+        ]);
+    }
+
+    /**
      * @Route("/user/edit",name="edit_user_info")
      */
     public function editUserInfo(Request $request,EntityManagerInterface $manager,UserRepository $repo)
     {
         $data = json_decode($request->getContent(), true);
         $user=$repo->findOneBy(["id"=>$data['id']]);
+
         if ($data['addr'])
         {
             $user->setAddress($data['addr']);

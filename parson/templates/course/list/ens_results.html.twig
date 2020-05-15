@@ -41,7 +41,8 @@
                     {% for result in results %}
                         <tr>
                             <th scope="row" width="15%">
-                                <img src="{{ asset('img/profil_default_male.png') }}" class="userImgList" alt="">
+                                {% set imgSrc=result.user.imgUrl ? asset(result.user.imgUrl) : asset('img/profil_default_male.png')  %}
+                                <img src="{{ imgSrc }}" class="userImgList" alt="">
                                 {{ result.user.fullName }}
                             </th>
                             <td width="30%;">{{ result.course.title }}</td>

@@ -34,7 +34,8 @@
                         {% for user in users %}
                             <tr>
                                 <th scope="row">
-                                    <img class="userImgList" src="{{ asset('img/profil_default_male.png') }}" alt="">
+                                    {% set imgSrc=user.imgUrl ? asset(user.imgUrl) : asset('img/profil_default_male.png')  %}
+                                    <img class="userImgList" src="{{imgSrc}}" alt="">
                                 </th>
                                 <td>{{ user.fullname }}</td>
                                 <td>{{ user.email }}</td>

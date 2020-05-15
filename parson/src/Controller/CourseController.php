@@ -12,9 +12,12 @@ use App\Repository\CommentRepository;
 use App\Repository\CourseRepository;
 use App\Repository\ExerciseRepository;
 use App\Repository\UserCourseRepository;
+use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
+use Gedmo\Sluggable\Util\Urlizer;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,13 +43,20 @@ class CourseController extends BaseController
      * @Route("/courses/new",name="new_course")
      * @IsGranted("ROLE_ENS")
      */
-    public function new(EntityManagerInterface $manager, Request $request)
+    public function new(EntityManagerInterface $manager, Request $request,UploaderHelper $uploaderHelper)
     {
         $form = $this->createForm(CourseType::class);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $course = $form->getData();
+            /** @var UploadedFile $upImgFile */
+            $upImgFile=$form['imgFile']->getData();
+            if ($upImgFile) {
+
+                $newImgName=$uploaderHelper->uploadCourseImg($upImgFile);
+                $course->setImgUrl($newImgName);
+            }
             $course->setAuthor($this->getUser());
 
             $manager->persist($course);
@@ -65,12 +75,19 @@ class CourseController extends BaseController
      * @Route("/courses/{id}/edit",name="edit_course")
      * @IsGranted("ROLE_ENS")
      */
-    public function edit(Course $course,EntityManagerInterface $manager, Request $request)
+    public function edit(Course $course,EntityManagerInterface $manager, Request $request,UploaderHelper $uploaderHelper)
     {
         $form = $this->createForm(CourseType::class,$course);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $upImgFile */
+            $upImgFile=$form['imgFile']->getData();
+            if ($upImgFile) {
+
+                $newImgName=$uploaderHelper->uploadCourseImg($upImgFile);
+                $course->setImgUrl($newImgName);
+            }
             $course->setAuthor($this->getUser());
 
             $manager->persist($course);

@@ -108,7 +108,11 @@ class Course
 
     public function getImgUrl(): ?string
     {
-        return $this->imgUrl;
+        if ($this->imgUrl)
+        {
+            return '/uploads/course_img/'.$this->imgUrl;
+        }
+        return null;
     }
 
     public function setImgUrl(string $imgUrl): self

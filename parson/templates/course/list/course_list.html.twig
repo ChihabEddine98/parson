@@ -21,10 +21,11 @@
                     </ol>
                     <div class="carousel-inner">
                         {% for cours in courses %}
+                            {% set imgSrc=cours.imgUrl ? asset(cours.imgUrl) : asset('img/course_default.jpg')  %}
                             <div class="carousel-item {{ loop.index==1 ?"active": ""  }}">
                                 <a href="{{ path('course_detail',{'id':cours.id}) }}">
                                     <img class="d-block w-100"
-                                         src="{{ asset('img/can_robots_beat_humans.jpg') }}"
+                                         src="{{ imgSrc }}"
                                          alt="{{ cours.title|truncate(15) }}">
                                 </a>
                                 <div class="carousel-caption d-none d-md-block text-light caroussel_content ">
@@ -50,7 +51,8 @@
                 {% for cours in courses %}
 
                 <div class="card m-2" style="width: 20rem;">
-                    <img class="card-img-top" style="height: 43%;" src="{{ asset('img/can_robots_beat_humans.jpg') }}" alt="Card image cap">
+                    {% set imgSrc=cours.imgUrl ? asset(cours.imgUrl) : asset('img/course_default.jpg')  %}
+                    <img class="card-img-top" style="height: 43%;" src="{{ imgSrc }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{ cours.title|truncate(20) }}</h5>
                         <p class="card-text">{{ cours.description|truncate(59) }}</p>

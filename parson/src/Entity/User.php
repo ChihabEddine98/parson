@@ -193,7 +193,11 @@ class User implements UserInterface
 
     public function getImgUrl(): ?string
     {
-        return $this->imgUrl;
+        if ($this->imgUrl)
+        {
+            return '/uploads/user_img/'.$this->imgUrl;
+        }
+        return null;
     }
 
     public function setImgUrl(?string $imgUrl): self

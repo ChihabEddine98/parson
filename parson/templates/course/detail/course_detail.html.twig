@@ -195,7 +195,6 @@
                                     <button id="btnNewComment" class="btn btn-primary w-50 align-middle"> Envoyer</button>
                                 </div>
                                 <div id="message" class="col col-lg-7 m-3 alert alert-success" style="opacity: 0;">
-                                    heeyoo
                                 </div>
                             </div>
                             </div>
@@ -206,7 +205,8 @@
                                 <div class="user">
                                     <h2 class="userName">
                                         <a href="{{ path('user_profile' ,{'id':comment.user.id}) }}">
-                                        <img src="{{ comment.user.imgUrl ? comment.user.imgUrl : asset('img/profil_default_male.png') }}" class="sexeImg" alt="">
+                                            {% set imgSrc=comment.user.imgUrl ? asset(comment.user.imgUrl) : asset('img/profil_default_male.png')  %}
+                                            <img src="{{imgSrc}}" class="sexeImg" alt="">
                                             {{ comment.user.fullName }}
                                         </a>
                                          <h6 class="text-muted">{{ comment.createdAt|ago }}</h6></h2>

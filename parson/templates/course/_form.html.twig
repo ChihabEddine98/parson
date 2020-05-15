@@ -4,7 +4,15 @@
 
 <div class="col-6 mx-auto text-center">
     {{ form_start(courseForm) }}
-    {{ form_widget(courseForm) }}
+    {{ form_row(courseForm.title) }}
+    {{ form_row(courseForm.category) }}
+    {{ form_row(courseForm.timeNeeded) }}
+    {{ form_row(courseForm.description) }}
+    {{ form_row(courseForm.imgFile,{
+        attr: {
+            placeholder: 'Selectionnez une image'
+        }
+    }) }}
     <button type="submit" class="btn btn-primary btn-lg">
         {{ btn_text }}
     </button>
