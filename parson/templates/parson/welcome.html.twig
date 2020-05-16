@@ -6,24 +6,54 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
 
-{% block body_content %}
+{% block body %}
+    <div class="col-12 p-0 m-0" >
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 mt-5 py-5">
 
-    <div class="col-lg-6 mx-auto mt-5 py-5">
+                <div class="col-12 text-center ">
 
-        <div class="col-12 text-center ">
+                    <div class="py-5 col-12  welcome_msg ">
+                        {% if is_granted('ROLE_USER') %}
+                            <h1>  Bienvenue {{ app.user.fullName }} !</h1>
+                            <div class="welcome">
+                                <p> Trouvez un cours qui vous va le mieux </p>
+                                <p> Et pourquoi pas lancez vos cours ! </p>
+                                <small> N'oubliez pas que désormais vous faites parti de nous ! </small>
+                            </div>
+                        {% else %}
+                            <h1>  Bienvenue à ParSon !</h1>
+                            <div class="welcome">
+                                <p> Trouvez un cours qui vous va le mieux </p>
+                                <p> Et pourquoi pas lancez vos cours ! </p>
+                                <a href="{{ path('app_register') }}" class="ml-2 btn btn-outline-dark btn-lg">commencer l'aventure !</a>
+                            </div>
+                        {% endif %}
 
-            <div class=" py-5 col-12 text-light bg-dark">
-                <h1>  Bienvenue à ParSon !</h1>
-                <div class="welcome">
-                    <p> Trouvez un cours qui vous va le mieux ! </p>
-                    <p> Pour Bénificier des fonctionnalités de ParSon Veuillez ... </p>
+                        <!-- <div class="btn_">
+                            <a href="/register" class="btn"> Commencer ! </a>
+                        </div> -->
+                    </div>
+
                 </div>
-                <!-- <div class="btn_">
-                    <a href="/register" class="btn"> Commencer ! </a>
-                </div> -->
-            </div>
 
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 mt-5 py-5">
+
+                <div class="col-12 text-center mt-0 pt-0 welcome_img">
+
+                    <div class=" col-12 text-light">
+                        <img src="{{ asset('img/parson_welcome.png') }}" alt="">
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+
+
+
+
 
     </div>
 

@@ -3,29 +3,22 @@ body{
     background-size: cover;
     object-fit: cover;
     background-position: 0 56px;
-
+    background: #F2994A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
+.welcome_msg
+{
+    /*background-color: var(--overlay_bg_dark_col);*/
+    color: #343232;
+    border-radius: 4px;
+    font-family: "Comic Sans MS", sans-serif;
+    font-size: larger;
+    margin: 14% auto;
+}
 
-.rate_widget {
-    border:     1px solid #CCC;
-    overflow:   visible;
-    padding:    10px;
-    position:   relative;
-    width:      180px;
-    height:     32px;
-}
-.ratings_stars {
-    background: url('../img/star_empty.png') no-repeat;
-    float:      left;
-    height:     28px;
-    padding:    2px;
-    width:      32px;
-}
-.ratings_vote {
-    background: url('../img/star_full.png') no-repeat;
-}
-.ratings_over {
-    background: url('../img/star_highlight.png') no-repeat;
+.welcome_img{
+    margin: 30px auto ;
 }

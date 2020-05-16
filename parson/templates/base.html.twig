@@ -14,7 +14,7 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand text-warning ml-4" href="{{ path('parson_home') }}"><i class="fas fa-graduation-cap"> </i> ParSon</a>
+        <a class="navbar-brand text-warning ml-4 parson_home" href="{{ path('parson_home') }}"><i class="fas fa-graduation-cap"> </i> ParSon</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -82,8 +82,7 @@
                         <a href="{{ path('app_register') }}" class="btn btn-outline-warning  mr-lg-2 col-sm-12"> Inscription </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ path('app_login') }}" class="btn btn-outline-light ml-lg-2 my-2 my-sm-0 col-sm-12"
-                        style="border-color: #ff5dad; color: #ff5dad"> Connexion</a>
+                        <a href="{{ path('app_login') }}" class="btn btn-outline-light ml-lg-2 my-2 my-sm-0 col-sm-12"> Connexion</a>
                     </li>
                 {% endif %}
             </ul>

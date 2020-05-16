@@ -1,5 +1,5 @@
 :root{
-    --col-navbar : rgba(10, 10, 10, 0.92);
+    --col-navbar : rgba(0, 0, 0, 0.92);
     --main_bg_color: rgb(170, 52, 52);
     --navbar_col:rgba(8, 7, 7, 0.911);
     --hover_bg_col:rgba(63, 218, 172, 0.911);
@@ -15,6 +15,11 @@
 body{
     margin: 0;
     padding: 0;
+}
+
+.parson_home{
+    font-family: "Comic Sans MS", sans-serif;
+    font-size: 24px;
 }
 
 

@@ -4,22 +4,103 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 {% endblock %}
 
 {% block body_content %}
 
-    <div class="col-lg-7 col-sm-12 col-md-12 mt-3 mx-auto alert alert-primary text-center">
-        <h2> Inscription à PaSon !</h2>
-    </div>
+{#    <div class="col-lg-7 col-sm-12 col-md-12 mt-3 mx-auto alert alert-primary text-center">#}
+{#        <h2> Inscription à PaSon !</h2>#}
+{#    </div>#}
+<div class="col-lg-6 col-md-8 col-sm-12 mx-auto text-center ">
 
-    <div class="col-6 mx-auto text-center">
         {{ form_start(registerForm) }}
-        {{ form_widget(registerForm) }}
-        <button type="submit" class="btn btn-primary btn-lg">
-            S'inscrire
-        </button>
-        {{ form_end(registerForm) }}
-    </div>
+
+        <div class="body-container mt-5">
+            <div class="row mt-2 login-img-container">
+                <img src="{{ asset('img/user_login_img.png') }}" class="login-img" alt="">
+            </div>
+
+            {{ form_row(registerForm.fullName,{
+                attr :{
+                    placeholder:'Votre nom'
+                }
+            }) }}
+            {{ form_row(registerForm.email,{
+                attr:{
+                    placeholder:'Email'
+                }
+            }) }}
+{#            {{ form_row(registerForm.password,{#}
+{#                attr:{#}
+{#                    placeholder:' Mot de passe'#}
+{#                }#}
+{#            }) }}#}
+
+            {{ form_row(registerForm.password.first,{
+                attr:{
+                    placeholder:' Mot de passe'
+                }
+            }) }}
+            {{ form_row(registerForm.password.second,{
+                attr:{
+                    placeholder:' Confirmez '
+                }
+            }) }}
+{#            <div class="row mx-1">#}
+{#                <input type="password" class="form-control text-center" name="password" placeholder="Confirmez">#}
+{#            </div>#}
+            <button type="submit" class="btn btn-outline-dark btn-lg mb-5 mt-3">
+                S'inscrire
+            </button>
+            {{ form_end(registerForm) }}
+        </div>
+
+</div>
+
+{#    <div class="row mt-2 login-img-container">#}
+{#            <img src="{{ asset('img/user_login_img.png') }}" class="login-img" alt="">#}
+{#        </div>#}
+
+
+{#        <div class="row mx-4 mt-3">#}
+{#            <input type="text" class="form-control text-center" name="email"#}
+{#                   placeholder="Email" value="{{ last_username }}">#}
+{#        </div>#}
+
+{#        <div class="row my-3 mx-4">#}
+{#            <input type="password" class="form-control text-center" name="password" placeholder="Mot De Passe">#}
+{#        </div>#}
+
+{#        <input type="hidden" value="{{ csrf_token('authenticate') }}" name="_csrf_token">#}
+{#        <div class="checkbox my-3">#}
+{#            <label>#}
+{#                <input type="checkbox" class="mr-1 ml-5" name="_remember_me">#}
+{#                Se souvenir de moi#}
+{#            </label>#}
+{#        </div>#}
+
+{#        <button class="btn btn-outline-dark btn-lg " type="submit">#}
+{#            Connexion#}
+{#        </button>#}
+
+{#        <div class="register ">#}
+{#            Pas encore inscrits ?#}
+{#            <a href="{{ path('app_register') }}" class="text-dark">#}
+{#                <b>#}
+{#                    Inscription#}
+{#                </b>#}
+{#            </a>#}
+{#        </div>#}
+
+{#    <div class="col-6 mx-auto text-center">#}
+{#        {{ form_start(registerForm) }}#}
+{#        {{ form_widget(registerForm) }}#}
+{#        <button type="submit" class="btn btn-primary btn-lg">#}
+{#            S'inscrire #}
+{#        </button>#}
+{#        {{ form_end(registerForm) }}#}
+{#    </div>#}
 {#    <div class="col-lg-6 mx-auto mt-5 py-5">#}
 
 {#        <div class="col-12 text-center ">#}
