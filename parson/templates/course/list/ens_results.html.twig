@@ -8,13 +8,13 @@
 
 {% block body_content %}
 
-    <div class="col-lg-10 mx-auto mt-5 py-2">
+    <div class="col-12 mx-auto mt-5 py-2  text-dark" style="background-color: #f9ecec">
 
-        <div class="col-12 text-center ">
+        <div class="col-12 text-center mx-auto">
 
             <div class="col-12">
                 <h1> Résultats </h1>
-                <div class="col-6 mx-auto">
+                <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
                     {% if average < 10 %}
                         <h3 class="text-center alert alert-danger text-danger py-1"> Moyenne
                             : {{ average | number_format(1) }} /20 </h3>
@@ -23,10 +23,11 @@
                             /20 </h3>
                     {% endif %}
                 </div>
-                <div class="alert alert-danger mx-auto col-6">
+                <div class="alert alert-danger mx-auto col-lg-6 col-md-8 col-sm-12">
                     <i class="fas fa-heart" style="font-size: 32px;"></i> <h4> {{ rate|number_format(1) }} / 5</h4>
                 </div>
-                <table class="table table-dark">
+                <div class="table-responsive">
+                    <table class="col-12 table table-dark mx-auto">
                     <thead>
                     <tr>
                         <th scope="col">Etudiant</th>
@@ -84,6 +85,7 @@
                     </tbody>
 
                 </table>
+                </div>
 
             </div>
 

@@ -3,14 +3,14 @@
 {% block title %} Mon Profile {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/users.css') }}">
     <link rel="stylesheet" type="text/css" href="/{{ asset('css/rating.css') }}">
 
 {% endblock %}
 
 {% block body_content %}
 
-<div class="col-lg-12 mx-auto mt-3 pt-1">
+<div class="col-lg-12 mx-auto mt-3 pt-1 bg-light">
 
     <div class="col-lg-12 text-center align-items-center ">
 
@@ -42,11 +42,6 @@
                         {% if  'ROLE_ENS' in user.roles or 'ROLE_ADMIN' in user.roles  %}
                             <i class="fas fa-chalkboard-teacher ml-4 mt-3" style="font-size: 32px; color: #bc4ee9"></i>
                         {% endif %}
-                        {% if app.user.id == user.id %}
-                            <a class="btn btn-outline-primary btn-lg  mx-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                <span> <i class="fas fa-pen"></i></span> modifier
-                            </a>
-                        {% endif %}
 {#                        <img src="{{ asset('img/admin_icon.png') }}" class="sexeImg mx-3 mt-0" alt="">#}
                     </div>
                     <h4 class="text-muted ml-1"> {{ user.email }}</h4>
@@ -63,13 +58,18 @@
                         <i class="fas fa-comments" ></i>
                         <b> {{ user.comments.count }}</b> comments
                     </h5>
+                    {% if app.user.id == user.id %}
+                        <a class="btn btn-outline-primary btn-lg  m-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <span> <i class="fas fa-pen"></i></span> modifier
+                        </a>
+                    {% endif %}
 
                 </div>
             </div><!-- /.row -->
 
             <hr>
-            <div class="ml-4 collapse" id="collapseExample">
-                <div class="card card-body">
+            <div class="ml-1 collapse " id="collapseExample">
+                <div class="card card-body ">
                     {{ include('user/_user_form.html.twig',{
                         addr:user.address,
                         phone:user.phone,
