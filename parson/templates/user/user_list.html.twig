@@ -26,13 +26,13 @@
                             <th scope="col">Email</th>
                             <th scope="col">Sexe</th>
                             <th scope="col">Role</th>
-                            <th scope="col"></th>
+                            <th scope="col">Changer le Role</th>
                             <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for user in users %}
-                            <tr>
+                            <tr id="{{'user_tr'~user.id}}">
                                 <th scope="row">
                                     {% set imgSrc=user.imgUrl ? asset(user.imgUrl) : asset('img/profil_default_male.png')  %}
                                     <img class="userImgList" src="{{imgSrc}}" alt="">
@@ -46,14 +46,36 @@
                                     <img class="sexeImgList" src="/img/{{ "ROLE_ADMIN" in user.roles ? "admin_icon" :"simple_icon" }}.png" alt="">
                                 </td>
                                 <td>
-                                    <a href="">
-                                        <i class="fas fa-pencil-alt text-warning"></i>
-                                    </a>
+                                    {% if "ROLE_ADMIN" not in user.roles  %}
+                                        <a  data-toggle="collapse" href="{{ '#user_role'~loop.index }}" role="button" aria-expanded="false" aria-controls="{{ 'user_role'~loop.index }}">
+                                            <i class="fas fa-pencil-alt text-warning mb-2"></i>
+                                        </a>
+                                        <a id="{{ '#user_role_valid'~loop.index }}" class="validRoleBtn">
+                                            <i class="fas fa-check text-success mx-2"></i>
+                                            <input type="hidden" name="id" value="{{ user.id }}">
+                                        </a>
+                                        <div class="ml-4 collapse" id="{{'user_role'~loop.index}}">
+                                            <div class="card card-body">
+                                                <select class="form-control" id="roles">
+                                                    <option>Choisissez un role !</option>
+                                                    <option>Enseignant</option>
+                                                    <option>Etudiant</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                    {% endif %}
+
                                 </td>
                                 <td>
-                                    <a href="">
+                                    {% if "ROLE_ADMIN" not in user.roles  %}
+                                    <a id="{{ '#user_role_valid'~loop.index }}" class="deleteBtn">
                                         <i class="fas fa-trash-alt text-danger"></i>
+                                        <input type="hidden" name="id" value="{{ user.id }}">
                                     </a>
+                                    {% else %}
+
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
@@ -72,3 +94,63 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function () {
+
+            $('.validRoleBtn').click(function (event) {
+                var id = $(this).find(' input:hidden').val();
+                var roles = $('#user_role' + id).find('select').val();
+                if (roles !== "Choisissez un role !") {
+                    var role = roles === "Enseignant" ? "ROLE_ENS" : "ROLE_ETU";
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path('edit_user_role') }}",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({"roles": role, "id": id}),
+                    })//done handler
+                        .done(function (data) {
+                            if (data.result) {
+
+                            } else {
+
+                            }
+
+
+                            console.log(data.d);
+                        });
+                }
+            });
+
+            $('.deleteBtn').click(function (event) {
+                var id = $(this).find(' input:hidden').val();
+                let tr = $('#user_tr' + id);
+                tr.hide(1000).remove(1000);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ path('delete_user') }}",
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify({"id":id }),
+                        })//done handler
+                            .done(function (data) {
+                                if (data.result) {
+                                    $('#user_tr'+id).hide(1000);
+                                } else {
+
+                                }
+
+
+                                console.log(data.d);
+                            });
+
+                });
+
+            })
+    </script>
+
+{% endblock %}

@@ -128,6 +128,52 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/user/edit_role",name="edit_user_role")
+     */
+    public function editUserRole(Request $request,EntityManagerInterface $manager,UserRepository $repo)
+    {
+        $data = json_decode($request->getContent(), true);
+        $user=$repo->findOneBy(["id"=>$data['id']]);
+        if ($data['roles'])
+        {
+            $user->setRoles(array($data['roles']));
+            $manager->persist($user);
+            $manager->flush();
+
+            return new JsonResponse(array('result' => true));
+        }
+
+        $manager->persist($user);
+        $manager->flush();
+
+        return new JsonResponse(array('result' => false));
+
+
+    }
+
+    /**
+     * @Route("/user/delete",name="delete_user")
+     */
+    public function deleteUser(Request $request,EntityManagerInterface $manager,UserRepository $repo)
+    {
+        $data = json_decode($request->getContent(), true);
+        $user=$repo->findOneBy(["id"=>$data['id']]);
+        if ($user)
+        {
+            $manager->remove($user);
+            $manager->flush();
+
+            return new JsonResponse(array('result' => true));
+        }
+
+
+
+        return new JsonResponse(array('result' => false));
+
+
+    }
+
+    /**
      * @Route("/register_to_course/{id}",name="register_course")
      */
     public function userRegister2Course(Request $request,EntityManagerInterface $manager,Course $course,UserCourseRepository $repo)
