@@ -1,3 +1,7 @@
+body{
+    background: var(--linear_bg_col);
+}
+
 .userImgList{
 
     width: 80px;
@@ -15,4 +19,49 @@
     margin-bottom: 3%;
     left: 0;
     right: 0;
+}
+
+.body-container{
+    background-color: var(--overlay_bg_col);
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 10px 10px;
+}
+
+.body-container input,.body-container textarea{
+
+    font-size: 24px;
+    margin: auto;
+    width: 90%;
+    background-color: var(--overlay_fg_col);
+    border-radius: 5px;
+    border: 2px #57575a solid;
+    text-align: center;
+}
+
+.body-container label ,.body-container input:last-child
+{
+
+    font-size: 24px;
+    margin: auto;
+    width: 90%;
+    height: 42px;
+    background-color: var(--overlay_fg_col);
+    border-radius: 5px;
+    border: 2px #57575a solid;
+    text-align: center;
+    padding: 0;
+}
+
+.course-img-container{
+    width: 100%;
+    align-items: center;
+}
+.course-img{
+
+    width: 8em;
+    height: 8em;
+
+    margin: auto;
+
 }

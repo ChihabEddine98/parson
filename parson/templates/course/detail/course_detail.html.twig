@@ -10,13 +10,13 @@
 
     <div class="col-lg-12 mx-auto mt-3 pt-1">
 
-        <div class="col-lg-12  ">
+        <div class="col-lg-12  bg-light text-dark">
 
                 <div class="col-lg-12  text-dark ">
                     {% set ok =false %}
 
                     {% if course.author.id==app.user.id %}
-                        <div class="text-center">
+                        <div class="text-center pt-4">
                             <a href="{{ path('edit_course',{'id':course.id})}}" class="btn btn-warning btn-lg "> <span><i class="fas fa-edit"></i></span> Modifier Ce cours </a>
                             <a href="{{ path('new_exo',{'id':course.id}) }}" class="btn btn-danger btn-lg m-1"><span><i class="fas fa-plus-circle"></i></span> Ajouter un exercice </a>
                             <a href="{{ path('new_course') }}" class="btn btn-dark btn-lg m-1"><span><i class="fas fa-plus-circle"></i></span> Ajouter un autre cours </a>

@@ -15,9 +15,24 @@ class ExoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('question')
-            ->add('type');
+            ->add('title',null,[
+                'label'=>false,
+                'attr'=>[
+                    'placeholder'=>' Titre de l\'exo'
+                ]
+            ])
+            ->add('question',null,[
+                'label'=>false,
+                'attr'=>[
+                    'placeholder'=>' Question '
+                ]
+            ])
+            ->add('type',null,[
+                'label'=>false,
+                'attr'=>[
+                    'placeholder'=>' Type de l\'exo'
+                ]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -119,8 +119,8 @@ class CourseController extends BaseController
             $manager->flush();
             $this->addFlash('success','Exo ajouté avec success !');
 
-            return $this->redirectToRoute('course_detail',[
-                'id'=> $course->getId()
+            return $this->redirectToRoute('exercise_detail',[
+                'id'=> $exo->getId()
             ]);
         }
 

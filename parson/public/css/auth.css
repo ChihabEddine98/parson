@@ -3,10 +3,7 @@ body {
     /*background: #CB356B; !* fallback for old browsers *!*/
     /*background: -webkit-linear-gradient(to right, #BD3F32, #CB356B); !* Chrome 10-25, Safari 5.1-6 *!*/
     /*background: linear-gradient(to right, #BD3F32, #CB356B); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
-    background: #F2994A;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: var(--linear_bg_col_welcome);
 }
 .body-container{
     background-color: var(--overlay_bg_col);

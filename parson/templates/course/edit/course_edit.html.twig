@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} Modifier un Cours {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
+{% endblock %}
 
 {% block body_content %}
 

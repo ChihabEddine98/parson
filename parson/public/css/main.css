@@ -8,6 +8,10 @@
     --overlay_bg_col:rgba(146, 146, 146, 0.534);
     --overlay_bg_dark_col: rgba(32, 29, 29, 0.67);
     --overlay_fg_col:rgba(233, 224, 224, 0.534);
+    --linear_bg_col : linear-gradient(to right, #F2C94C, #F2994A);
+    --linear_bg_col_welcome: linear-gradient(to right, #e761a4, #ff7209);
+    --linear_bg_col_2: linear-gradient(to right, #67b26f, #4ca2cd);
+
 
 }
 

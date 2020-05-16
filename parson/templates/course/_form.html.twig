@@ -1,8 +1,9 @@
-<div class="col-lg-7 col-sm-12 col-md-12 mt-3 mx-auto alert alert-primary text-center">
-    <h2> {{ title_text }}</h2>
-</div>
 
-<div class="col-6 mx-auto text-center">
+<div class="mt-3 col-lg-6 col-md-8 col-sm-12 mx-auto text-center">
+    <div class="body-container">
+        <div class="row mt-2 course-img-container">
+            <img src="{{ asset('img/course.png') }}" class="course-img" alt="">
+        </div>
     {{ form_start(courseForm) }}
     {{ form_row(courseForm.title,{
         attr: {
@@ -51,8 +52,10 @@
         {% endif %}
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg">
+    <button type="submit" class="btn btn-dark btn-lg">
         {{ btn_text }}
     </button>
     {{ form_end(courseForm) }}
+    </div>
+
 </div>
