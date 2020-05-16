@@ -136,7 +136,10 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <h1>  Aucun cours pour le moment :/</h1>
+                    <div class="text-center my-4">
+                        <h2 class="text-dark mb-2"> Vous n'avez pas encore de résultats inscrivez vous pour en avoir !</h2>
+                        <a href="{{ path('courses') }}" class="btn btn-dark btn-lg mb-5"> Cours disponibles</a>
+                    </div>
                 {% endif %}
 
                 </div>{# END row #}
@@ -160,7 +163,10 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <h1>  Aucun cours pour le moment :/</h1>
+                    <div class="text-center my-4">
+                        <h2 class="text-dark mb-2"> Vous n'avez pas encore de résultats inscrivez vous pour en avoir !</h2>
+                        <a href="{{ path('courses') }}" class="btn btn-dark btn-lg mb-5"> Cours disponibles</a>
+                    </div>
                 {% endif %}
 
                 </div>{# END row #}

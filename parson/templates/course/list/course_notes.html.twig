@@ -13,7 +13,8 @@
         <div class="col-12 text-center ">
 
             <div class="col-12">
-                <h1> Mes Résultats </h1>
+                <h1 class=""> Mes Résultats </h1>
+                {% if courses|length %}
                 <div class="col-6 mx-auto">
                     {% if average < 10 %}
                         <h3 class="text-center alert alert-danger text-danger py-1"> Moyenne
@@ -56,7 +57,10 @@
                     </tbody>
 
                 </table>
-
+                {% else %}
+                    <h2 class="text-dark"> Vous n'avez pas encore de résultats inscrivez vous pour en avoir !</h2>
+                    <a href="{{ path('courses') }}" class="btn btn-dark btn-lg"> Cours disponibles</a>
+                {% endif %}
             </div>
 
 
