@@ -9,11 +9,14 @@
 namespace App\DataFixtures;
 
 
+use App\Service\UploaderHelper;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
 
 abstract  class BaseFixture extends Fixture
 {
@@ -77,6 +80,23 @@ abstract  class BaseFixture extends Fixture
         }
         $randomReferenceKey = $this->faker->randomElement($this->referencesIndex[$className]);
         return $this->getReference($randomReferenceKey);
+    }
+
+
+    protected function fakeUploadImg($img,UploaderHelper $uploaderHelper,$type):string
+    {
+        $fd=new Filesystem();
+        $tmpFile=sys_get_temp_dir().'/'.$img;
+        $fd->copy(__DIR__.'/images/'.$type.'/'.$img,$tmpFile,true);
+        if ($type=='cours')
+        {
+            $imgUrl=$uploaderHelper->uploadCourseImg(new File($tmpFile));
+        }
+        else{
+            $imgUrl=$uploaderHelper->uploadUserImg(new File($tmpFile));
+        }
+
+        return $imgUrl;
     }
 
 }

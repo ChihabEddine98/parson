@@ -3,21 +3,32 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Service\UploaderHelper;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends BaseFixture
 {
 
+    private static $images=[
+        'ens1.jpg','ens2.jpg','ens3.jpg','etu1.jpg','etu2.jpg','etu3.jpg','etu4.jpg','etu5.jpg'
+    ];
+
     /**
      * @var UserPasswordEncoderInterface
      */
     private $encoder;
+    /**
+     * @var UploaderHelper
+     */
+    private $uploaderHelper;
 
-    public function __construct(UserPasswordEncoderInterface $encoder)
+    public function __construct(UserPasswordEncoderInterface $encoder,UploaderHelper $uploaderHelper)
     {
 
         $this->encoder = $encoder;
+        $this->uploaderHelper = $uploaderHelper;
     }
 
     protected function loadData(ObjectManager $manager)
@@ -54,6 +65,7 @@ class UserFixtures extends BaseFixture
         $this->createMany(User::class,$n,function (User $user, $i) use ($role, $email) {
             $sexe=$this->faker->boolean;
             $sexe_text=$sexe ? "male" :"female";
+            $imgUrl=null;
 
             /**
              * On crée un admin à la premeiere execution ! & 4 utilisateurs simples
@@ -70,17 +82,27 @@ class UserFixtures extends BaseFixture
                 {
                     $user->setEmail('ens'.$i.'@mail.com');
                     $this->setReference("ens$i",$user);
+                    $img="ens$i.jpg";
+                    $imgUrl=$this->fakeUploadImg($img,$this->uploaderHelper,'users');
+
 
                 }
                 else{
                     $user->setEmail('student'.$i.'@mail.com');
                     $this->setReference("etu$i",$user);
+                    if($i<=5)
+                    {
+                        $img="etu$i.jpg";
+                        $imgUrl=$this->fakeUploadImg($img,$this->uploaderHelper,'users');
+                    }
                 }
                 $user->setPassword($this->encoder->encodePassword($user,'123'));
 
-
             }
+
+
             $user->setAddress($this->faker->streetAddress)
+                ->setImgUrl($imgUrl)
                 ->setPhone($this->faker->e164PhoneNumber)
                 ->setFullName($this->faker->name($sexe_text))
                 ->setSexe($sexe)

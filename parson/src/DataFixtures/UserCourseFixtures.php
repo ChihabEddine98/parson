@@ -7,7 +7,7 @@ use App\Entity\User;
 use App\Entity\UserCourse;
 use App\Repository\UserRepository;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 class UserCourseFixtures extends BaseFixture implements DependentFixtureInterface
 {

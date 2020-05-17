@@ -18,7 +18,7 @@
 
             <div class="row col-12 mb-3 courseImg d-flex flex-row">
                 <div class="col-sm-12 col-lg-4">
-                    {% set imgSrc=app.user.imgUrl ? asset(app.user.imgUrl) : asset('img/profil_default_male.png')  %}
+                    {% set imgSrc=user.imgUrl ? asset(user.imgUrl) : asset('img/profil_default_male.png')  %}
                     <img style="height: 220px;object-fit: cover;" class="col-lg-10 col-md-7 col-sm-10 rounded mt-4" src="{{ imgSrc }}" alt="">
                     {% if app.user.id == user.id %}
 
@@ -144,7 +144,7 @@
 
                 </div>{# END row #}
             {% else %}
-                <h1> Cours Suivis (<b>{{ user.createdCourses.count }}</b> résultats)</h1>
+                <h1> Cours Suivis (<b>{{ user.registredInCourses.count }}</b> résultats)</h1>
                 <div class="row ml-5">
                 {% if user.registredInCourses.count %}
                     {% for course in user.registredInCourses %}

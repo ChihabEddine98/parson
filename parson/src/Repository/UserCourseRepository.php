@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\UserCourse;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * @method UserCourse|null find($id, $lockMode = null, $lockVersion = null)
@@ -82,15 +83,22 @@ class UserCourseRepository extends ServiceEntityRepository
     }
 
 
-    public function findOneByUserAndCourse($user,$course): ?UserCourse
+    public function findOneByUserAndCourse($user,$course)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.user = :val')
-            ->setParameter('val', $user)
-            ->andWhere('u.course = :c')
-            ->setParameter('c', $course)
-            ->getQuery()
-            ->getOneOrNullResult();
+           $result= $this->createQueryBuilder('u')
+                ->andWhere('u.user = :val')
+                ->setParameter('val', $user)
+                ->andWhere('u.course = :c')
+                ->setParameter('c', $course)
+                ->getQuery()
+                ->getResult();
+
+           if (count($result)>1)
+           {
+               return $result[0];
+           }
+           return $result;
+
     }
 
     /*

@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use Gedmo\Sluggable\Util\Urlizer;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploaderHelper
@@ -24,10 +25,17 @@ class UploaderHelper
         $this->uploadsPath = $uploadsPath;
     }
 
-    public function uploadCourseImg(UploadedFile $file) :string
+    public function uploadCourseImg(File $file) :string
     {
         $dest = $this->uploadsPath.'/course_img';
-        $imgOriginalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        if ($file instanceof UploadedFile)
+        {
+            $fileName=$file->getClientOriginalName();
+        }
+        else{
+            $fileName=$file->getFilename();
+        }
+        $imgOriginalName = pathinfo($fileName, PATHINFO_FILENAME);
         $newImgName = Urlizer::urlize($imgOriginalName) . '-' . uniqid() . '.' . $file->guessExtension();
 
         $file->move(
@@ -38,10 +46,17 @@ class UploaderHelper
         return $newImgName;
 
     }
-    public function uploadUserImg(UploadedFile $file) :string
+    public function uploadUserImg(File $file) :string
     {
         $dest = $this->uploadsPath.'/user_img';
-        $imgOriginalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        if ($file instanceof UploadedFile)
+        {
+            $fileName=$file->getClientOriginalName();
+        }
+        else{
+            $fileName=$file->getFilename();
+        }
+        $imgOriginalName = pathinfo($fileName, PATHINFO_FILENAME);
         $newImgName = Urlizer::urlize($imgOriginalName) . '-' . uniqid() . '.' . $file->guessExtension();
 
         $file->move(

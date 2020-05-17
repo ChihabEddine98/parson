@@ -22,13 +22,13 @@ class UserCourse
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="registredInCourses")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $course;
 

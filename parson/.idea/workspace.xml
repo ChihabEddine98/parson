@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
+    <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="awesome data are here !">
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200517123402.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200517124216.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/courses.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/courses.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/BaseFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/BaseFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/CommentFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CommentFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/CourseFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CourseFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserCourseFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserCourseFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Course.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Exercise.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Exercise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/UserCourse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserCourse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserCourseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/UploaderHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UploaderHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/course/detail/course_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/detail/course_detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/course/detail/course_exercise_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/course/detail/course_exercise_detail.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,14 +120,7 @@
       <workItem from="1589574880523" duration="26871000" />
       <workItem from="1589613628174" duration="130000" />
       <workItem from="1589666692749" duration="3144000" />
-      <workItem from="1589702620391" duration="9497000" />
-    </task>
-    <task id="LOCAL-00031" summary="change name of instruction for debug !">
-      <created>1588789981457</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1588789981457</updated>
+      <workItem from="1589702620391" duration="16384000" />
     </task>
     <task id="LOCAL-00032" summary="submit parson exercice ! but just front">
       <created>1588792397335</created>
@@ -453,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589710933771</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="awesome data are here !">
+      <created>1589712140408</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1589712140408</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +473,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="get average in results !" />
     <MESSAGE value="finished version of rating course !" />
     <MESSAGE value="final rating system in course_detail.html.twig" />
     <MESSAGE value="fix some browser errors 'jquery not compatible with bootsrap'" />
@@ -486,7 +497,8 @@
     <MESSAGE value="some awesome improvement in empty design" />
     <MESSAGE value="improve fixture for good begining !" />
     <MESSAGE value="getting meaninful dataa with fixtures !" />
-    <option name="LAST_COMMIT_MESSAGE" value="getting meaninful dataa with fixtures !" />
+    <MESSAGE value="awesome data are here !" />
+    <option name="LAST_COMMIT_MESSAGE" value="awesome data are here !" />
   </component>
   <component name="WindowStateProjectService">
     <state x="349" y="67" key="#CLI_Interpreters" timestamp="1588908857422">
@@ -525,14 +537,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="364" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1588913992011" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589577687938">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589714828287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589577687938" />
-    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589710932548">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589714828287" />
+    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589718751680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589710932548" />
+    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589718751680" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -573,9 +585,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588915230831" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589711960601">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589718810347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589711960601" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589718810347" />
   </component>
 </project>

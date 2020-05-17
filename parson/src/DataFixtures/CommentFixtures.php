@@ -6,7 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Course;
 use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 class CommentFixtures extends BaseFixture implements DependentFixtureInterface
 {
