@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends BaseFixture
@@ -46,10 +46,10 @@ class UserFixtures extends BaseFixture
      * @param ObjectManager $manager
      * @param string $role
      * @param int $n
-     * @param string $email
+     * @param $email
      */
 
-    public function createUsersOfRole(ObjectManager $manager,string $role,int $n,string $email)
+    public function createUsersOfRole(ObjectManager $manager,string $role,int $n,$email)
     {
         $this->createMany(User::class,$n,function (User $user, $i) use ($role, $email) {
             $sexe=$this->faker->boolean;
@@ -62,20 +62,25 @@ class UserFixtures extends BaseFixture
             {
                 $user->setEmail($email)
                     ->setPassword($this->encoder->encodePassword($user,'admin'));
+                $this->setReference("admin",$user);
 
             }
             else{
                 if ($role=="ROLE_ENS")
                 {
                     $user->setEmail('ens'.$i.'@mail.com');
+                    $this->setReference("ens$i",$user);
+
                 }
                 else{
                     $user->setEmail('student'.$i.'@mail.com');
+                    $this->setReference("etu$i",$user);
                 }
+                $user->setPassword($this->encoder->encodePassword($user,'123'));
+
 
             }
             $user->setAddress($this->faker->streetAddress)
-                ->setPassword($this->encoder->encodePassword($user,'123'))
                 ->setPhone($this->faker->e164PhoneNumber)
                 ->setFullName($this->faker->name($sexe_text))
                 ->setSexe($sexe)

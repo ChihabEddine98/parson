@@ -28,9 +28,10 @@ class UserCourseFixtures extends BaseFixture implements DependentFixtureInterfac
     protected function loadData(ObjectManager $manager)
     {
         $this->createMany(UserCourse::class,20,function (UserCourse $userCourse,$i){
-            $etudiants= $this->userRepo->findByRole("ROLE_ETU");
+//            $etudiants= $this->userRepo->findByRole("ROLE_ETU");
 
-            $userCourse->setUser($this->faker->randomElement($etudiants))
+            $randRef='etu'.$this->faker->numberBetween(1,10);
+            $userCourse->setUser($this->getReference($randRef))
                 -> setCourse($this->getRandomRef(Course::class))
                 ->setRate($this->faker->randomFloat(2,1,5))
                 ->setScore(0)

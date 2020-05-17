@@ -55,7 +55,7 @@ abstract  class BaseFixture extends Fixture
 
             // ça génere des couple par exemple (course_1,cours(id=1))
             // sympa pour faire les relations ( foreign keys )
-            $this->addReference($className.'_'.$i,$entity);
+            $this->setReference($className.'_'.$i,$entity);
         }
 
 
