@@ -12,171 +12,174 @@
 
         <div class="col-lg-12  bg-light text-dark">
 
-                <div class="col-lg-12  text-dark ">
-                    {% set ok =false %}
+            <div class="col-lg-12  text-dark ">
+                {% set ok =false %}
 
-                    {% if course.author.id==app.user.id %}
-                        <div class="text-center pt-4">
-                            <a href="{{ path('edit_course',{'id':course.id})}}" class="btn btn-warning btn-lg "> <span><i class="fas fa-edit"></i></span> Modifier Ce cours </a>
-                            <a href="{{ path('new_exo',{'id':course.id}) }}" class="btn btn-danger btn-lg m-1"><span><i class="fas fa-plus-circle"></i></span> Ajouter un exercice </a>
-                            <a href="{{ path('new_course') }}" class="btn btn-dark btn-lg m-1"><span><i class="fas fa-plus-circle"></i></span> Ajouter un autre cours </a>
-{#                            {% if not( app.user in course.users) %}#}
-{#                                    <a href="{{ path('register_course',{'id':course.id})}}" class="btn btn-warning btn-lg m-1"> <span><i class="fas fa-chalkboard-teacher"></i></span> Adhérer Ce cours </a>#}
-{#                                    {% set ok =true %}#}
-{#                            {% endif %}#}
-                        </div>
-                    {% endif %}
-                    {% if (is_granted('ROLE_ETU')) and (not alreadyIn ) and (not ok ) %}
-                        <div class="text-center">
-                            <a href="{{ path('register_course',{'id':course.id})}}" class="btn btn-danger btn-lg mt-5"> <span><i class="fas fa-chalkboard-teacher"></i></span> Adhérer Ce cours </a>
-                        </div>
-                    {% endif %}
-                    <hr>
-                    <div class="row col-12 mb-3 courseImg">
-                        {% set imgSrc=course.imgUrl ? asset(course.imgUrl) : asset('img/course_default.jpg')  %}
-                        <img style="height: 320px;object-fit: cover;" class="col-12" src="{{ imgSrc }}" alt="">
+                {% if course.author.id==app.user.id %}
+                    <div class="text-center pt-4">
+                        <a href="{{ path('edit_course',{'id':course.id}) }}" class="btn btn-warning btn-lg "> <span><i
+                                        class="fas fa-edit"></i></span> Modifier Ce cours </a>
+                        <a href="{{ path('new_exo',{'id':course.id}) }}" class="btn btn-primary btn-lg m-1"><span><i
+                                        class="fas fa-plus-circle"></i></span> Ajouter un exercice </a>
+                        <a href="{{ path('new_course') }}" class="btn btn-dark btn-lg m-1"><span><i
+                                        class="fas fa-plus-circle"></i></span> Ajouter un autre cours </a>
+                        <a href="#" class="btn btn-danger btn-lg m-1 deleteBtn">
+                            <span><i class="fas fa-trash-alt"></i></span> Supprimer Ce cours </a>
                     </div>
-
-                    <div class=" row col-lg-9 col-sm-10 courseDetails mx-auto px-5 mb-5">
-                         <h1 class="courseTitle text-center"> {{ course.title }} </h1>
+                {% endif %}
+                {% if (is_granted('ROLE_ETU')) and (not alreadyIn ) and (not ok ) %}
+                    <div class="text-center">
+                        <a href="{{ path('register_course',{'id':course.id}) }}" class="btn btn-danger btn-lg mt-5">
+                            <span><i class="fas fa-chalkboard-teacher"></i></span> Adhérer Ce cours </a>
                     </div>
+                {% endif %}
+                <hr>
+                <div class="row col-12 mb-3 courseImg">
+                    {% set imgSrc=course.imgUrl ? asset(course.imgUrl) : asset('img/course_default.jpg') %}
+                    <img style="height: 320px;object-fit: cover;" class="col-12" src="{{ imgSrc }}" alt="">
+                </div>
+
+                <div class=" row col-lg-9 col-sm-10 courseDetails mx-auto px-5 mb-5">
+                    <h1 class="courseTitle text-center"> {{ course.title }} </h1>
+                </div>
 
 
-                    <div class="row col-lg-12 col-sm-12 courseDetails  d-flex flex-row">
+                <div class="row col-lg-12 col-sm-12 courseDetails  d-flex flex-row">
 
-                            {# Info Auteur #}
-                            <div class=" col col-lg-3 mx-auto my-2 d-flex flex-column text-center">
-                                {% set imgSrc=course.author.imgUrl ? asset(course.author.imgUrl) : asset('img/profil_default_male.png')  %}
-                                <a href="{{ path('user_profile',{'id':course.author.id}) }}">
-                                    <img src="{{ imgSrc }}" class="userImg" alt="">
-                                </a>
-                                <a href="{{ path('user_profile',{'id':course.author.id}) }}">
-                                    {{ course.author.fullname }}
-                                </a>
-                                <p href="#" class="text-dark m-0">
-                                    {{ course.author.email }}
-                                </p>
-                                <p>
-                                    {{ course.createdAt | ago }}
-                                </p>
-                            </div>
-
-                            {# Info Heures et nb_students #}
-                            <div class=" col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center"
-                                 style="font-size: 1.4em;">
-                                <p>
-                                    {#<img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">#}
-                                    <i class="fas fa-chart-line" style="font-size: 2.8rem; color:#48bfff;"></i>
-                                </p>
-                                <p class="text-dark m-0">
-                                    <b style="font-size: 1.6em;">{{course.users.count}}</b> étudiant(e)s inscrit(e)s
-                                </p>
-
-                                <p class="text-dark m-0">
-                                    Note  moyenne  : <b>{{ average|number_format(2)}} / 20 </b>
-                                </p>
-                                <p>
-                                    Volume horaire : <b>{{ course.timeNeeded }} H </b>
-                                </p>
-                            </div>
-
-                            {# Cours notes !#}
-                            <div class="col col-lg-3 col-sm-12 mx-auto my-2 d-flex flex-column text-center"
-                                style="font-size: 1.4em;">
-                                <a href="#">
-                                    {#<img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">#}
-                                    <i class="fas fa-heart" style="color: red; font-size: 2.8em;"></i>
-                                </a>
-                                <p style="font-size: 1.3em; color: #0a0a0a;">
-                                    <b id="rateScore">
-                                        {{ rating|number_format(1) }} / 5
-                                    </b>
-                                    <br>
-                                    <span id="rating-1" data-stars={{ rating }}></span>
-                                </p>
-{#                                <a href="#" class="btn btn-outline-danger btn-lg">#}
-{#                                    Donnez Votre Avis#}
-{#                                </a>#}
-                            </div>
-
-                    </div>
-
-                    <hr class="divider">
-
-
-                    {# Description du cours !#}
-                    <div class="col-12 text-center mb-5">
-                        <h2 class="text-left col-12"> Description :</h2>
+                    {# Info Auteur #}
+                    <div class=" col col-lg-3 mx-auto my-2 d-flex flex-column text-center">
+                        {% set imgSrc=course.author.imgUrl ? asset(course.author.imgUrl) : asset('img/profil_default_male.png') %}
+                        <a href="{{ path('user_profile',{'id':course.author.id}) }}">
+                            <img src="{{ imgSrc }}" class="userImg" alt="">
+                        </a>
+                        <a href="{{ path('user_profile',{'id':course.author.id}) }}">
+                            {{ course.author.fullname }}
+                        </a>
+                        <p href="#" class="text-dark m-0">
+                            {{ course.author.email }}
+                        </p>
                         <p>
-                           {{ course.description }}
+                            {{ course.createdAt | ago }}
                         </p>
                     </div>
+
+                    {# Info Heures et nb_students #}
+                    <div class=" col-lg-6 col-sm-12 mx-auto my-2 d-flex flex-column text-center"
+                         style="font-size: 1.4em;">
+                        <p>
+                            {#<img src="{{ asset('img/admin_icon.png') }}" alt="" class="sexeImg">#}
+                            <i class="fas fa-chart-line" style="font-size: 2.8rem; color:#48bfff;"></i>
+                        </p>
+                        <p class="text-dark m-0">
+                            <b style="font-size: 1.6em;">{{ course.users.count }}</b> étudiant(e)s inscrit(e)s
+                        </p>
+
+                        <p class="text-dark m-0">
+                            Note moyenne : <b>{{ average|number_format(2) }} / 20 </b>
+                        </p>
+                        <p>
+                            Volume horaire : <b>{{ course.timeNeeded }} H </b>
+                        </p>
+                    </div>
+
+                    {# Cours notes !#}
+                    <div class="col col-lg-3 col-sm-12 mx-auto my-2 d-flex flex-column text-center"
+                         style="font-size: 1.4em;">
+                        <a href="#">
+                            {#<img src="{{ asset('img/simple_icon.png') }}" class="sexeImg" alt="">#}
+                            <i class="fas fa-heart" style="color: red; font-size: 2.8em;"></i>
+                        </a>
+                        <p style="font-size: 1.3em; color: #0a0a0a;">
+                            <b id="rateScore">
+                                {{ rating|number_format(1) }} / 5
+                            </b>
+                            <br>
+                            <span id="rating-1" data-stars={{ rating }}></span>
+                        </p>
+                        {#                                <a href="#" class="btn btn-outline-danger btn-lg">#}
+                        {#                                    Donnez Votre Avis#}
+                        {#                                </a>#}
+                    </div>
+
+                </div>
+
+                <hr class="divider">
+
+
+                {# Description du cours !#}
+                <div class="col-12 text-center mb-5">
+                    <h2 class="text-left col-12"> Description :</h2>
+                    <p>
+                        {{ course.description }}
+                    </p>
+                </div>
+                <hr>
+                {# Exercices #}
+                <h2 class="text-left col-12 mb-3"> Exercices :</h2>
+
+                {% if course.exercises | length > 0 %}
+
+                <div class="container">
+
+
+                    <div class="row ml-5">
+                        {% for exercise in course.exercises %}
+                            {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
+                                'text-light bg-danger','text-light bg-success',
+                                'text-light bg-secondary','text-dark bg-warning']) %}
+                            <div class="card {{ theme }} mb-3 mx-1" style="max-width: 18rem;">
+                                <div class="card-header">Le {{ exercise.createdAt|date('d/m/Y à H:i') }}</div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ exercise.title|truncate(50) }}</h5>
+                                    <p class="card-text" style="font-size: 18px">
+                                        {% if exercise.type=="parson" %}
+                                            <i class="fas fa-code"></i> {{ exercise.type|capitalize }}
+                                        {% else %}
+                                            <i class="fas fa-chalkboard-teacher"></i> {{ exercise.type|capitalize }}
+                                        {% endif %}
+                                    </p>
+                                    <a href="{{ path('exercise_detail',{'id':exercise.id}) }}"
+                                       class="btn
+                                           btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light' }}">
+                                        Voir En Détail
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div><!-- /.row -->
+
+                    {% else %}
+
+                        <h6 class="text-center col-12"> Aucun Exercice Disponible</h6>
+
+                    {% endif %}
+
                     <hr>
-                    {# Exercices #}
-                    <h2 class="text-left col-12 mb-3"> Exercices :</h2>
 
-                    {% if course.exercises | length > 0  %}
+                    {# Cours Similaires #}
+                    <h2 class="text-left col-12 mb-3"> Cours Similaires :</h2>
 
+                    {% if coursesLike|length > 0 %}
                     <div class="container">
 
-
                         <div class="row ml-5">
-                            {% for exercise in course.exercises %}
+                            {% for course in coursesLike %}
                                 {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
                                     'text-light bg-danger','text-light bg-success',
-                                    'text-light bg-secondary','text-dark bg-warning'])  %}
-                                <div class="card {{theme}} mb-3 mx-1" style="max-width: 18rem;">
-                                    <div class="card-header">Le {{exercise.createdAt|date('d/m/Y à H:i') }}</div>
+                                    'text-light bg-secondary','text-dark bg-warning']) %}
+                                <div class="card {{ theme }} mb-3 mx-1" style="max-width: 18rem;">
+                                    <div class="card-header">{{ course.createdAt|ago }}</div>
                                     <div class="card-body text-center">
-                                        <h5 class="card-title">{{ exercise.title|truncate(50) }}</h5>
-                                        <p class="card-text" style="font-size: 18px">
-                                            {% if exercise.type=="parson" %}
-                                                <i class="fas fa-code"></i> {{ exercise.type|capitalize }}
-                                            {% else %}
-                                                <i class="fas fa-chalkboard-teacher"></i> {{ exercise.type|capitalize  }}
-                                            {% endif %}
-                                        </p>
-                                        <a href="{{ path('exercise_detail',{'id':exercise.id}) }}"
-                                           class="btn
-                                           btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
-                                           Voir En Détail
+                                        <h5 class="card-title">{{ course.title|truncate(50) }}</h5>
+                                        <p class="card-text">{{ course.timeNeeded }} H</p>
+                                        <a href="{{ path('course_detail',{'id':course.id}) }}"
+                                           class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light' }}">
+                                            Voir En Détail
                                         </a>
                                     </div>
                                 </div>
                             {% endfor %}
                         </div><!-- /.row -->
-
-                        {% else %}
-
-                         <h6 class="text-center col-12"> Aucun Exercice Disponible</h6>
-
-                        {% endif %}
-
-                        <hr>
-
-                        {# Cours Similaires #}
-                        <h2 class="text-left col-12 mb-3"> Cours Similaires :</h2>
-
-                        {% if coursesLike|length > 0 %}
-                        <div class="container">
-
-                            <div class="row ml-5">
-                                {% for course in coursesLike %}
-                                    {% set theme=random(['text-light bg-primary','text-light bg-dark','text-light bg-info',
-                                        'text-light bg-danger','text-light bg-success',
-                                        'text-light bg-secondary','text-dark bg-warning'])  %}
-                                    <div class="card {{theme}} mb-3 mx-1" style="max-width: 18rem;">
-                                        <div class="card-header">{{course.createdAt|ago}}</div>
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">{{ course.title|truncate(50) }}</h5>
-                                            <p class="card-text">{{ course.timeNeeded }} H</p>
-                                            <a href="{{ path('course_detail',{'id':course.id}) }}" class="btn btn-outline-{{ theme=='text-dark bg-warning' ? 'dark': 'light'}}">
-                                                Voir En Détail
-                                            </a>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div><!-- /.row -->
 
                         {% else %}
                             <h6 class="col-12 text-center "> Aucun cours de la meme catégorie </h6>
@@ -187,44 +190,46 @@
                         <h2 class="text-left col-12 mb-5"> Avis sur le cours :
                             <small>({{ pagination.totalItemCount }} commentaires)</small>
                         </h2>
-                            <div class="mb-4 mx-2">
+                        <div class="mb-4 mx-2">
                             <div class="row">
                                 <div class="col col-lg-8 col-md-6 col-sm-12">
                                     <textarea class="form-control" id="comment"
-                                              placeholder="Dites ce que vous pensez !" rows="3" name="comment"></textarea>
+                                              placeholder="Dites ce que vous pensez !" rows="3"
+                                              name="comment"></textarea>
                                 </div>
-                                <div class="col col-lg-4 col-md-6 col-sm-12 py-3 " >
-                                    <button id="btnNewComment" class="btn btn-primary w-50 align-middle"> Envoyer</button>
+                                <div class="col col-lg-4 col-md-6 col-sm-12 py-3 ">
+                                    <button id="btnNewComment" class="btn btn-primary w-50 align-middle"> Envoyer
+                                    </button>
                                 </div>
                                 <div id="message" class="col col-lg-7 m-3 alert alert-success" style="opacity: 0;">
                                 </div>
                             </div>
-                            </div>
-
-                        {% for comment in pagination %}
-                        <div class="row " id="comments">
-                            <div class="col-md-7">
-                                <div class="user">
-                                    <h2 class="userName">
-                                        <a href="{{ path('user_profile' ,{'id':comment.user.id}) }}">
-                                            {% set imgSrc=comment.user.imgUrl ? asset(comment.user.imgUrl) : asset('img/profil_default_male.png')  %}
-                                            <img src="{{imgSrc}}" class="sexeImg" alt="">
-                                            {{ comment.user.fullName }}
-                                        </a>
-                                         <h6 class="text-muted">{{ comment.createdAt|ago }}</h6></h2>
-                                </div>
-                                <p class="avis">
-                                    {{ comment.description }}
-                                </p>
-                            </div>
-                            <div class="col-md-5">
-                                {% if comment.imgUrl %}
-                                <img src="{{ comment.imgUrl }}" class="w-75" alt="" style="object-fit: cover">
-                                {% endif %}
-                            </div>
                         </div>
 
-                        <hr class="divider">
+                        {% for comment in pagination %}
+                            <div class="row " id="comments">
+                                <div class="col-md-7">
+                                    <div class="user">
+                                        <h2 class="userName">
+                                            <a href="{{ path('user_profile' ,{'id':comment.user.id}) }}">
+                                                {% set imgSrc=comment.user.imgUrl ? asset(comment.user.imgUrl) : asset('img/profil_default_male.png') %}
+                                                <img src="{{ imgSrc }}" class="sexeImg" alt="">
+                                                {{ comment.user.fullName }}
+                                            </a>
+                                            <h6 class="text-muted">{{ comment.createdAt|ago }}</h6></h2>
+                                    </div>
+                                    <p class="avis">
+                                        {{ comment.description }}
+                                    </p>
+                                </div>
+                                <div class="col-md-5">
+                                    {% if comment.imgUrl %}
+                                        <img src="{{ comment.imgUrl }}" class="w-75" alt="" style="object-fit: cover">
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <hr class="divider">
                         {% endfor %}
                         <div class="mx-auto col col-lg-12 col-md-10 col-sm-6">
                             {{ knp_pagination_render(pagination) }}
@@ -232,115 +237,167 @@
                         <hr class="divider my-5">
 
 
-                            {#<div class="row ">#}
-                            {#<div class="col-md-7">#}
-                                {#<div class="user">#}
-                                    {#<h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">#}
-                                            {#Aymen Djelid</a>#}
-                                        {#<h6 class="text-muted">40 minutes ago</h6></h2>#}
-                                {#</div>#}
-                                {#<p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.#}
-                                    {#Praesent commodo cursus magna, vel scelerisque nisl consectetur.#}
-                                    {#Fusce dapibus, tellus ac cursus commodo.#}
-                                {#</p>#}
-                            {#</div>#}
-                            {#<div class="col-md-5">#}
-                                {#<img src="{{ asset('img/course_default.jpg') }}" class="w-75" alt="" style="object-fit: cover">#}
-                            {#</div>#}
+                        {#<div class="row ">#}
+                        {#<div class="col-md-7">#}
+                        {#<div class="user">#}
+                        {#<h2 class="userName"><a href=""><img src="{{ asset('img/profil_default_male.png') }}" class="sexeImg" alt="">#}
+                        {#Aymen Djelid</a>#}
+                        {#<h6 class="text-muted">40 minutes ago</h6></h2>#}
+                        {#</div>#}
+                        {#<p class="avis">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.#}
+                        {#Praesent commodo cursus magna, vel scelerisque nisl consectetur.#}
+                        {#Fusce dapibus, tellus ac cursus commodo.#}
+                        {#</p>#}
+                        {#</div>#}
+                        {#<div class="col-md-5">#}
+                        {#<img src="{{ asset('img/course_default.jpg') }}" class="w-75" alt="" style="object-fit: cover">#}
+                        {#</div>#}
                         {#</div>#}
                         <!-- /END AVIS  -->
 
 
+                    </div>
+
+                    <!-- <div class="btn_">
+                        <a href="/register" class="btn"> Commencer ! </a>
+                    </div> -->
 
                 </div>
 
-            <!-- <div class="btn_">
-                <a href="/register" class="btn"> Commencer ! </a>
-            </div> -->
-
-        </div>
-
+            </div>
         </div>
     </div>
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Supprimer un Cours</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="p-2 rounded" id="result_solution">
+                        <h5></h5>
+                    </div>
+                    <h3 class="text-dark">Etes vous surs de vouloir supprimer ce cours ?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="valid-solution">Valider</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-<script>
-    $( document ).ready(function() {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
-
-
-        //AJAX
-        function SubmitData() {
-
-            var comment = $("#comment").val();
-
-            $.ajax({
-                type: "POST",
-                dataType:"json",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({ "comment": comment , "id":{{ course.id }} }),
-                url: "{{ path('new_comment') }}",
-                success: function () {
-                    $('#comment').val('');
-                    $('#message').html("<h2>Commentaire envoyé.</h2>")
-                                 .append("<p> Coool ! </p> ")
-                    $('#message').css({opacity: 1});
-                    setTimeout(function() {
-                        $('#message').delay(800).fadeOut(1000)
-                    },800);
-                    setTimeout(function(){// wait for 5 secs(2)
-                        location.reload(); // then reload the page.(3)
-                    }, 2000);
-
-
-
-
-                }
-            });
-            return false;
-        }
-
-
-        //For debugging
-        $('#btnNewComment').click(function () {
-            SubmitData();
-        });
-
-    });
-
-</script>
-
-    {#    Rating hnaaa !#}
-    <script src="{{ asset('js/rating.js') }}"></script>
-
+    {#  Gestion des comments  #}
     <script>
-        $.ratePicker("#rating-1", {
-            max :5,
-            rgbOn:"#e74c3c",
-            rgbOff:"#ecf0f1",
-            rgbSelection:"#e74c3c",
-            cursor:"pointer",
-            rate : function (stars)
-            {
+        $(document).ready(function () {
+
+
+            //AJAX
+            function SubmitData() {
+
+                var comment = $("#comment").val();
 
                 $.ajax({
                     type: "POST",
-                    dataType:"json",
+                    dataType: "json",
                     contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify({ "stars": stars , "id":{{ course.id }} }),
+                    data: JSON.stringify({"comment": comment, "id":{{ course.id }} }),
+                    url: "{{ path('new_comment') }}",
+                    success: function () {
+                        $('#comment').val('');
+                        $('#message').html("<h2>Commentaire envoyé.</h2>")
+                            .append("<p> Coool ! </p> ")
+                        $('#message').css({opacity: 1});
+                        setTimeout(function () {
+                            $('#message').delay(800).fadeOut(1000)
+                        }, 800);
+                        setTimeout(function () {// wait for 5 secs(2)
+                            location.reload(); // then reload the page.(3)
+                        }, 2000);
+
+
+                    }
+                });
+                return false;
+            }
+
+
+            //For debugging
+            $('#btnNewComment').click(function () {
+                SubmitData();
+            });
+
+        });
+
+    </script>
+    {#--------------- Fin comments ------------------#}
+
+    {#    Rating hnaaa !#}
+    <script src="{{ asset('js/rating.js') }}"></script>
+    <script>
+        $.ratePicker("#rating-1", {
+            max: 5,
+            rgbOn: "#e74c3c",
+            rgbOff: "#ecf0f1",
+            rgbSelection: "#e74c3c",
+            cursor: "pointer",
+            rate: function (stars) {
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"stars": stars, "id":{{ course.id }} }),
                     url: "{{ path('course_rate') }}",
                     success: function (data) {
-                        var n=parseFloat(data);
-                        $('#rateScore').html(n.toFixed(1)+'/5');
+                        var n = parseFloat(data);
+                        $('#rateScore').html(n.toFixed(1) + '/5');
                     }
                 });
             }
+        })
+    </script>
+    {#--------------- Fin Rating ---------------------#}
+
+    {# Supprmier Un cours    #}
+    <script>
+        $('.deleteBtn').click(function (event) {
+
+            $('.modal').modal('show');
+            let id = {{ course.id }}
+            $('#valid-solution').click(function () {
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('delete_course') }}",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"id":id }),
+                })//done handler
+                    .done(function (data) {
+                        if (data.result) {
+                            window.location = '/courses/by_me';
+                        } else {
+
+                        }
+
+                    });
+            })
+
+
+
         });
     </script>
+    {#--------------- Fin Supprimer cours ---------------------#}
+
 
 {% endblock %}

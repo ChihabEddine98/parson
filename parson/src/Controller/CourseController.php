@@ -480,4 +480,30 @@ class CourseController extends BaseController
 
     }
 
+
+    /**
+     * @Route("/course/delete",name="delete_course")
+     */
+    public function deleteUser(Request $request,EntityManagerInterface $manager,CourseRepository $repo)
+    {
+        $data = json_decode($request->getContent(), true);
+        $course=$repo->findOneBy(["id"=>$data['id']]);
+        if ($course)
+        {
+            $manager->remove($course);
+            $manager->flush();
+
+            $this->addFlash('success',' Cours supprimé avec succes !');
+            return new JsonResponse(array('result' => true));
+        }
+
+
+
+        return new JsonResponse(array('result' => false));
+
+
+    }
+
 }
+
+
