@@ -56,7 +56,7 @@
                                 <h5 class="card-title">{{ cours.course.title|truncate(20) }}</h5>
                                 <p class="card-text">{{ cours.course.description|truncate(59) }}</p>
                                 <p> <b>( {{ cours.course.exercises.count }} exercice , {{ cours.course.comments.count }} avis ) </b></p>
-                                <a href="{{ path('course_detail',{'id': cours.course.id}) }}" class="btn btn-info">Voir en détail</a>
+                                <a href="{{ path('course_detail',{'id': cours.course.id}) }}" class="btn btn-dark ">Voir en détail</a>
                             </div>
                         </div>
                     {% endfor %}
