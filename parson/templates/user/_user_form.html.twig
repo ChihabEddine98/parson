@@ -1,17 +1,33 @@
-<div class="p-2 rounded my-2" id="result">
+<div class="p-2 rounded my-3" id="result">
     <h5></h5>
 </div>
 <div class="col-6 mx-auto text-center">
 
+
         <div  class="text-center">
+            {% if fullname %}
+                <div class="form-group">
+                    <input type="text" class="form-control" id="nom_input"
+                           placeholder="Entrez son nom (*)">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email_input"
+                           placeholder="Entrez son email (*)">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="mdp_input"
+                           placeholder="Entrez son mot de passe (*)">
+                </div>
+            {% endif %}
+
             <div class="form-group">
                 <input type="text" class="form-control" id="addr_input" aria-describedby="addrHelp"
-                                    placeholder="Entrez votre adresse" value="{{ addr ? addr :'' }}">
+                                    placeholder="Entrez l'adresse" value="{{ addr ? addr :'' }}">
                 <small id="addrHelp" class="form-text text-muted">Ex : 9 Place Lucie Aubrac 94600 </small>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="phone_input" aria-describedby="telHelp"
-                       placeholder="Entrez votre Tél" value="{{ phone ? phone :'' }}">
+                       placeholder="Entrez N-Tél" value="{{ phone ? phone :'' }}">
                 <small id="telHelp" class="form-text text-muted">Ex : +33.6.60.54.94.35 </small>
             </div>
 {#            <div class="form-group">#}

@@ -15,6 +15,23 @@
             <div class="col-12 text-dark">
                 <div class="users col-12">
 
+                    <div class="text-center pt-4">
+                        <a  id="addEns" class="btn btn-primary btn-lg m-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <span> <i class="fas fa-plus-circle"></i></span> Ajouter un enseignant
+                        </a>
+                    </div>
+                    <hr>
+                    <hr>
+                    <div class="ml-1 collapse " id="collapseExample">
+                        <div class="card card-body ">
+                            {{ include('user/_user_form.html.twig',{
+                                addr:'',
+                                phone:'',
+                                fullname: true
+                            }) }}
+                        </div>
+                    </div>
+                    <hr>
                     <h2> Utilisateurs !</h2>
                     <hr>
 
@@ -94,13 +111,10 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="p-2 rounded" id="result_solution">
-                                        <h5></h5>
-                                    </div>
                                     <h3 class="text-dark">Etes vous surs de vouloir supprimer cet utilisateur ?</h3>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" id="valid-solution">Valider</button>
+                                    <button type="button" class="btn btn-danger" id="addEns">Valider</button>
                                     <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
                                 </div>
                             </div>
@@ -125,6 +139,7 @@
     <script>
         $(document).ready(function () {
 
+            // Changer Le role
             $('.validRoleBtn').click(function (event) {
                 var id = $(this).find(' input:hidden').val();
                 var roles = $('#user_role' + id).find('select').val();
@@ -150,6 +165,7 @@
                 }
             });
 
+            // Supprimer user
             $('.deleteBtn').click(function (event) {
                 var id = $(this).find(' input:hidden').val();
                 let tr = $('#user_tr' + id);
@@ -178,7 +194,54 @@
 
                 });
 
+            // Ajouter ens
+
+            $('#valid_edit_profil').click(function () {
+                nom_input = $('#nom_input').val();
+                email_input = $('#email_input').val();
+                mdp_input = $('#mdp_input').val();
+                addr_input = $('#addr_input').val();
+                phone_input=$('#phone_input').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('new_ens') }}",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"addr": addr_input,"phone":phone_input,"nom":nom_input,"email":email_input,"mdp":mdp_input }),
+                })//done handler
+                    .done(function (data) {
+                        var msg;
+                        if (data.result) {
+                            msg=" Super ! c'est bien sauvegardé";
+                            $('#result').addClass('alert-success').removeClass('alert-danger');
+                            $('#result h5').text(msg);
+                            $("#result").fadeIn('slow').animate({
+                                opacity: 1.0}, 2000).fadeOut('slow');
+
+                            setTimeout(function () {// wait for 5 secs(2)
+                                location.reload(); // then reload the page.(3)
+                            }, 2000);
+
+                        } else {
+                            msg=" Oops ! assurez vous de soummetre tous les champs (*)";
+                            $('#result').addClass('alert-danger').removeClass('alert-success');
+
+                        }
+                        $('#result h5').text(msg);
+                        $("#result").fadeIn('slow').animate({
+                            opacity: 1.0}, 2000).fadeOut('slow');
+
+                        console.log(data.d);
+                    });
+
+
             })
+
+
+
+
+        })
     </script>
 
 {% endblock %}

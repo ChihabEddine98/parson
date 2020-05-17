@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
@@ -86,56 +87,98 @@ class UserController extends AbstractController
     /**
      * @Route("/user/edit_img",name="edit_user_img")
      */
-    public function editUserImg(Request $request,UploaderHelper $uploaderHelper,EntityManagerInterface $manager)
+    public function editUserImg(Request $request, UploaderHelper $uploaderHelper, EntityManagerInterface $manager)
     {
         /** @var UploadedFile $upImgFile */
-        $upImgFile=$request->files->get('user_imgFile');
+        $upImgFile = $request->files->get('user_imgFile');
         if ($upImgFile) {
-            $newImgName=$uploaderHelper->uploadUserImg($upImgFile);
-            $user=$this->getUser();
+            $newImgName = $uploaderHelper->uploadUserImg($upImgFile);
+            $user = $this->getUser();
             $user->setImgUrl($newImgName);
             $manager->persist($user);
             $manager->flush();
         }
 
-        return $this->redirectToRoute('user_profile',[
-            'id'=>$user->getId()
+        return $this->redirectToRoute('user_profile', [
+            'id' => $user->getId()
         ]);
     }
 
     /**
      * @Route("/user/edit",name="edit_user_info")
      */
-    public function editUserInfo(Request $request,EntityManagerInterface $manager,UserRepository $repo)
+    public function editUserInfo(Request $request, EntityManagerInterface $manager, UserRepository $repo)
     {
         $data = json_decode($request->getContent(), true);
-        $user=$repo->findOneBy(["id"=>$data['id']]);
+        // Edit !
+        if ($data['id']) {
+            $user = $repo->findOneBy(["id" => $data['id']]);
 
-        if ($data['addr'])
-        {
-            $user->setAddress($data['addr']);
+            if ($data['addr']) {
+                $user->setAddress($data['addr']);
+            }
+            if ($data['phone']) {
+                $user->setPhone($data['phone']);
+            }
+
+            $manager->persist($user);
+        } // New user !
+        else {
+            $user = new User();
+            $user->setRoles(['ROLE_ENS'])
+                ->setPhone($data['phone'])
+                ->setAddress($data['addr'])
+                ->setFullName($data['name'])
+                ->setEmail($data['email'])
+                ->setPassword($data['mdp'])
+                ->setSexe(1);
+
+            dd($user);
         }
-        if ($data['phone'])
-        {
-            $user->setPhone($data['phone']);
-        }
 
-
-        $manager->persist($user);
         $manager->flush();
 
         return new JsonResponse(array('result' => true));
     }
 
     /**
-     * @Route("/user/edit_role",name="edit_user_role")
+     * @Route("/admin/new_ens",name="new_ens")
      */
-    public function editUserRole(Request $request,EntityManagerInterface $manager,UserRepository $repo)
+    public function addEns(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         $data = json_decode($request->getContent(), true);
-        $user=$repo->findOneBy(["id"=>$data['id']]);
-        if ($data['roles'])
-        {
+
+        // New user !
+
+        if ($data['nom'] && $data['email'] && $data['mdp']) {
+            $user = new User();
+            $user->setRoles(['ROLE_ENS'])
+                ->setPhone($data['phone'])
+                ->setAddress($data['addr'])
+                ->setFullName($data['nom'])
+                ->setEmail($data['email'])
+                ->setPassword($encoder->encodePassword($user, $data['mdp']))
+                ->setSexe(1);
+            $manager->persist($user);
+            $manager->flush();
+
+            return new JsonResponse(array('result' => true));
+        }
+
+
+        return new JsonResponse(array('result' => false));
+
+    }
+
+    /**
+     * @Route("/user/edit_role",name="edit_user_role")
+     */
+    public
+    function editUserRole(Request $request, EntityManagerInterface $manager, UserRepository $repo)
+    {
+        $data = json_decode($request->getContent(), true);
+        $user = $repo->findOneBy(["id" => $data['id']]);
+        if ($data['roles']) {
             $user->setRoles(array($data['roles']));
             $manager->persist($user);
             $manager->flush();
@@ -154,18 +197,17 @@ class UserController extends AbstractController
     /**
      * @Route("/user/delete",name="delete_user")
      */
-    public function deleteUser(Request $request,EntityManagerInterface $manager,UserRepository $repo)
+    public
+    function deleteUser(Request $request, EntityManagerInterface $manager, UserRepository $repo)
     {
         $data = json_decode($request->getContent(), true);
-        $user=$repo->findOneBy(["id"=>$data['id']]);
-        if ($user)
-        {
+        $user = $repo->findOneBy(["id" => $data['id']]);
+        if ($user) {
             $manager->remove($user);
             $manager->flush();
 
             return new JsonResponse(array('result' => true));
         }
-
 
 
         return new JsonResponse(array('result' => false));
@@ -176,17 +218,18 @@ class UserController extends AbstractController
     /**
      * @Route("/register_to_course/{id}",name="register_course")
      */
-    public function userRegister2Course(Request $request,EntityManagerInterface $manager,Course $course,UserCourseRepository $repo)
+    public
+    function userRegister2Course(Request $request, EntityManagerInterface $manager, Course $course, UserCourseRepository $repo)
     {
-        $u_c=new UserCourse();
+        $u_c = new UserCourse();
         $u_c->setCourse($course);
         $u_c->setUser($this->getUser());
         $manager->persist($u_c);
         $manager->flush();
 
-        $this->addFlash('success','Super ! maintenant vous faites partie de ce cours . ');
+        $this->addFlash('success', 'Super ! maintenant vous faites partie de ce cours . ');
 
-        return $this->redirectToRoute('course_detail',["id"=>$course->getId()]);
+        return $this->redirectToRoute('course_detail', ["id" => $course->getId()]);
     }
 
 }
