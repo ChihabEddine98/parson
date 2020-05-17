@@ -285,6 +285,7 @@
                             opacity: 1.0}, 2000).fadeOut('slow');
                         li="";
                         instructions=shuffle(instructions);
+
                         for (let ins of instructions)
                         {
                             li+="                            <li class=\"row instruction\" id=\""+ins+"\">\n" +
@@ -299,6 +300,10 @@
                                 SetSortOrder();
                             },
                         });
+                        setTimeout(function() {
+                            $('.modal').modal('hide');
+                        }, 2500);
+
                         // $("#result_solution").show();
                         // setTimeout(function() { $("#result_solution").hide(); }, 2000);
                     });

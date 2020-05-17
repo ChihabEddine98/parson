@@ -69,3 +69,11 @@ body{
     margin: auto;
 
 }
+
+#instructions li:hover {
+    cursor: pointer;
+}
+
+#instructions li.ui-sortable-helper{
+    cursor: pointer;
+}
