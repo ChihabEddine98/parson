@@ -380,8 +380,8 @@ class CourseController extends BaseController
                 $u_c = $userCourseRepo->findOneByUserAndCourse($this->getUser(), $exo->getCourse());
                 if ($u_c)
                 {
-                    $results = $u_c->getResults();
-                    $this->changeResult($manager, $u_c, $results, $exo->getId(), 0);
+                    $results = $u_c[0];
+                    $this->changeResult($manager, $u_c[0], $results, $exo->getId(), 0);
 
                 }
                 else
@@ -399,9 +399,9 @@ class CourseController extends BaseController
         $u_c = $userCourseRepo->findOneByUserAndCourse($this->getUser(), $exo->getCourse());
         if ($u_c)
         {
-            $results = $u_c->getResults();
+            $results = $u_c[0];
             $note=number_format(20/$exo->getCourse()->getExercises()->count(),2);
-            $this->changeResult($manager, $u_c, $results, $exo->getId(), $note);
+            $this->changeResult($manager, $u_c[0], $results, $exo->getId(), $note);
 
         }
         else

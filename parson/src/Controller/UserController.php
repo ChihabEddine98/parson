@@ -183,11 +183,9 @@ class UserController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
+            $this->addFlash('success','Role modifié avec success !');
             return new JsonResponse(array('result' => true));
         }
-
-        $manager->persist($user);
-        $manager->flush();
 
         return new JsonResponse(array('result' => false));
 

@@ -16,13 +16,13 @@
                 <div class="users col-12">
 
                     <div class="text-center pt-4">
-                        <a  id="addEns" class="btn btn-primary btn-lg m-1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <a  id="addEns" class="btn btn-primary btn-lg m-1" data-toggle="collapse" href="#addEns_collapse" role="button" aria-expanded="false" aria-controls="addEns_collapse">
                             <span> <i class="fas fa-plus-circle"></i></span> Ajouter un enseignant
                         </a>
                     </div>
                     <hr>
                     <hr>
-                    <div class="ml-1 collapse " id="collapseExample">
+                    <div class="ml-1 collapse " id="addEns_collapse">
                         <div class="card card-body ">
                             {{ include('user/_user_form.html.twig',{
                                 addr:'',
@@ -76,8 +76,16 @@
                                                 <div class="card card-body">
                                                     <select class="form-control" id="roles">
                                                         <option>Choisissez un role !</option>
-                                                        <option>Enseignant</option>
+                                                        {% if  'ROLE_ENS' in user.roles %}
+                                                        <option selected>Enseignant</option>
                                                         <option>Etudiant</option>
+                                                        {% elseif 'ROLE_ETU' %}
+                                                            <option>Enseignant</option>
+                                                            <option selected>Etudiant</option>
+                                                        {% else %}
+                                                            <option>Enseignant</option>
+                                                            <option>Etudiant</option>
+                                                        {% endif %}
                                                     </select>
                                                 </div>
                                             </div>
@@ -114,7 +122,7 @@
                                     <h3 class="text-dark">Etes vous surs de vouloir supprimer cet utilisateur ?</h3>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" id="addEns">Valider</button>
+                                    <button type="button" class="btn btn-danger" id="validDelUser">Valider</button>
                                     <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
                                 </div>
                             </div>
@@ -154,7 +162,7 @@
                     })//done handler
                         .done(function (data) {
                             if (data.result) {
-
+                                location.reload();
                             } else {
 
                             }
@@ -170,7 +178,7 @@
                 var id = $(this).find(' input:hidden').val();
                 let tr = $('#user_tr' + id);
                 $('.modal').modal('show');
-                $('#valid-solution').click(function () {
+                $('#validDelUser').click(function () {
                     $('.modal').modal('hide');
 
                     $.ajax({
