@@ -16,6 +16,7 @@ use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Sluggable\Util\Urlizer;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -250,6 +251,7 @@ class CourseController extends BaseController
 
     /**
      * @Route("/courses/{id}",name="course_detail")
+     *
      */
 
     public function courseDetail(Course $cours,
@@ -259,25 +261,37 @@ class CourseController extends BaseController
                                  PaginatorInterface $paginator,
                                  Request $request)
     {
-        $coursSimilaires = $repo->findByCategoryAndNotThisId($cours->getCategory(), $cours->getId());
-        $moyenne = $repoScore->findAverageByCourse($cours);
-        $avisMoyen = $repoScore->findAverageRateByCourse($cours);
-        $query=$repoComment->findByCourse($cours);
+        if ($cours)
+        {
+            $coursSimilaires = $repo->findByCategoryAndNotThisId($cours->getCategory(), $cours->getId());
+            $moyenne = $repoScore->findAverageByCourse($cours);
+            $avisMoyen = $repoScore->findAverageRateByCourse($cours);
+            $query=$repoComment->findByCourse($cours);
 
-        $pagination = $paginator->paginate(
-            $query, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            3 /*limit per page*/
-        );
-        $dejaIn=!$repoScore->findOneByUserAndCourse($this->getUser(),$cours);
-        return $this->render('course/detail/course_detail.html.twig', [
-            'course' => $cours,
-            'coursesLike' => $coursSimilaires,
-            'average' => $moyenne,
-            'rating' => $avisMoyen,
-            'pagination'=>$pagination,
-            'alreadyIn'=>!$dejaIn
+            $pagination = $paginator->paginate(
+                $query, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                3 /*limit per page*/
+            );
+            $dejaIn=!$repoScore->findOneByUserAndCourse($this->getUser(),$cours);
+            return $this->render('course/detail/course_detail.html.twig', [
+                'course' => $cours,
+                'coursesLike' => $coursSimilaires,
+                'average' => $moyenne,
+                'rating' => $avisMoyen,
+                'pagination'=>$pagination,
+                'alreadyIn'=>!$dejaIn
+            ]);
+
+
+        }
+
+        return $this->render('course/errors/error.html.twig', [
+            'title'=> ' Cours n\'existe pas !' ,
+            'body'=> ' Oooops ! il parait que vous essayez de chercher un cours non existant !'
         ]);
+
+
     }
 
     /**

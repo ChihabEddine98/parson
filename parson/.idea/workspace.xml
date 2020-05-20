@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee37726-7196-47a0-99e0-84d9cc5be459" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/course/errors/error.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CourseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,14 +108,9 @@
       <workItem from="1589613628174" duration="130000" />
       <workItem from="1589666692749" duration="3144000" />
       <workItem from="1589702620391" duration="21568000" />
-      <workItem from="1589757051364" duration="4905000" />
-    </task>
-    <task id="LOCAL-00035" summary="submit exo parson show message and hide it with right colors !">
-      <created>1588803288728</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1588803288728</updated>
+      <workItem from="1589757051364" duration="10071000" />
+      <workItem from="1589779102639" duration="44000" />
+      <workItem from="1589933481091" duration="1039000" />
     </task>
     <task id="LOCAL-00036" summary="get submitted instruction from parson type !">
       <created>1588803811487</created>
@@ -458,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589724510929</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="fix bug in submit exo !">
+      <created>1589764171878</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1589764171879</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,7 +463,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix ajax send exos parson bug" />
     <MESSAGE value="fix ajax send exos parson bug and rating for non existing result bug !" />
     <MESSAGE value="much better form presentation and modular code !" />
     <MESSAGE value="bug in add exo ( solution is a problem yoo )" />
@@ -491,7 +487,8 @@
     <MESSAGE value="fix on cascade delete for user !" />
     <MESSAGE value="delete course functionnality" />
     <MESSAGE value="logically can submit this version" />
-    <option name="LAST_COMMIT_MESSAGE" value="logically can submit this version" />
+    <MESSAGE value="fix bug in submit exo !" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug in submit exo !" />
   </component>
   <component name="WindowStateProjectService">
     <state x="349" y="67" key="#CLI_Interpreters" timestamp="1588908857422">
@@ -534,10 +531,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589720934951" />
-    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589724509596">
+    <state x="56" y="0" key="CommitChangelistDialog2" timestamp="1589764169912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589724509596" />
+    <state x="56" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589764169912" />
     <state width="991" height="204" key="GridCell.Tab.0.bottom" timestamp="1588268964878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -578,9 +575,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1589759458302" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589762899556">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589933691165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589762899556" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589933691165" />
   </component>
 </project>
