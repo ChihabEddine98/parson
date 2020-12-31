@@ -53,9 +53,9 @@ Maintenant choisissez les trois différents rôles pour pouvoir remarquer la dif
 >  **composer** start
 >  ( en background php bin/console server:run )
 
-PS : le dernier script de **`composer launch`** lance le server sur le port **`8000`**
+PS : le dernier script de **`composer launch`** lance le server sur le port **`DB_PORT`**
 Renjoingez votre navigateur et tapez :
-**`http://DB_HOST:8000/`**
+**`http://DB_HOST:DB_PORT/`**
 
 # Some Screenshots ( quelques captures !)
 
