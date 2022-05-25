@@ -57,6 +57,9 @@ PS : le dernier script de **`composer launch`** lance le server sur le port **`D
 Renjoingez votre navigateur et tapez :
 **`http://DB_HOST:DB_PORT/`**
 
+# TODO 
+- [] Docker
+
 # Some Screenshots ( quelques captures !)
 
 ![welcome](https://user-images.githubusercontent.com/38104305/82168353-e0be5680-98be-11ea-86dd-52989d4e96f9.JPG)
