@@ -58,7 +58,7 @@ Renjoingez votre navigateur et tapez :
 **`http://DB_HOST:DB_PORT/`**
 
 # TODO 
-- [] Docker
+- [ ] Docker
 
 # Some Screenshots ( quelques captures !)
 
