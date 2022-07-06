@@ -58,7 +58,7 @@ Renjoingez votre navigateur et tapez :
 **`http://DB_HOST:DB_PORT/`**
 
 # TODO 
-- [ ] Docker
+- [ ] Docker Compose
 - [ ] ReactJS
 
 # Some Screenshots ( quelques captures !)
